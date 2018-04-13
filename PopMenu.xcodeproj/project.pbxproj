@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,14 @@
 		9D397AA020802C1700C58037 /* PopMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397A9F20802C1700C58037 /* PopMenuTests.swift */; };
 		9D397AA220802C1700C58037 /* PopMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D397A9420802C1600C58037 /* PopMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D397AAC208053D800C58037 /* PopMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9D397AAB208053D800C58037 /* PopMenu.podspec */; };
+		9D397AD520805F4D00C58037 /* PopMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AD420805F4D00C58037 /* PopMenuManager.swift */; };
+		9D397AD720805F9900C58037 /* PopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AD620805F9900C58037 /* PopMenuViewController.swift */; };
+		9D397AF32080885F00C58037 /* PopMenuPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */; };
+		9D397AF52080887600C58037 /* PopMenuDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF42080887600C58037 /* PopMenuDismissAnimationController.swift */; };
+		9D397AF82080A07600C58037 /* +UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF72080A07600C58037 /* +UIView.swift */; };
+		9D397AFA2080A13300C58037 /* PopMenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF92080A13300C58037 /* PopMenuColor.swift */; };
+		9D397AFD2080A5F000C58037 /* PopMenuAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */; };
+		9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +39,14 @@
 		9D397A9F20802C1700C58037 /* PopMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuTests.swift; sourceTree = "<group>"; };
 		9D397AA120802C1700C58037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D397AAB208053D800C58037 /* PopMenu.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PopMenu.podspec; sourceTree = "<group>"; };
+		9D397AD420805F4D00C58037 /* PopMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenuManager.swift; sourceTree = "<group>"; };
+		9D397AD620805F9900C58037 /* PopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenuViewController.swift; sourceTree = "<group>"; };
+		9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuPresentAnimationController.swift; sourceTree = "<group>"; };
+		9D397AF42080887600C58037 /* PopMenuDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuDismissAnimationController.swift; sourceTree = "<group>"; };
+		9D397AF72080A07600C58037 /* +UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIView.swift"; sourceTree = "<group>"; };
+		9D397AF92080A13300C58037 /* PopMenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuColor.swift; sourceTree = "<group>"; };
+		9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAppearance.swift; sourceTree = "<group>"; };
+		9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuGradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,9 @@
 		9D397A9320802C1600C58037 /* PopMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9D397AD320805F3700C58037 /* View Controllers */,
+				9D397AD220805F1800C58037 /* Classes */,
+				9D397AD120805E8900C58037 /* Transitions */,
 				9D397A9420802C1600C58037 /* PopMenu.h */,
 				9D397A9520802C1700C58037 /* Info.plist */,
 			);
@@ -87,6 +106,43 @@
 				9D397AA120802C1700C58037 /* Info.plist */,
 			);
 			path = PopMenuTests;
+			sourceTree = "<group>";
+		};
+		9D397AD120805E8900C58037 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */,
+				9D397AF42080887600C58037 /* PopMenuDismissAnimationController.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		9D397AD220805F1800C58037 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9D397AF62080A06200C58037 /* Helpers */,
+				9D397AD420805F4D00C58037 /* PopMenuManager.swift */,
+				9D397AF92080A13300C58037 /* PopMenuColor.swift */,
+				9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9D397AD320805F3700C58037 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D397AD620805F9900C58037 /* PopMenuViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9D397AF62080A06200C58037 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D397AF72080A07600C58037 /* +UIView.swift */,
+				9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,18 +203,22 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = "Cali Castle";
+				ORGANIZATIONNAME = PopMenu;
 				TargetAttributes = {
 					9D397A9020802C1600C58037 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
+						ProvisioningStyle = Manual;
 					};
 					9D397A9920802C1700C58037 = {
 						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = LAAKXKAVC9;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 9D397A8B20802C1600C58037 /* Build configuration list for PBXProject "PopMenu" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -198,6 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D397AD520805F4D00C58037 /* PopMenuManager.swift in Sources */,
+				9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */,
+				9D397AF82080A07600C58037 /* +UIView.swift in Sources */,
+				9D397AF32080885F00C58037 /* PopMenuPresentAnimationController.swift in Sources */,
+				9D397AFD2080A5F000C58037 /* PopMenuAppearance.swift in Sources */,
+				9D397AF52080887600C58037 /* PopMenuDismissAnimationController.swift in Sources */,
+				9D397AFA2080A13300C58037 /* PopMenuColor.swift in Sources */,
+				9D397AD720805F9900C58037 /* PopMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +400,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -343,24 +410,23 @@
 		9D397AA620802C1700C58037 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LAAKXKAVC9;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PopMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.calicastle.PopMenu;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PopMenu.PopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -369,23 +435,21 @@
 		9D397AA720802C1700C58037 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LAAKXKAVC9;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PopMenu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.calicastle.PopMenu;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.PopMenu.PopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -395,14 +459,11 @@
 		9D397AA920802C1700C58037 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LAAKXKAVC9;
 				INFOPLIST_FILE = PopMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.calicastle.PopMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -413,14 +474,11 @@
 		9D397AAA20802C1700C58037 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LAAKXKAVC9;
 				INFOPLIST_FILE = PopMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.calicastle.PopMenuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
