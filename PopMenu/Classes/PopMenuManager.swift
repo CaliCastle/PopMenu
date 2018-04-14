@@ -26,9 +26,12 @@ final public class PopMenuManager: NSObject {
     /// Appearance for passing on to pop menu.
     public let popMenuAppearance: PopMenuAppearance
     
+    /// Every action item about to be displayed.
+    public var actions: [PopMenuAction] = []
+    
     /// Configure and load pop menu view controller.
     private func prepareViewController(sourceFrame: CGRect?) {
-        popMenu = PopMenuViewController(sourceFrame: sourceFrame)
+        popMenu = PopMenuViewController(sourceFrame: sourceFrame, actions: actions)
         popMenu.appearance = popMenuAppearance
         popMenu.delegate = popMenuDelegate
     }

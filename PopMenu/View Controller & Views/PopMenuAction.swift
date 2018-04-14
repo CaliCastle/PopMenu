@@ -16,6 +16,11 @@ import UIKit
     var image: UIImage? { get }
     /// Container view of the action.
     var view: UIView { get }
+    
+    var textColor: UIColor { get set }
+    
+    var font: UIFont { get set }
+    
     /// Render the view for action.
     func renderActionView()
     
@@ -27,14 +32,33 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public let image: UIImage?
     public let view: UIView
     
-    private lazy var button: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
-        button.isEnabled = true
-        button.isUserInteractionEnabled = false
+    /// Text color of the label.
+    public var textColor: UIColor {
+        get {
+            return titleLabel.textColor
+        }
+        set {
+            titleLabel.textColor = newValue
+        }
+    }
+    
+    /// Font for the label.
+    public var font: UIFont {
+        get {
+            return titleLabel.font
+        }
+        set {
+            titleLabel.font = newValue
+        }
+    }
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = false
+        label.text = title
         
-        return button
+        return label
     }()
     
     public init(title: String? = nil, image: UIImage? = nil) {
@@ -45,14 +69,15 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     }
     
     fileprivate func configureView() {
-        view.addSubview(button)
+        view.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
-    
+
     public func renderActionView() {
         configureView()
     }

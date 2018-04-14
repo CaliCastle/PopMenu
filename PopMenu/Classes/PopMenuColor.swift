@@ -16,14 +16,35 @@ public typealias Color = UIColor
 
 public struct PopMenuColor {
     
-    public let colors: [Color]
+    public var backgroundColor: PopMenuBackgroundColor
+    public var actionColor: PopMenuActionColor
     
-    public static func solid(fill color: Color) -> PopMenuColor {
-        return PopMenuColor(colors: [color])
+    public static func configure(background: PopMenuBackgroundColor, action: PopMenuActionColor) -> PopMenuColor {
+        return PopMenuColor(backgroundColor: background, actionColor: action)
     }
     
-    public static func gradient(fill colors: Color...) -> PopMenuColor {
-        return PopMenuColor(colors: colors)
+}
+
+public struct PopMenuBackgroundColor {
+    
+    public let colors: [Color]
+    
+    public static func solid(fill color: Color) -> PopMenuBackgroundColor {
+        return PopMenuBackgroundColor(colors: [color])
+    }
+    
+    public static func gradient(fill colors: Color...) -> PopMenuBackgroundColor {
+        return PopMenuBackgroundColor(colors: colors)
+    }
+    
+}
+
+public struct PopMenuActionColor {
+    
+    public let color: Color
+    
+    public static func tint(_ color: Color) -> PopMenuActionColor {
+        return PopMenuActionColor(color: color)
     }
     
 }

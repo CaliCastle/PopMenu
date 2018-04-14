@@ -44,14 +44,15 @@ final public class PopMenuViewController: UIViewController {
         return tapper
     }()
     
-    private var actions: [PopMenuAction] = []
+    public private(set) var actions: [PopMenuAction] = []
     
     // MARK: - View Life Cycle
     
-    convenience init(sourceFrame: CGRect? = nil, appearance: PopMenuAppearance? = nil) {
+    convenience init(sourceFrame: CGRect? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
         self.init(nibName: nil, bundle: nil)
         
         self.sourceFrame = sourceFrame
+        self.actions = actions
 
         // Assign appearance or use the default one.
         if let appearance = appearance {
@@ -116,7 +117,7 @@ extension PopMenuViewController {
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
         
-        let colors = appearance.popMenuColor.colors
+        let colors = appearance.popMenuColor.backgroundColor.colors
         if colors.count > 0 {
             if colors.count == 1 {
                 contentView.backgroundColor = colors.first?.withAlphaComponent(0.8)
@@ -148,18 +149,16 @@ extension PopMenuViewController {
     }
     
     fileprivate func configureActionsView() {
-        let topAction = PopMenuDefaultAction(title: "Cool Stuff")
-        let bottomAction = PopMenuDefaultAction(title: "Amazing Stuff")
-        
-        actions = [topAction, bottomAction]
-        
         actionsView.translatesAutoresizingMaskIntoConstraints = false
         actionsView.axis = .vertical
         actionsView.alignment = .fill
         actionsView.distribution = .fillEqually
         
         actions.forEach {
+            $0.font = self.appearance.popMenuFont
+            $0.textColor = self.appearance.popMenuColor.actionColor.color
             $0.renderActionView()
+            
             actionsView.addArrangedSubview($0.view)
             
             let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap))
@@ -189,6 +188,7 @@ extension PopMenuViewController: UIGestureRecognizerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
+    /// When the menu action gets tapped
     @objc fileprivate func menuDidTap(_ gesture: UITapGestureRecognizer) {
         guard let attachedView = gesture.view, let index = actions.index(where: { $0.view.isEqual(attachedView) }) else { return }
        

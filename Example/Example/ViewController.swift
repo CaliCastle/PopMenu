@@ -19,9 +19,17 @@ class ViewController: UIViewController {
     
     @IBAction func present(_ sender: Any) {
         if let button = sender as? UIButton {
-            PopMenuManager.default.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
-            PopMenuManager.default.popMenuDelegate = self
-            PopMenuManager.default.present(sourceFrame: button.frame)
+            let manager = PopMenuManager.default
+            
+            manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
+            manager.popMenuDelegate = self
+            
+            manager.actions = [
+                PopMenuDefaultAction(title: "Sweet!"),
+                PopMenuDefaultAction(title: "Cool Stuff")
+            ]
+            
+            manager.present(sourceFrame: button.frame)
         }
     }
 
