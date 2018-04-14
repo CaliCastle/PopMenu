@@ -93,7 +93,6 @@ final public class PopMenuViewController: UIViewController {
         if !view.frame.equalTo(screenBounds) { view.frame = screenBounds }
         
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        // view.backgroundColor = .clear
         view.backgroundColor = .clear // TO BE DELETED
         
         configureBackgroundView()
@@ -158,24 +157,23 @@ extension PopMenuViewController {
     }
     
     fileprivate func setupContentConstraints() {
-        let contentFitOrigin = calculateContentOrigin()
-        let contentFitWidth = calculateContentWidth()
+        let contentFrame = calculateContentFittingFrame()
         
-        // Activate container view constraints.
+        // Activate container view constraints
         NSLayoutConstraint.activate([
-            containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFitOrigin.x),
-            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFitOrigin.y),
-            containerView.widthAnchor.constraint(equalToConstant: contentFitWidth),
-            containerView.heightAnchor.constraint(equalToConstant: CGFloat(actions.count) * appearance.popMenuActionHeight)
+            containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFrame.origin.x),
+            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFrame.origin.y),
+            containerView.widthAnchor.constraint(equalToConstant: contentFrame.size.width),
+            containerView.heightAnchor.constraint(equalToConstant: contentFrame.size.height)
         ])
-        // Activate content view constraints.
+        // Activate content view constraints
         NSLayoutConstraint.activate([
             contentView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
             contentView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
             contentView.topAnchor.constraint(equalTo: containerView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
-        // Activate blur overlay constraints.
+        // Activate blur overlay constraints
         NSLayoutConstraint.activate([
             blurOverlayView.leftAnchor.constraint(equalTo: containerView.leftAnchor),
             blurOverlayView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
@@ -184,12 +182,57 @@ extension PopMenuViewController {
         ])
     }
     
-    fileprivate func calculateContentOrigin() -> CGPoint {
+    /// Determine the fitting frame for content.
+    ///
+    /// - Returns: The fitting frame
+    fileprivate func calculateContentFittingFrame() -> CGRect {
+        let size = CGSize(width: calculateContentWidth(), height: CGFloat(actions.count) * appearance.popMenuActionHeight)
+        let origin = calculateContentOrigin(with: size)
         
-        
-        return .zero
+        return CGRect(origin: origin, size: size)
     }
     
+    /// Determine where the menu should display.
+    ///
+    /// - Returns: The source origin point
+    fileprivate func calculateContentOrigin(with size: CGSize) -> CGPoint {
+        guard let sourceFrame = sourceFrame else { return CGPoint(x: view.center.x - size.width / 2, y: view.center.y - size.height / 2) }
+        
+        // Get desired content origin point
+        let offsetX = (size.width - sourceFrame.size.width ) / 2
+        var desiredOrigin = CGPoint(x: sourceFrame.origin.x - offsetX, y: sourceFrame.origin.y)
+        
+        // Move content in place
+        translateOverflowX(desiredOrigin: &desiredOrigin, contentSize: size)
+        
+        return desiredOrigin
+    }
+    
+    /// Move content into view if it's overflowed.
+    ///
+    /// - Parameters:
+    ///   - desiredOrigin: The desired origin point
+    ///   - contentSize: Content size
+    fileprivate func translateOverflowX(desiredOrigin: inout CGPoint, contentSize: CGSize) {
+        let edgePadding: CGFloat = 8
+        
+        // Check content in left or right side
+        let leftSide = (desiredOrigin.x - view.center.x) < 0
+        
+        // Check view overflow
+        let origin = CGPoint(x: leftSide ? desiredOrigin.x : desiredOrigin.x + contentSize.width, y: desiredOrigin.y)
+        
+        // Move accordingly
+        if !view.frame.contains(origin) {
+            let overflowX: CGFloat = (leftSide ? 1 : -1) * ((leftSide ? view.frame.origin.x : view.frame.origin.x + view.frame.size.width) - origin.x) + edgePadding
+            
+            desiredOrigin = CGPoint(x: desiredOrigin.x - (leftSide ? -1 : 1) * overflowX, y: origin.y)
+        }
+    }
+    
+    /// Determine the content width by the longest title possible.
+    ///
+    /// - Returns: The fitting width for content
     fileprivate func calculateContentWidth() -> CGFloat {
         var contentFitWidth: CGFloat = 0
         contentFitWidth += PopMenuDefaultAction.iconWidthHeight
