@@ -17,6 +17,10 @@ import UIKit
     /// Container view of the action.
     var view: UIView { get }
     
+    static var textLeftPadding: CGFloat { get }
+    static var iconLeftPadding: CGFloat { get }
+    static var iconWidthHeight: CGFloat { get }
+    
     var textColor: UIColor { get set }
     
     var font: UIFont { get set }
@@ -39,6 +43,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         }
         set {
             titleLabel.textColor = newValue
+            iconImageView.tintColor = newValue
         }
     }
     
@@ -61,6 +66,18 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         return label
     }()
     
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        
+        return imageView
+    }()
+    
+    public static let textLeftPadding: CGFloat = 25
+    public static let iconLeftPadding: CGFloat = 18
+    public static let iconWidthHeight: CGFloat = 27
+    
     public init(title: String? = nil, image: UIImage? = nil) {
         self.title = title
         self.image = image
@@ -69,11 +86,25 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     }
     
     fileprivate func configureView() {
+        var hasImage = false
+
+        if let _ = image {
+            hasImage = true
+            view.addSubview(iconImageView)
+            
+            NSLayoutConstraint.activate([
+                iconImageView.widthAnchor.constraint(equalToConstant: PopMenuDefaultAction.iconWidthHeight),
+                iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
+                iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PopMenuDefaultAction.iconLeftPadding),
+                iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        }
+        
         view.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: hasImage ? iconImageView.trailingAnchor : view.leadingAnchor, constant: hasImage ? 8 : PopMenuDefaultAction.textLeftPadding),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }

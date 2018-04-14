@@ -46,6 +46,9 @@ final public class PopMenuViewController: UIViewController {
     
     public private(set) var actions: [PopMenuAction] = []
     
+    /// Max content width allowed for the content to stretch to.
+    fileprivate let maxContentWidth: CGFloat = UIScreen.main.bounds.size.width * 0.9
+        
     // MARK: - View Life Cycle
     
     convenience init(sourceFrame: CGRect? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
@@ -132,19 +135,38 @@ extension PopMenuViewController {
         view.addSubview(blurOverlayView)
         view.addSubview(contentView)
         
-        /// Temporary
-        NSLayoutConstraint.activate([
-            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30),
-            contentView.widthAnchor.constraint(equalToConstant: 240),
-            contentView.heightAnchor.constraint(equalToConstant: 150)
-        ])
+        setupContentConstraints()
         
         NSLayoutConstraint.activate([
             blurOverlayView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             blurOverlayView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             blurOverlayView.topAnchor.constraint(equalTo: contentView.topAnchor),
             blurOverlayView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
+    
+    fileprivate func setupContentConstraints() {
+        var contentFitWidth: CGFloat = 0
+        contentFitWidth += PopMenuDefaultAction.iconWidthHeight
+        contentFitWidth += PopMenuDefaultAction.textLeftPadding * 2
+        
+        // Calculate the widest width from action titles to determine the width
+        if let action = actions.max(by: {
+            guard let title1 = $0.title, let title2 = $1.title else { return false }
+            return title1.count < title2.count
+        }) {
+            let sizingLabel = UILabel()
+            sizingLabel.text = action.title
+            
+            let desiredWidth = sizingLabel.sizeThatFits(view.bounds.size).width
+            contentFitWidth += min(desiredWidth, maxContentWidth)
+        }
+        
+        NSLayoutConstraint.activate([
+            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30),
+            contentView.widthAnchor.constraint(equalToConstant: contentFitWidth),
+            contentView.heightAnchor.constraint(equalToConstant: CGFloat(actions.count) * appearance.popMenuActionHeight)
         ])
     }
     

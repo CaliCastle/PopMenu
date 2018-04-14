@@ -21,12 +21,14 @@ class ViewController: UIViewController {
         if let button = sender as? UIButton {
             let manager = PopMenuManager.default
             
-            manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
+            manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
             manager.popMenuDelegate = self
             
             manager.actions = [
-                PopMenuDefaultAction(title: "Sweet!"),
-                PopMenuDefaultAction(title: "Cool Stuff")
+                PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus")),
+                PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart")),
+                PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add")),
+                PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
             ]
             
             manager.present(sourceFrame: button.frame)
