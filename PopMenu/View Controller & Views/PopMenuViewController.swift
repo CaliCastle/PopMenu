@@ -101,7 +101,7 @@ extension PopMenuViewController {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.addGestureRecognizer(tapGestureForDismissal)
         
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+//        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         view.addSubview(backgroundView)
         
@@ -117,8 +117,10 @@ extension PopMenuViewController {
         contentView.accessibilityViewIsModal = true
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.layer.cornerRadius = appearance.popMenuCornerRadius
-        contentView.layer.masksToBounds = true
-        contentView.clipsToBounds = true
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowRadius = 20
+        contentView.layer.shadowOpacity = 0.65
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 1)
         
         let colors = appearance.popMenuColor.backgroundColor.colors
         if colors.count > 0 {
