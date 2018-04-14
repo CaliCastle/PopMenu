@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol PopMenuAction {
+@objc public protocol PopMenuAction: NSObjectProtocol {
     
     /// Title of the action.
     var title: String? { get }
@@ -28,12 +28,16 @@ import UIKit
     var tintColor: UIColor { get set }
     /// The font for label.
     var font: UIFont { get set }
+    /// The corner radius of action view.
+    var cornerRadius: CGFloat { get set }
     /// Is the view highlighted by gesture.
     var highlighted: Bool { get set }
     
     /// Render the view for action.
     func renderActionView()
 
+    @objc optional func actionSelected(animated: Bool)
+    
 }
 
 public class PopMenuDefaultAction: NSObject, PopMenuAction {
@@ -43,6 +47,8 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public let view: UIView
     public let color: Color?
     
+    // MARK: - Computed Properties
+    
     /// Text color of the label.
     public var tintColor: Color {
         get {
@@ -51,6 +57,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         set {
             titleLabel.textColor = newValue
             iconImageView.tintColor = newValue
+            backgroundColor = newValue.blackOrWhiteContrastingColor()
         }
     }
     
@@ -64,6 +71,17 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         }
     }
     
+    /// Rounded corner radius for action view.
+    public var cornerRadius: CGFloat {
+        get {
+            return view.layer.cornerRadius
+        }
+        set {
+            view.layer.cornerRadius = newValue
+        }
+    }
+    
+    /// Inidcates if the action is being highlighted.
     public var highlighted: Bool = false {
         didSet {
             guard highlighted != oldValue else { return }
@@ -71,6 +89,11 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
             highlightActionView(highlighted)
         }
     }
+    
+    /// Background color for highlighted state.
+    private var backgroundColor: Color = .white
+
+    // MARK: - Subviews
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -89,9 +112,13 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         return imageView
     }()
     
+    // MARK: - Constants
+    
     public static let textLeftPadding: CGFloat = 25
     public static let iconLeftPadding: CGFloat = 18
     public static let iconWidthHeight: CGFloat = 27
+    
+    // MARK: - Initializer
     
     public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil) {
         self.title = title
@@ -101,7 +128,8 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         view = UIView()
     }
     
-    fileprivate func configureView() {
+    /// Setup necessary views.
+    fileprivate func configureViews() {
         var hasImage = false
 
         if let _ = image {
@@ -125,8 +153,12 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         ])
     }
 
+    /// Load and configure the action view.
     public func renderActionView() {
-        configureView()
+        view.layer.cornerRadius = 14
+        view.layer.masksToBounds = true
+        
+        configureViews()
     }
     
     /// Highlight the view when panned on top,
@@ -134,8 +166,28 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public func highlightActionView(_ highlight: Bool) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.26, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 9, options: self.highlighted ? .curveEaseIn : .curveEaseOut, animations: {
-                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.08, y: 1.08) : .identity
+                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.11, y: 1.11) : .identity
+                self.view.backgroundColor = self.highlighted ? self.backgroundColor.withAlphaComponent(0.25) : .clear
             }, completion: nil)
+        }
+    }
+    
+    /// When the action is selected.
+    public func actionSelected(animated: Bool) {
+        guard animated else { return }
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.175, animations: {
+                self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.92, y: 0.92)
+                self.view.backgroundColor = self.backgroundColor.withAlphaComponent(0.2)
+            }, completion: {
+                if $0 {
+                    UIView.animate(withDuration: 0.175, animations: {
+                        self.view.transform = .identity
+                        self.view.backgroundColor = .clear
+                    })
+                }
+            })
         }
     }
     

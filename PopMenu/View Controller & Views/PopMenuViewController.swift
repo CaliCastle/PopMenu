@@ -28,6 +28,7 @@ final public class PopMenuViewController: UIViewController {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.layer.cornerRadius = appearance.popMenuCornerRadius
         blurView.layer.masksToBounds = true
+        blurView.isUserInteractionEnabled = false
         
         return blurView
     }()
@@ -116,25 +117,20 @@ extension PopMenuViewController {
     
     /// Setup the background view at the bottom.
     fileprivate func configureBackgroundView() {
+        backgroundView.frame = view.frame
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.addGestureRecognizer(tapGestureForDismissal)
-        
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.addGestureRecognizer(tapGestureForDismissal)
+        backgroundView.isUserInteractionEnabled = true
         
         view.addSubview(backgroundView)
-        
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor)
-        ])
     }
     
     fileprivate func configureContentView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.6, radius: 20)
         containerView.layer.cornerRadius = appearance.popMenuCornerRadius
+        containerView.backgroundColor = .clear
         
         view.addSubview(containerView)
         
@@ -158,18 +154,17 @@ extension PopMenuViewController {
         containerView.addSubview(blurOverlayView)
         containerView.addSubview(contentView)
         
-        containerView.addGestureRecognizer(panGestureForMenu)
-        
         setupContentConstraints()
     }
     
     fileprivate func setupContentConstraints() {
+        let contentFitOrigin = calculateContentOrigin()
         let contentFitWidth = calculateContentWidth()
         
         // Activate container view constraints.
         NSLayoutConstraint.activate([
-            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 30),
+            containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFitOrigin.x),
+            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFitOrigin.y),
             containerView.widthAnchor.constraint(equalToConstant: contentFitWidth),
             containerView.heightAnchor.constraint(equalToConstant: CGFloat(actions.count) * appearance.popMenuActionHeight)
         ])
@@ -187,6 +182,12 @@ extension PopMenuViewController {
             blurOverlayView.topAnchor.constraint(equalTo: containerView.topAnchor),
             blurOverlayView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
+    }
+    
+    fileprivate func calculateContentOrigin() -> CGPoint {
+        
+        
+        return .zero
     }
     
     fileprivate func calculateContentWidth() -> CGFloat {
@@ -210,6 +211,8 @@ extension PopMenuViewController {
     }
     
     fileprivate func configureActionsView() {
+        actionsView.addGestureRecognizer(panGestureForMenu)
+        
         actionsView.translatesAutoresizingMaskIntoConstraints = false
         actionsView.axis = .vertical
         actionsView.alignment = .fill
@@ -218,14 +221,15 @@ extension PopMenuViewController {
         actions.forEach {
             $0.font = self.appearance.popMenuFont
             $0.tintColor = $0.color ?? self.appearance.popMenuColor.actionColor.color
+            $0.cornerRadius = self.appearance.popMenuCornerRadius / 2
             $0.renderActionView()
             
-            actionsView.addArrangedSubview($0.view)
-            
-            let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap))
+            let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap(_:)))
             tapper.delaysTouchesEnded = false
             
             $0.view.addGestureRecognizer(tapper)
+            
+            actionsView.addArrangedSubview($0.view)
         }
         
         contentView.addSubview(actionsView)
@@ -233,8 +237,8 @@ extension PopMenuViewController {
         NSLayoutConstraint.activate([
             actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            actionsView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
         ])
     }
     
@@ -245,46 +249,76 @@ extension PopMenuViewController {
 extension PopMenuViewController {
 
     /// Once the background view is tapped (for dismissal).
-    @objc fileprivate func backgroundViewDidTap(_ gesture: UIGestureRecognizer) {
+    @objc fileprivate func backgroundViewDidTap(_ gesture: UITapGestureRecognizer) {
+        guard gesture.isEqual(tapGestureForDismissal), !touchedInsideContent(location: gesture.location(in: view)) else { return }
+        
         dismiss(animated: true, completion: nil)
     }
     
-    /// When the menu action gets tapped
+    /// When the menu action gets tapped.
     @objc fileprivate func menuDidTap(_ gesture: UITapGestureRecognizer) {
         guard let attachedView = gesture.view, let index = actions.index(where: { $0.view.isEqual(attachedView) }) else { return }
 
         actionDidSelect(at: index)
     }
     
+    /// When the pan gesture triggered in actions view.
     @objc fileprivate func menuDidPan(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began, .changed:
-            // Check if touch is inside content view
-            guard touchedInsideContent(location: gesture.location(in: view)) else { return }
-            // Check which action is associated.
-            let touchLocation = gesture.location(in: actionsView)
-            
-            if let touchedView = actionsView.arrangedSubviews.filter({ return $0.frame.contains(touchLocation) }).first,
-                let index = actionsView.arrangedSubviews.index(of: touchedView){
+            if let index = associatedActionIndex(gesture) {
                 let action = actions[index]
+                // Must not be already highlighted
+                guard !action.highlighted else { return }
+                Haptic.selection.generate()
                 // Highlight current action view.
                 action.highlighted = true
                 // Unhighlight other actions.
-                actions.filter { return !$0.view.isEqual(action.view) }.forEach { $0.highlighted = false }
+                actions.filter { return !$0.isEqual(action) }.forEach { $0.highlighted = false }
             }
         case .ended:
             // Unhighlight all actions.
             actions.filter { return $0.highlighted }.forEach { $0.highlighted = false }
+            // Trigger action selection.
+            if let index = associatedActionIndex(gesture) {
+                actionDidSelect(at: index, animated: false)
+            }
         default:
             return
         }
     }
     
+    /// Check if touch is inside content view.
     fileprivate func touchedInsideContent(location: CGPoint) -> Bool {
         return containerView.frame.contains(location)
     }
     
-    fileprivate func actionDidSelect(at index: Int) {
+    ///  Get the gesture associated action index.
+    ///
+    /// - Parameter gesture: Gesture recognizer
+    /// - Returns: The index
+    fileprivate func associatedActionIndex(_ gesture: UIGestureRecognizer) -> Int? {
+        guard touchedInsideContent(location: gesture.location(in: view)) else { return nil }
+        
+        // Check which action is associated.
+        let touchLocation = gesture.location(in: actionsView)
+        // Get associated index for touch location.
+        if let touchedView = actionsView.arrangedSubviews.filter({ return $0.frame.contains(touchLocation) }).first,
+            let index = actionsView.arrangedSubviews.index(of: touchedView){
+            return index
+        }
+        
+        return nil
+    }
+    
+    /// Trigger action selection.
+    ///
+    /// - Parameter index: The index for action
+    fileprivate func actionDidSelect(at index: Int, animated: Bool = true) {
+        let action = actions[index]
+        action.actionSelected?(animated: animated)
+        
+        Haptic.impact(.medium).generate()
         delegate?.popMenuDidSelectItem?(at: index)
     }
     
