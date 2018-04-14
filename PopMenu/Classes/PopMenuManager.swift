@@ -17,9 +17,25 @@ final public class PopMenuManager: NSObject {
     /// Reference to the pop menu view controller.
     private var popMenu: PopMenuViewController!
     
+    public weak var popMenuDelegate: PopMenuViewControllerDelegate? {
+        didSet {
+            popMenu?.delegate = popMenuDelegate
+        }
+    }
+    
+    /// Appearance for passing on to pop menu.
+    public let popMenuAppearance: PopMenuAppearance
+    
     /// Configure and load pop menu view controller.
     private func prepareViewController(sourceFrame: CGRect?) {
         popMenu = PopMenuViewController(sourceFrame: sourceFrame)
+        popMenu.appearance = popMenuAppearance
+        popMenu.delegate = popMenuDelegate
+    }
+    
+    /// Initializer with appearance.
+    public init(appearance: PopMenuAppearance = PopMenuAppearance()) {
+        popMenuAppearance = appearance
     }
     
 }
@@ -28,6 +44,17 @@ final public class PopMenuManager: NSObject {
 
 extension PopMenuManager {
     
+    /// Present the pop menu.
+    ///
+    /// - Parameters:
+    ///   - sourceFrame: From where and what size of the screen to be shown
+    ///     (default: show in the center)
+    ///
+    ///   - above: Present above which controller
+    ///     (default: use the top view controller)
+    ///
+    ///   - animated: Animate the presentation
+    ///   - completion: Completion handler
     public func present(sourceFrame: CGRect? = nil, above: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         prepareViewController(sourceFrame: sourceFrame)
         
@@ -43,6 +70,8 @@ extension PopMenuManager {
     }
     
 }
+
+// MARK: - Helper Methods
 
 extension PopMenuManager {
     

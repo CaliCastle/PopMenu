@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA31A6B208134EF001498B9 /* PopMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA31A6A208134EF001498B9 /* PopMenuAction.swift */; };
 		9D397A9B20802C1700C58037 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D397A9120802C1600C58037 /* PopMenu.framework */; };
 		9D397AA020802C1700C58037 /* PopMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397A9F20802C1700C58037 /* PopMenuTests.swift */; };
 		9D397AA220802C1700C58037 /* PopMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D397A9420802C1600C58037 /* PopMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -15,7 +16,6 @@
 		9D397AD720805F9900C58037 /* PopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AD620805F9900C58037 /* PopMenuViewController.swift */; };
 		9D397AF32080885F00C58037 /* PopMenuPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */; };
 		9D397AF52080887600C58037 /* PopMenuDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF42080887600C58037 /* PopMenuDismissAnimationController.swift */; };
-		9D397AF82080A07600C58037 /* +UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF72080A07600C58037 /* +UIView.swift */; };
 		9D397AFA2080A13300C58037 /* PopMenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF92080A13300C58037 /* PopMenuColor.swift */; };
 		9D397AFD2080A5F000C58037 /* PopMenuAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */; };
 		9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */; };
@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8DA31A6A208134EF001498B9 /* PopMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAction.swift; sourceTree = "<group>"; };
 		9D397A9120802C1600C58037 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D397A9420802C1600C58037 /* PopMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopMenu.h; sourceTree = "<group>"; };
 		9D397A9520802C1700C58037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		9D397AD620805F9900C58037 /* PopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenuViewController.swift; sourceTree = "<group>"; };
 		9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuPresentAnimationController.swift; sourceTree = "<group>"; };
 		9D397AF42080887600C58037 /* PopMenuDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuDismissAnimationController.swift; sourceTree = "<group>"; };
-		9D397AF72080A07600C58037 /* +UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIView.swift"; sourceTree = "<group>"; };
 		9D397AF92080A13300C58037 /* PopMenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuColor.swift; sourceTree = "<group>"; };
 		9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAppearance.swift; sourceTree = "<group>"; };
 		9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuGradientView.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		9D397A9320802C1600C58037 /* PopMenu */ = {
 			isa = PBXGroup;
 			children = (
-				9D397AD320805F3700C58037 /* View Controllers */,
+				9D397AD320805F3700C58037 /* View Controller & Views */,
 				9D397AD220805F1800C58037 /* Classes */,
 				9D397AD120805E8900C58037 /* Transitions */,
 				9D397A9420802C1600C58037 /* PopMenu.h */,
@@ -128,18 +128,18 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		9D397AD320805F3700C58037 /* View Controllers */ = {
+		9D397AD320805F3700C58037 /* View Controller & Views */ = {
 			isa = PBXGroup;
 			children = (
 				9D397AD620805F9900C58037 /* PopMenuViewController.swift */,
+				8DA31A6A208134EF001498B9 /* PopMenuAction.swift */,
 			);
-			path = "View Controllers";
+			path = "View Controller & Views";
 			sourceTree = "<group>";
 		};
 		9D397AF62080A06200C58037 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9D397AF72080A07600C58037 /* +UIView.swift */,
 				9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */,
 			);
 			path = Helpers;
@@ -258,9 +258,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA31A6B208134EF001498B9 /* PopMenuAction.swift in Sources */,
 				9D397AD520805F4D00C58037 /* PopMenuManager.swift in Sources */,
 				9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */,
-				9D397AF82080A07600C58037 /* +UIView.swift in Sources */,
 				9D397AF32080885F00C58037 /* PopMenuPresentAnimationController.swift in Sources */,
 				9D397AFD2080A5F000C58037 /* PopMenuAppearance.swift in Sources */,
 				9D397AF52080887600C58037 /* PopMenuDismissAnimationController.swift in Sources */,

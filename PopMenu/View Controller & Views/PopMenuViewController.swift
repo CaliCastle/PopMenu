@@ -8,27 +8,43 @@
 
 import UIKit
 
-public protocol PopMenuViewControllerDelegate: class {
-    
+@objc public protocol PopMenuViewControllerDelegate: class {
+    @objc optional func popMenuDidSelectItem(at index: Int)
 }
 
 final public class PopMenuViewController: UIViewController {
     
     public weak var delegate: PopMenuViewControllerDelegate?
     public var appearance = PopMenuAppearance()
+    
+    private let backgroundView = UIView()
+    
+    /// The blur overlay view for translucent illusion.
+    private lazy var blurOverlayView: UIVisualEffectView = {
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = appearance.popMenuCornerRadius
+        blurView.layer.masksToBounds = true
+        
+        return blurView
+    }()
+    
+    /// Main content view.
     public let contentView = PopMenuGradientView()
+    
+    /// The view contains all the actions.
     public let actionsView = UIStackView()
     
     fileprivate var sourceFrame: CGRect?
     
     fileprivate lazy var tapGestureForDismissal: UITapGestureRecognizer = {
-        let tapper = UITapGestureRecognizer(target: self, action: #selector(bottomViewDidTap(_:)))
-        tapper.cancelsTouchesInView = false
+        let tapper = UITapGestureRecognizer(target: self, action: #selector(backgroundViewDidTap(_:)))
         tapper.delaysTouchesEnded = false
-        tapper.delegate = self
         
         return tapper
     }()
+    
+    private var actions: [PopMenuAction] = []
     
     // MARK: - View Life Cycle
     
@@ -56,10 +72,9 @@ final public class PopMenuViewController: UIViewController {
         
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         // view.backgroundColor = .clear
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.45) // TO BE DELETED
+        view.backgroundColor = .clear // TO BE DELETED
         
-        view.addGestureRecognizer(tapGestureForDismissal)
-        
+        configureBackgroundView()
         configureContentView()
         configureActionsView()
     }
@@ -78,24 +93,42 @@ final public class PopMenuViewController: UIViewController {
 
 extension PopMenuViewController {
     
+    fileprivate func configureBackgroundView() {
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.addGestureRecognizer(tapGestureForDismissal)
+        
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        
+        view.addSubview(backgroundView)
+        
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            backgroundView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ])
+    }
+    
     fileprivate func configureContentView() {
         contentView.accessibilityViewIsModal = true
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.layer.cornerRadius = 24
+        contentView.layer.cornerRadius = appearance.popMenuCornerRadius
         contentView.layer.masksToBounds = true
         contentView.clipsToBounds = true
         
         let colors = appearance.popMenuColor.colors
         if colors.count > 0 {
             if colors.count == 1 {
-                contentView.backgroundColor = colors.first
+                contentView.backgroundColor = colors.first?.withAlphaComponent(0.8)
             } else {
                 contentView.diagonalMode = true
                 contentView.startColor = colors.first!
                 contentView.endColor = colors.last!
+                contentView.gradientLayer.opacity = 0.8
             }
         }
         
+        view.addSubview(blurOverlayView)
         view.addSubview(contentView)
         
         /// Temporary
@@ -105,22 +138,35 @@ extension PopMenuViewController {
             contentView.widthAnchor.constraint(equalToConstant: 240),
             contentView.heightAnchor.constraint(equalToConstant: 150)
         ])
+        
+        NSLayoutConstraint.activate([
+            blurOverlayView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            blurOverlayView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            blurOverlayView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            blurOverlayView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
     }
     
     fileprivate func configureActionsView() {
-        let topAction = UIButton(type: .custom)
-        topAction.setTitle("Button 1", for: .normal)
+        let topAction = PopMenuDefaultAction(title: "Cool Stuff")
+        let bottomAction = PopMenuDefaultAction(title: "Amazing Stuff")
         
-        let bottomAction = UIButton(type: .custom)
-        bottomAction.setTitle("Button 2", for: .normal)
+        actions = [topAction, bottomAction]
         
         actionsView.translatesAutoresizingMaskIntoConstraints = false
         actionsView.axis = .vertical
-        actionsView.alignment = .center
+        actionsView.alignment = .fill
         actionsView.distribution = .fillEqually
         
-        actionsView.addArrangedSubview(topAction)
-        actionsView.addArrangedSubview(bottomAction)
+        actions.forEach {
+            $0.renderActionView()
+            actionsView.addArrangedSubview($0.view)
+            
+            let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap))
+            tapper.delaysTouchesEnded = false
+            
+            $0.view.addGestureRecognizer(tapper)
+        }
         
         contentView.addSubview(actionsView)
         
@@ -138,17 +184,20 @@ extension PopMenuViewController {
 
 extension PopMenuViewController: UIGestureRecognizerDelegate {
 
-    @objc fileprivate func bottomViewDidTap(_ gesture: UIGestureRecognizer) {
+    /// Once the background view is tapped (for dismissal).
+    @objc fileprivate func backgroundViewDidTap(_ gesture: UIGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
     
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        guard let contentTouched = touch.view?.isDescendant(of: contentView) else { return true }
-        
-        return !contentTouched
+    @objc fileprivate func menuDidTap(_ gesture: UITapGestureRecognizer) {
+        guard let attachedView = gesture.view, let index = actions.index(where: { $0.view.isEqual(attachedView) }) else { return }
+       
+        delegate?.popMenuDidSelectItem?(at: index)
     }
     
 }
+
+// MARK: - Transitioning Delegate
 
 extension PopMenuViewController: UIViewControllerTransitioningDelegate {
     

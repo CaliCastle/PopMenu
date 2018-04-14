@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA31A6820812A3A001498B9 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA31A6720812A3A001498B9 /* PopMenu.framework */; };
+		8DA31A6920812A3A001498B9 /* PopMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA31A6720812A3A001498B9 /* PopMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D397ABA20805CE400C58037 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AB920805CE400C58037 /* AppDelegate.swift */; };
 		9D397ABC20805CE400C58037 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397ABB20805CE400C58037 /* ViewController.swift */; };
 		9D397ABF20805CE400C58037 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D397ABD20805CE400C58037 /* Main.storyboard */; };
@@ -21,6 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8DA31A6920812A3A001498B9 /* PopMenu.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,6 +31,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8DA31A6520812A29001498B9 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DA31A6720812A3A001498B9 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D397AB620805CE400C58037 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D397AB920805CE400C58037 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D397ABB20805CE400C58037 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA31A6820812A3A001498B9 /* PopMenu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +58,7 @@
 		9D397AAD20805CE400C58037 = {
 			isa = PBXGroup;
 			children = (
+				8DA31A6720812A3A001498B9 /* PopMenu.framework */,
 				9D397AB820805CE400C58037 /* Example */,
 				9D397AB720805CE400C58037 /* Products */,
 				9D397ADD208065DB00C58037 /* Frameworks */,
@@ -82,6 +89,7 @@
 		9D397ADD208065DB00C58037 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DA31A6520812A29001498B9 /* PopMenu.framework */,
 				9D397ADE208065DB00C58037 /* PopMenu.framework */,
 			);
 			name = Frameworks;

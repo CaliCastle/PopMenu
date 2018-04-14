@@ -19,9 +19,18 @@ class ViewController: UIViewController {
     
     @IBAction func present(_ sender: Any) {
         if let button = sender as? UIButton {
+            PopMenuManager.default.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 15)!
+            PopMenuManager.default.popMenuDelegate = self
             PopMenuManager.default.present(sourceFrame: button.frame)
         }
     }
 
 }
 
+extension ViewController: PopMenuViewControllerDelegate {
+    
+    func popMenuDidSelectItem(at index: Int) {
+        print("Item selected at \(index)")
+    }
+    
+}
