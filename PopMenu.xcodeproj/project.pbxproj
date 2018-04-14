@@ -19,6 +19,7 @@
 		9D397AFA2080A13300C58037 /* PopMenuColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF92080A13300C58037 /* PopMenuColor.swift */; };
 		9D397AFD2080A5F000C58037 /* PopMenuAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */; };
 		9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */; };
+		9D91B30A208207B30029ACAD /* UIView+Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D91B309208207B30029ACAD /* UIView+Shadows.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		9D397AF92080A13300C58037 /* PopMenuColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuColor.swift; sourceTree = "<group>"; };
 		9D397AFC2080A5F000C58037 /* PopMenuAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAppearance.swift; sourceTree = "<group>"; };
 		9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuGradientView.swift; sourceTree = "<group>"; };
+		9D91B309208207B30029ACAD /* UIView+Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadows.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				9D397AFE2080AB9200C58037 /* PopMenuGradientView.swift */,
+				9D91B309208207B30029ACAD /* UIView+Shadows.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D91B30A208207B30029ACAD /* UIView+Shadows.swift in Sources */,
 				8DA31A6B208134EF001498B9 /* PopMenuAction.swift in Sources */,
 				9D397AD520805F4D00C58037 /* PopMenuManager.swift in Sources */,
 				9D397AFF2080AB9200C58037 /* PopMenuGradientView.swift in Sources */,
