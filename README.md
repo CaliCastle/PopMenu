@@ -1,8 +1,6 @@
 # PopMenu
 
-
-
-![PopMenu Banner](.gitbook/assets/popmenu_banner.jpg)
+![](.gitbook/assets/popmenu_banner.jpg)
 
 ## ⚙️ Installation
 
@@ -10,8 +8,10 @@
 
 Install **PopMenu** using [**CocoaPods**](https://cocoapods.org), add it to your **Podfile**:
 
+> `PopMenu` was actually taken so let's call it `NewPopMenu` 'cause why not?
+
 ```ruby
-pod 'CaliCastle/PopMenu'
+pod 'NewPopMenu'
 ```
 
 ### For Carthage
@@ -31,6 +31,12 @@ github "CaliCastle/PopMenu"
 ## 👨🏻‍💻 How to Use
 
 Integrating **PopMenu** is extremely easy with a familiar workflow just like `UIAlertController` and `UIAlertAction`
+
+### Import Library \(NewPopMenu\)
+
+```text
+import NewPopMenu
+```
 
 ### Basic Usage
 
