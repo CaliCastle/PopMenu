@@ -62,12 +62,12 @@ extension PopMenuManager {
     ///
     ///   - animated: Animate the presentation
     ///   - completion: Completion handler
-    public func present(sourceFrame: CGRect? = nil, above: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func present(sourceFrame: CGRect? = nil, on viewController: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         prepareViewController(sourceFrame: sourceFrame)
         
         guard let popMenu = popMenu else { print("Pop Menu has not been initialized yet."); return }
         
-        if let presentOn = above {
+        if let presentOn = viewController {
             presentOn.present(popMenu, animated: animated, completion: completion)
         } else {
             if let topViewController = PopMenuManager.getTopViewControllerInWindow() {
