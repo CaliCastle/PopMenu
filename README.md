@@ -1,5 +1,9 @@
 # PopMenu
 
+
+
+![PopMenu Banner](.gitbook/assets/popmenu_banner.jpg)
+
 ## ⚙️ Installation
 
 ### For CocoaPods
@@ -12,7 +16,7 @@ pod 'CaliCastle/PopMenu'
 
 ### For Carthage
 
-Install **PopMenu** using [**Carthage**](https://github.com/Carthage/Carthage), add it to your** Cartfile**:
+Install **PopMenu** using [**Carthage**](https://github.com/Carthage/Carthage), add it to your **Cartfile**:
 
 ```text
 github "CaliCastle/PopMenu"
@@ -26,7 +30,7 @@ github "CaliCastle/PopMenu"
 
 ## 👨🏻‍💻 How to Use
 
-Integrating **PopMenu **is extremely easy with a familiar workflow just like `UIAlertController` and `UIAlertAction`
+Integrating **PopMenu** is extremely easy with a familiar workflow just like `UIAlertController` and `UIAlertAction`
 
 ### Basic Usage
 
