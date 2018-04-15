@@ -1,5 +1,5 @@
 
-# ![](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.gitbook/assets/popmenu_banner.jpg)
+# ![](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/popmenu_banner.jpg)
 
 <p align="center">
     <a href="https://swift.org"><img src="https://img.shields.io/badge/swift-4%2B-orange.svg"></a>
