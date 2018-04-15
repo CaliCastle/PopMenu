@@ -128,6 +128,27 @@ final public class PopMenuViewController: UIViewController {
     }
     
     public override var preferredStatusBarStyle: UIStatusBarStyle {
+        // If style defined, return
+        if let statusBarStyle = appearance.popMenuStatusBarStyle {
+            return statusBarStyle
+        }
+        
+        // Contrast of blur style
+        let backgroundStyle = appearance.popMenuBackgroundStyle
+        if let blurStyle = backgroundStyle.blurStyle {
+            switch blurStyle {
+            case .dark:
+                return .lightContent
+            default:
+                return .default
+            }
+        }
+        
+        // Contrast of dimmed color
+        if let dimColor = backgroundStyle.dimColor {
+            return dimColor.blackOrWhiteContrastingColor() == .white ? .lightContent : .default
+        }
+        
         return .lightContent
     }
     
@@ -140,10 +161,34 @@ extension PopMenuViewController {
     /// Setup the background view at the bottom.
     fileprivate func configureBackgroundView() {
         backgroundView.frame = view.frame
+        backgroundView.backgroundColor = .clear
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         backgroundView.addGestureRecognizer(tapGestureForDismissal)
         backgroundView.isUserInteractionEnabled = true
+        
+        let backgroundStyle = appearance.popMenuBackgroundStyle
+        
+        // Blurred background
+        if let isBlurred = backgroundStyle.isBlurred,
+            isBlurred,
+            let blurStyle = backgroundStyle.blurStyle {
+            
+            let blurView = UIVisualEffectView(effect: UIBlurEffect(style: blurStyle))
+            blurView.frame = backgroundView.frame
+            
+            backgroundView.addSubview(blurView)
+            
+        }
+        
+        // Dimmed background
+        if let isDimmed = backgroundStyle.isDimmed,
+            isDimmed,
+            let color = backgroundStyle.dimColor,
+            let opacity = backgroundStyle.dimOpacity {
+            
+            backgroundView.backgroundColor = color.withAlphaComponent(opacity)
+            
+        }
         
         view.insertSubview(backgroundView, at: 0)
     }
@@ -151,7 +196,7 @@ extension PopMenuViewController {
     /// Setup the content view.
     fileprivate func configureContentView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.6, radius: 20)
+        containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.5, radius: 20)
         containerView.layer.cornerRadius = appearance.popMenuCornerRadius
         containerView.backgroundColor = .clear
         

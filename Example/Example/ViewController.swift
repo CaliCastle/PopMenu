@@ -22,6 +22,7 @@ class ViewController: UIViewController {
             let manager = PopMenuManager.default
             
             manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+            manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.dark)
             manager.popMenuDelegate = self
             
             manager.actions = [

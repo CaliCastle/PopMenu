@@ -21,6 +21,7 @@ final public class PopMenuDismissAnimationController: NSObject, UIViewController
         return 0.188
     }
     
+    /// Animate PopMenuViewController custom transition.
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let menuViewController = transitionContext.viewController(forKey: .from) as? PopMenuViewController else { return }
         
@@ -39,6 +40,7 @@ final public class PopMenuDismissAnimationController: NSObject, UIViewController
         }
     }
     
+    /// Run the animation.
     fileprivate func animate(_ viewController: PopMenuViewController) {
         viewController.containerView.alpha = 0
         viewController.backgroundView.alpha = 0
