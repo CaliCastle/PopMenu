@@ -63,7 +63,7 @@ final public class PopMenuPresentAnimationController: NSObject, UIViewController
         viewController.contentWidthConstraint.constant = contentFrame.size.width
         viewController.contentHeightConstraint.constant = contentFrame.size.height
         
-        viewController.layoutIfNeeded()
+        viewController.containerView.layoutIfNeeded()
     }
     
 }

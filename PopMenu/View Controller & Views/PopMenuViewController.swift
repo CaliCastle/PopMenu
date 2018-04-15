@@ -388,16 +388,7 @@ extension PopMenuViewController: UIViewControllerTransitioningDelegate {
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        return PopMenuDismissAnimationController(sourceFrame: sourceFrame)
     }
-    
-    public func layoutIfNeeded() {
-//        view.setNeedsLayout()
-//        contentView.setNeedsLayout()
-        
-//        view.layoutIfNeeded()
-        containerView.layoutIfNeeded()
-//        backgroundView.layoutIfNeeded()
-    }
-    
+
 }
