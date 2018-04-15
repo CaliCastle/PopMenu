@@ -23,6 +23,10 @@ public struct PopMenuColor {
         return PopMenuColor(backgroundColor: background, actionColor: action)
     }
     
+    public static func `default`() -> PopMenuColor {
+        return PopMenuColor(backgroundColor: .gradient(fill: #colorLiteral(red: 0.168627451, green: 0.168627451, blue: 0.168627451, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2156862745, blue: 0.2156862745, alpha: 1)), actionColor: .tint(.white))
+    }
+    
 }
 
 public struct PopMenuBackgroundColor {

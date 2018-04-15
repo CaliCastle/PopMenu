@@ -8,14 +8,20 @@
 
 import UIKit
 
+/// Appearance for pop menu.
+/// Use for configuring custom styles and looks.
 final public class PopMenuAppearance: NSObject {
     
-    public var popMenuColor: PopMenuColor = .configure(background: .gradient(fill: #colorLiteral(red: 0.168627451, green: 0.168627451, blue: 0.168627451, alpha: 1), #colorLiteral(red: 0.2156862745, green: 0.2156862745, blue: 0.2156862745, alpha: 1)), action: .tint(.white))
+    /// Background and tint colors.
+    public var popMenuColor: PopMenuColor = .default()
     
+    /// The font for labels.
     public var popMenuFont: UIFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
     
+    /// Corner radius for rounded corners.
     public var popMenuCornerRadius: CGFloat = 24
     
+    /// How tall each action is.
     public var popMenuActionHeight: CGFloat = 50
     
 }

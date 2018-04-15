@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWf-Y9-wuM">
-                                <rect key="frame" x="156.5" y="297" width="62" height="33"/>
+                                <rect key="frame" x="9" y="634" width="62" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Present"/>
                                 <connections>
@@ -29,8 +29,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tWf-Y9-wuM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-20" id="cU1-Bm-HzM"/>
-                            <constraint firstItem="tWf-Y9-wuM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y5A-h0-DfD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tWf-Y9-wuM" secondAttribute="bottom" id="JuC-zC-X8B"/>
+                            <constraint firstItem="tWf-Y9-wuM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="Onb-Pd-u0t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

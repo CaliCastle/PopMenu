@@ -25,8 +25,8 @@ class ViewController: UIViewController {
             manager.popMenuDelegate = self
             
             manager.actions = [
-                PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus"), color: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)),
-                PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 1, green: 0.483630836, blue: 0.4260249734, alpha: 1)),
+                PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus")),
+                PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart")),
                 PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add")),
                 PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
             ]

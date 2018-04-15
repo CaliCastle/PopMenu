@@ -33,6 +33,7 @@ final public class PopMenuViewController: UIViewController {
         return blurView
     }()
     
+    /// Main root view that has shadows.
     public let containerView = UIView()
     
     /// Main content view.
@@ -44,9 +45,12 @@ final public class PopMenuViewController: UIViewController {
     /// The source frame to be displayed from.
     fileprivate var sourceFrame: CGRect?
     
+    /// The calculated content frame.
     public lazy var contentFrame: CGRect = {
         return calculateContentFittingFrame()
     }()
+    
+    // MARK: - Constraints
     
     public private(set) var contentLeftConstraint: NSLayoutConstraint!
     public private(set) var contentTopConstraint: NSLayoutConstraint!
@@ -70,6 +74,7 @@ final public class PopMenuViewController: UIViewController {
         return panner
     }()
     
+    /// Actions of menu.
     public private(set) var actions: [PopMenuAction] = []
     
     /// Max content width allowed for the content to stretch to.
@@ -109,6 +114,15 @@ final public class PopMenuViewController: UIViewController {
         configureActionsView()
     }
     
+    /// Add a new action to the menu.
+    ///
+    /// - Parameter action: Action to be added
+    public func addAction(_ action: PopMenuAction) {
+        actions.append(action)
+    }
+    
+    // MARK: - Status Bar Appearance
+    
     public override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
@@ -134,6 +148,7 @@ extension PopMenuViewController {
         view.insertSubview(backgroundView, at: 0)
     }
     
+    /// Setup the content view.
     fileprivate func configureContentView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.6, radius: 20)
@@ -165,6 +180,7 @@ extension PopMenuViewController {
         setupContentConstraints()
     }
     
+    /// Activate necessary constraints.
     fileprivate func setupContentConstraints() {
         contentLeftConstraint = containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFrame.origin.x)
         contentTopConstraint = containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFrame.origin.y)
@@ -216,18 +232,18 @@ extension PopMenuViewController {
         
         // Move content in place
         translateOverflowX(desiredOrigin: &desiredOrigin, contentSize: size)
+        translateOverflowY(desiredOrigin: &desiredOrigin, contentSize: size)
         
         return desiredOrigin
     }
     
-    /// Move content into view if it's overflowed.
+    /// Move content into view if it's overflowed in X axis.
     ///
     /// - Parameters:
     ///   - desiredOrigin: The desired origin point
     ///   - contentSize: Content size
     fileprivate func translateOverflowX(desiredOrigin: inout CGPoint, contentSize: CGSize) {
         let edgePadding: CGFloat = 8
-        
         // Check content in left or right side
         let leftSide = (desiredOrigin.x - view.center.x) < 0
         
@@ -239,6 +255,30 @@ extension PopMenuViewController {
             let overflowX: CGFloat = (leftSide ? 1 : -1) * ((leftSide ? view.frame.origin.x : view.frame.origin.x + view.frame.size.width) - origin.x) + edgePadding
             
             desiredOrigin = CGPoint(x: desiredOrigin.x - (leftSide ? -1 : 1) * overflowX, y: origin.y)
+        }
+    }
+    
+    /// Move content into view if it's overflowed in Y axis.
+    ///
+    /// - Parameters:
+    ///   - desiredOrigin: The desired origin point
+    ///   - contentSize: Content size
+    fileprivate func translateOverflowY(desiredOrigin: inout CGPoint, contentSize: CGSize) {
+        let edgePadding: CGFloat
+
+        let origin = CGPoint(x: desiredOrigin.x, y: desiredOrigin.y + contentSize.height)
+
+        if #available(iOS 11.0, *) {
+            edgePadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 8
+        } else {
+            edgePadding = 8
+        }
+        
+        // Check content inside of view or not
+        if !view.frame.contains(origin) {
+            let overFlowY: CGFloat = origin.y - view.frame.size.height + edgePadding
+            
+            desiredOrigin = CGPoint(x: desiredOrigin.x, y: desiredOrigin.y - overFlowY)
         }
     }
     
@@ -265,6 +305,7 @@ extension PopMenuViewController {
         return contentFitWidth
     }
     
+    /// Setup actions view.
     fileprivate func configureActionsView() {
         actionsView.addGestureRecognizer(panGestureForMenu)
         
