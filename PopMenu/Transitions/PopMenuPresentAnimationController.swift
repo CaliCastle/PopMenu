@@ -9,13 +9,61 @@
 import UIKit
 
 final public class PopMenuPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-
+    
+    private let sourceFrame: CGRect?
+    
+    init(sourceFrame: CGRect?) {
+        self.sourceFrame = sourceFrame
+    }
+    
+    /// Duration of the transition.
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.48
+        return 0.188
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let menuViewController = transitionContext.viewController(forKey: .to) as? PopMenuViewController else { return }
         
+        let containerView = transitionContext.containerView
+        let view = menuViewController.view!
+        view.frame = containerView.frame
+        containerView.addSubview(view)
+        
+        prepareAnimation(menuViewController)
+        
+        let animationDuration = transitionDuration(using: transitionContext)
+        let animations = {
+            self.animate(menuViewController)
+        }
+        
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: animations) { _ in
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }
+    }
+    
+    fileprivate func prepareAnimation(_ viewController: PopMenuViewController) {
+        viewController.containerView.alpha = 0
+        viewController.backgroundView.alpha = 0
+        
+        if let sourceFrame = sourceFrame {
+            viewController.contentLeftConstraint.constant = sourceFrame.origin.x
+            viewController.contentTopConstraint.constant = sourceFrame.origin.y
+            viewController.contentWidthConstraint.constant = sourceFrame.size.width
+            viewController.contentHeightConstraint.constant = sourceFrame.size.height
+        }
+    }
+    
+    fileprivate func animate(_ viewController: PopMenuViewController) {
+        viewController.containerView.alpha = 1
+        viewController.backgroundView.alpha = 1
+        
+        let contentFrame = viewController.contentFrame
+        viewController.contentLeftConstraint.constant = contentFrame.origin.x
+        viewController.contentTopConstraint.constant = contentFrame.origin.y
+        viewController.contentWidthConstraint.constant = contentFrame.size.width
+        viewController.contentHeightConstraint.constant = contentFrame.size.height
+        
+        viewController.layoutIfNeeded()
     }
     
 }

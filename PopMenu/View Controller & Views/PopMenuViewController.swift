@@ -20,7 +20,7 @@ final public class PopMenuViewController: UIViewController {
     public var appearance = PopMenuAppearance()
     
     /// Background overlay that covers the whole screen.
-    private let backgroundView = UIView()
+    public let backgroundView = UIView()
     
     /// The blur overlay view for translucent illusion.
     private lazy var blurOverlayView: UIVisualEffectView = {
@@ -43,6 +43,15 @@ final public class PopMenuViewController: UIViewController {
     
     /// The source frame to be displayed from.
     fileprivate var sourceFrame: CGRect?
+    
+    public lazy var contentFrame: CGRect = {
+        return calculateContentFittingFrame()
+    }()
+    
+    public private(set) var contentLeftConstraint: NSLayoutConstraint!
+    public private(set) var contentTopConstraint: NSLayoutConstraint!
+    public private(set) var contentWidthConstraint: NSLayoutConstraint!
+    public private(set) var contentHeightConstraint: NSLayoutConstraint!
     
     /// Tap gesture to dismiss for background view.
     fileprivate lazy var tapGestureForDismissal: UITapGestureRecognizer = {
@@ -118,11 +127,11 @@ extension PopMenuViewController {
     fileprivate func configureBackgroundView() {
         backgroundView.frame = view.frame
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         backgroundView.addGestureRecognizer(tapGestureForDismissal)
         backgroundView.isUserInteractionEnabled = true
         
-        view.addSubview(backgroundView)
+        view.insertSubview(backgroundView, at: 0)
     }
     
     fileprivate func configureContentView() {
@@ -157,14 +166,17 @@ extension PopMenuViewController {
     }
     
     fileprivate func setupContentConstraints() {
-        let contentFrame = calculateContentFittingFrame()
+        contentLeftConstraint = containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFrame.origin.x)
+        contentTopConstraint = containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFrame.origin.y)
+        contentWidthConstraint = containerView.widthAnchor.constraint(equalToConstant: contentFrame.size.width)
+        contentHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: contentFrame.size.height)
         
         // Activate container view constraints
         NSLayoutConstraint.activate([
-            containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: contentFrame.origin.x),
-            containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: contentFrame.origin.y),
-            containerView.widthAnchor.constraint(equalToConstant: contentFrame.size.width),
-            containerView.heightAnchor.constraint(equalToConstant: contentFrame.size.height)
+            contentLeftConstraint,
+            contentTopConstraint,
+            contentWidthConstraint,
+            contentHeightConstraint
         ])
         // Activate content view constraints
         NSLayoutConstraint.activate([
@@ -371,14 +383,21 @@ extension PopMenuViewController {
 
 extension PopMenuViewController: UIViewControllerTransitioningDelegate {
     
-    public func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        //        return PopMenuPresentAnimationController()
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return PopMenuPresentAnimationController(sourceFrame: sourceFrame)
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
     }
     
-    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        //        return PopMenuDismissAnimationController()
-        return nil
+    public func layoutIfNeeded() {
+//        view.setNeedsLayout()
+//        contentView.setNeedsLayout()
+        
+//        view.layoutIfNeeded()
+        containerView.layoutIfNeeded()
+//        backgroundView.layoutIfNeeded()
     }
     
 }
