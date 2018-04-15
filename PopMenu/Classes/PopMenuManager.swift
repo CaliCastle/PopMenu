@@ -41,6 +41,10 @@ final public class PopMenuManager: NSObject {
         popMenuAppearance = appearance
     }
     
+    /// Pass a new action to pop menu.
+    public func addAction(_ action: PopMenuAction) {
+        popMenu.addAction(action)
+    }
 }
 
 // MARK: - Presentations
