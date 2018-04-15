@@ -11,7 +11,6 @@
 		9D397A9B20802C1700C58037 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D397A9120802C1600C58037 /* PopMenu.framework */; };
 		9D397AA020802C1700C58037 /* PopMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397A9F20802C1700C58037 /* PopMenuTests.swift */; };
 		9D397AA220802C1700C58037 /* PopMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D397A9420802C1600C58037 /* PopMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9D397AAC208053D800C58037 /* PopMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9D397AAB208053D800C58037 /* PopMenu.podspec */; };
 		9D397AD520805F4D00C58037 /* PopMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AD420805F4D00C58037 /* PopMenuManager.swift */; };
 		9D397AD720805F9900C58037 /* PopMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AD620805F9900C58037 /* PopMenuViewController.swift */; };
 		9D397AF32080885F00C58037 /* PopMenuPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */; };
@@ -42,7 +41,6 @@
 		9D397A9A20802C1700C58037 /* PopMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D397A9F20802C1700C58037 /* PopMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuTests.swift; sourceTree = "<group>"; };
 		9D397AA120802C1700C58037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D397AAB208053D800C58037 /* PopMenu.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PopMenu.podspec; sourceTree = "<group>"; };
 		9D397AD420805F4D00C58037 /* PopMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenuManager.swift; sourceTree = "<group>"; };
 		9D397AD620805F9900C58037 /* PopMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopMenuViewController.swift; sourceTree = "<group>"; };
 		9D397AF22080885F00C58037 /* PopMenuPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuPresentAnimationController.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 		9D397A8720802C1600C58037 = {
 			isa = PBXGroup;
 			children = (
-				9D397AAB208053D800C58037 /* PopMenu.podspec */,
 				9D397A9320802C1600C58037 /* PopMenu */,
 				9D397A9E20802C1700C58037 /* PopMenuTests */,
 				9D397A9220802C1600C58037 /* Products */,
@@ -249,7 +246,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D397AAC208053D800C58037 /* PopMenu.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
