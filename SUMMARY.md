@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Getting Started](README.md)
+* [PopMenu](README.md)
 
