@@ -78,23 +78,42 @@ That's how you set the actions for the menu.
 Now all you have to do is to simply call `present()` on the manager, either pass the view controller in the `above` argument or PopMenuManager will automatically fetch the current top view controller to present the menu on top:
 
 ```swift
-class ViewController: UIViewController {
+// Show menu without specifying which controller to present from
+manager.present()
 
-    /// i.e. button in the Storyboard is tapped.
-    @IBAction func presentMenu(_ sender: UIButton) {
-    
-        // Show menu without specifying which controller to present from
-        manager.present()
-        
-        // Or you can specify the controller
-        manager.present(above: self)
-        
-    }  
-     
-}
+// Or you can specify the controller
+manager.present(on: self)
 ```
 
-Both should **work just fine**, but still, using `manager.present(above: ...)` manually would be a _**safer**_ way to go for presenting.
+Both should **work just fine**, but still, using `manager.present(on: ...)` manually would be a _**safer**_ way to go for presenting.
+
+------
+
+### Action Callback
+
+In order to know which action button is tapped, you'll need to comform to `PopMenuViewControllerDelegate` protocol and then implement the method `popMenuDidSelectItem(at index: Int)` in your view controller:
+
+```swift
+class ViewController: UIViewController {
+    
+    func presentMenu() {
+        let manager = PopMenuManager.default
+        
+        manager.popMenuDelegate = self
+        
+        manager.present(on: self)
+    }
+
+}
+
+extension ViewController: PopMenuViewControllerDelegate {
+
+    func popMenuDidSelectItem(at index: Int) {
+        // Do stuff here...
+    }
+    
+}
+```
 
 ## 📗 Complete Documentation
 
