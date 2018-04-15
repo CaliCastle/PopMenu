@@ -7,7 +7,7 @@
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/badge/pod%20name-NewPopMenu-5ba36b.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/p/NewPopMenu.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/l/NewPopMenu.svg"></a>
-    <a href="https://cali.gitbook.io/popmenu/"><img src="https://img.shields.io/badge/docs-PopMenu-B4666C.svg"></a>
+    <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 
 ## ⚙️ Installation
@@ -115,7 +115,7 @@ extension ViewController: PopMenuViewControllerDelegate {
 }
 ```
 
-## 📗 Complete Documentation
+## 📗 Check Documentation
 
-Documentation is available at [**https://cali.gitbook.io/popmenu**](https://cali.gitbook.io/popmenu)
+Documentation is available at [**https://calicastle.github.io/PopMenu/**](https://calicastle.github.io/PopMenu/)
 
