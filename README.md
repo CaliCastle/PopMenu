@@ -1,6 +1,14 @@
-# PopMenu
 
-![](.gitbook/assets/popmenu_banner.jpg)
+# ![](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.gitbook/assets/popmenu_banner.jpg)
+
+<p align="center">
+    <a href="https://swift.org"><img src="https://img.shields.io/badge/swift-4%2B-orange.svg"></a>
+    <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/v/NewPopMenu.svg"></a>
+    <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/badge/pod%20name-NewPopMenu-5ba36b.svg"></a>
+    <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/p/NewPopMenu.svg"></a>
+    <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/l/NewPopMenu.svg"></a>
+    <a href="https://cali.gitbook.io/popmenu/"><img src="https://img.shields.io/badge/docs-PopMenu-B4666C.svg"></a>
+</p>
 
 ## ⚙️ Installation
 
