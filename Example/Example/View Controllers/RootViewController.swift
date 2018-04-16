@@ -11,7 +11,11 @@ import PopMenu
 
 class RootViewController: UITableViewController {
 
-    let cellIdentifier = "ExampleCell"
+    let headers: [String] = [
+        "Actions",
+        "Background Styles",
+        "Appearance"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,27 +25,6 @@ class RootViewController: UITableViewController {
     @IBAction func presentMenu(_ sender: UIBarButtonItem) {
         showMenuManually(for: sender)
     }
-    
-//    fileprivate func showMenuUsingManager(for view: Any) {
-//        let manager = PopMenuManager.default
-//
-//        manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
-//        manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.dark)
-//        manager.popMenuDelegate = self
-//
-//        manager.actions = [
-//            PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus")),
-//            PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart")),
-//            PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add")),
-//            PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
-//        ]
-//
-//        if let barButton = view as? UIBarButtonItem {
-//            manager.barButtonItem = barButton
-//        }
-//
-//        manager.present(sourceFrame: ((view as? UIView) != nil) ? (view as! UIView).frame : nil, on: self)
-//    }
     
     fileprivate func showMenuManually(for barButtonItem: UIBarButtonItem) {
         // Create menu controller with actions
@@ -64,48 +47,15 @@ class RootViewController: UITableViewController {
         // Present menu controller
         present(controller, animated: true, completion: nil)
     }
- 
-    // MARK: - Table View Data Source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    // MARK: - Cell Configuration
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.textLabel?.text = "PopMenu"
-        cell.textLabel?.textColor = navigationController?.navigationBar.barTintColor
-        cell.textLabel?.font = UIFont(name: "AvenirNext-DemiBold", size: 15)!
-    }
+    // MARK: - Row Configuration
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
-            let manager = PopMenuManager.default
-            // Configure actions
-            manager.actions = [
-                PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus")),
-                PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart")),
-                PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add")),
-                PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
-            ]
-            // Present another PopMenu on an active PopMenu
-            manager.present(sourceView: cell.accessoryView, on: self)
-        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: - Table Header
@@ -115,7 +65,7 @@ class RootViewController: UITableViewController {
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Header".uppercased()
+        label.text = headers[section].uppercased()
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.font = UIFont(name: "AvenirNext-Medium", size: 13)!
         
