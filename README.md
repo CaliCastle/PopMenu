@@ -38,7 +38,7 @@ github "CaliCastle/PopMenu"
 
 ## 👨🏻‍💻 How to Use
 
-Integrating **PopMenu** is extremely easy with a familiar workflow just like `UIAlertController` and `UIAlertAction`
+Integrating **PopMenu** is extremely easy with a familiar workflow like presenting `UIAlertController` with `UIAlertAction`
 
 ### Import Library \(NewPopMenu\)
 
@@ -48,13 +48,45 @@ import NewPopMenu
 
 ### Basic Usage
 
+There are 2 ways to present the menu in your view controller:
+
+1. **Use the default manager**
+
+2. **Use the `PopMenuViewController` class directly**
+
+You can, however, choose either way to have the same result, whichever works best for you.
+
+#### Which Should I Use?
+
+Use the default manager if you want quick setup and present menu seamlessly.
+ 
+Use the `PopMenuViewController` class directly if you want to have more control.
+
+**If you don't want to scroll, click the link to jump forward:**
+
+[Basic Usage - Using Manager](#using-manager)
+
+[Basic Usage - Using Controller](#using-controller)
+
+-------
+
+### <a name="using-manager"></a> Basic Usage - Using Manager
+
 The quickest way would be to use `PopMenuManager`'s _**default**_ singleton with no additional setup required:
 
 ```swift
 let manager = PopMenuManager.default
 ```
 
-Now that you've got the manager ready, you can go ahead and add **actions** to the manager:
+**or**
+
+If you prefer to manually initialize the controller:
+
+```swift
+let menuViewController = PopMenuViewController()
+```
+
+Add **actions** if you're using the manager:
 
 ```swift
 manager.actions = [
@@ -63,7 +95,7 @@ manager.actions = [
 ]
 ```
 
-Or if you prefer the good ol' ways to present a `UIAlertController` with `actionSheet` type, you can add each action like this:
+Or if you prefer the good ol' way to present a `UIAlertController` with `actionSheet` type, you can add each action like this:
 
 ```swift
 let action1 = PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon")
@@ -75,19 +107,23 @@ manager.addAction(action2)
 
 That's how you set the actions for the menu.
 
-Now all you have to do is to simply call `present()` on the manager, either pass the view controller in the `above` argument or PopMenuManager will automatically fetch the current top view controller to present the menu on top:
+Now all you have to do is to simply call `present()` on the manager, either pass the view controller in the `on` argument or PopMenuManager will automatically fetch the current top view controller to present the menu on top:
 
 ```swift
-// Show menu without specifying which controller to present from
+// Show menu without specifying which controller
 manager.present()
 
-// Or you can specify the controller
+// Or you can specify the controller to present on
 manager.present(on: self)
 ```
 
 Both should **work just fine**, but still, using `manager.present(on: ...)` manually would be a _**safer**_ way to go for presenting.
 
-------
+-------
+
+### <a name="using-controller"></a> Basic Usage - Using Controller
+
+-------
 
 ### Action Callback
 
