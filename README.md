@@ -10,6 +10,8 @@
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 
+## ! - README tutorial is still under writing, this line of text will be removed when everything is ready for first release
+
 ## ⚙️ Installation
 
 ### For CocoaPods
