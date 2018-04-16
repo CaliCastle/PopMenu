@@ -15,6 +15,7 @@
 		9D397ABF20805CE400C58037 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D397ABD20805CE400C58037 /* Main.storyboard */; };
 		9D397AC120805CE500C58037 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D397AC020805CE500C58037 /* Assets.xcassets */; };
 		9D397AC420805CE500C58037 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D397AC220805CE500C58037 /* LaunchScreen.storyboard */; };
+		9D3AB1CE20845B990024720F /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3AB1CD20845B990024720F /* ExampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		9D397AC320805CE500C58037 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D397AC520805CE500C58037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D397ADE208065DB00C58037 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3AB1CD20845B990024720F /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		9D397AB820805CE400C58037 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				9D3AB1CC20845B610024720F /* Models */,
 				9D0588142083F863009AD267 /* Storyboards */,
 				9D0588132083F85D009AD267 /* View Controllers */,
 				9D0588162083F882009AD267 /* Resources */,
@@ -136,6 +139,14 @@
 				9D397ADE208065DB00C58037 /* PopMenu.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D3AB1CC20845B610024720F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D3AB1CD20845B990024720F /* ExampleData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			files = (
 				9D397ABC20805CE400C58037 /* RootViewController.swift in Sources */,
 				9D05881820840429009AD267 /* NavigationController.swift in Sources */,
+				9D3AB1CE20845B990024720F /* ExampleData.swift in Sources */,
 				9D397ABA20805CE400C58037 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

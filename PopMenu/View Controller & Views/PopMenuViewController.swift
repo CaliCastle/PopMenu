@@ -9,11 +9,14 @@
 import UIKit
 
 @objc public protocol PopMenuViewControllerDelegate: class {
-    @objc optional func popMenuDidSelectItem(at index: Int)
+    @objc optional func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int)
 }
 
 final public class PopMenuViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    /// Delegate instance for handling callbacks.
     public weak var delegate: PopMenuViewControllerDelegate?
     
     /// Appearance configuration.
@@ -42,13 +45,27 @@ final public class PopMenuViewController: UIViewController {
     /// The view contains all the actions.
     public let actionsView = UIStackView()
     
-    /// The source frame to be displayed from.
-    fileprivate var sourceFrame: CGRect?
+    /// The source View to be displayed from.
+    fileprivate var sourceView: UIView? {
+        didSet {
+            setAbsoluteSourceFrame(sourceView)
+        }
+    }
+    
+    public private(set) var absoluteSourceFrame: CGRect?
     
     /// The calculated content frame.
     public lazy var contentFrame: CGRect = {
         return calculateContentFittingFrame()
     }()
+    
+    // MARK: - Configurations
+    
+    /// Determines whether to dismiss menu after an action is selected.
+    public var shouldDismissOnSelection: Bool = true
+    
+    /// Determines whether the pan gesture is enabled on the actions.
+    public var shouldEnablePanGesture: Bool = true
     
     // MARK: - Constraints
     
@@ -82,10 +99,10 @@ final public class PopMenuViewController: UIViewController {
         
     // MARK: - View Life Cycle
     
-    convenience init(sourceFrame: CGRect? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
+    public convenience init(sourceView: UIView? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
         self.init(nibName: nil, bundle: nil)
         
-        self.sourceFrame = sourceFrame
+        self.sourceView = sourceView
         self.actions = actions
 
         // Assign appearance or use the default one.
@@ -93,6 +110,8 @@ final public class PopMenuViewController: UIViewController {
             self.appearance = appearance
         }
 
+        setAbsoluteSourceFrame(sourceView)
+        
         transitioningDelegate = self
         modalPresentationStyle = .overFullScreen
         modalPresentationCapturesStatusBarAppearance = true
@@ -114,11 +133,27 @@ final public class PopMenuViewController: UIViewController {
         configureActionsView()
     }
     
+    /// Set absolute source frame relative to screen frame.
+    fileprivate func setAbsoluteSourceFrame(_ sourceView: UIView?) {
+        if let sourceView = sourceView {
+            absoluteSourceFrame = sourceView.convert(sourceView.frame, to: UIApplication.shared.keyWindow)
+        }
+    }
+    
     /// Add a new action to the menu.
     ///
     /// - Parameter action: Action to be added
     public func addAction(_ action: PopMenuAction) {
         actions.append(action)
+    }
+    
+    /// Set source frame for bar button item. (Since `UIBarButtonItem` is not a subclass of `UIView`)
+    ///
+    /// - Parameter barButtonItem: The bar button item
+    public func setBarButtonItemForSourceView(_ barButtonItem: UIBarButtonItem) {
+        if let buttonView = barButtonItem.value(forKey: "view") as? UIView {
+            sourceView = buttonView
+        }
     }
     
     // MARK: - Status Bar Appearance
@@ -269,7 +304,7 @@ extension PopMenuViewController {
     ///
     /// - Returns: The source origin point
     fileprivate func calculateContentOrigin(with size: CGSize) -> CGPoint {
-        guard let sourceFrame = sourceFrame else { return CGPoint(x: view.center.x - size.width / 2, y: view.center.y - size.height / 2) }
+        guard let sourceFrame = absoluteSourceFrame else { return CGPoint(x: view.center.x - size.width / 2, y: view.center.y - size.height / 2) }
         
         // Get desired content origin point
         let offsetX = (size.width - sourceFrame.size.width ) / 2
@@ -405,6 +440,8 @@ extension PopMenuViewController {
     
     /// When the pan gesture triggered in actions view.
     @objc fileprivate func menuDidPan(_ gesture: UIPanGestureRecognizer) {
+        guard shouldEnablePanGesture else { return }
+        
         switch gesture.state {
         case .began, .changed:
             if let index = associatedActionIndex(gesture) {
@@ -452,7 +489,7 @@ extension PopMenuViewController {
         return nil
     }
     
-    /// Trigger action selection.
+    /// Triggers when an action is selected.
     ///
     /// - Parameter index: The index for action
     fileprivate func actionDidSelect(at index: Int, animated: Bool = true) {
@@ -460,7 +497,12 @@ extension PopMenuViewController {
         action.actionSelected?(animated: animated)
         
         Haptic.impact(.medium).generate()
-        delegate?.popMenuDidSelectItem?(at: index)
+        
+        delegate?.popMenuDidSelectItem?(self, at: index)
+        
+        if shouldDismissOnSelection {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }
@@ -470,11 +512,11 @@ extension PopMenuViewController {
 extension PopMenuViewController: UIViewControllerTransitioningDelegate {
     
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PopMenuPresentAnimationController(sourceFrame: sourceFrame)
+        return PopMenuPresentAnimationController(sourceFrame: absoluteSourceFrame)
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return PopMenuDismissAnimationController(sourceFrame: sourceFrame)
+        return PopMenuDismissAnimationController(sourceFrame: absoluteSourceFrame)
     }
 
 }
