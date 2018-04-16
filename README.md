@@ -78,14 +78,6 @@ The quickest way would be to use `PopMenuManager`'s _**default**_ singleton with
 let manager = PopMenuManager.default
 ```
 
-**or**
-
-If you prefer to manually initialize the controller:
-
-```swift
-let menuViewController = PopMenuViewController()
-```
-
 Add **actions** if you're using the manager:
 
 ```swift
@@ -122,6 +114,12 @@ Both should **work just fine**, but still, using `manager.present(on: ...)` manu
 -------
 
 ### <a name="using-controller"></a> Basic Usage - Using Controller
+
+Manually initialize the controller:
+
+```swift
+let menuViewController = PopMenuViewController()
+```
 
 -------
 
