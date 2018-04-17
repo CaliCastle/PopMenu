@@ -85,9 +85,9 @@ You can, however, choose either way to have the same result, whichever works bes
 
 #### Which Should I Use?
 
-Use the default manager if you want quick setup and present menu seamlessly.
+1. Use the default manager if you want quick setup and present menu seamlessly.
  
-Use the `PopMenuViewController` class directly if you want to have more control.
+2. Use the `PopMenuViewController` class directly if you want to have more control.
 
 **If you don't want to scroll, click the link to jump forward:**
 
