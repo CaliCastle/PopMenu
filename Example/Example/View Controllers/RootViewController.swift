@@ -103,12 +103,7 @@ class RootViewController: UITableViewController {
     
     /// Height for footer views.
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section == (headers.count - 1) ? 100 : 30
-    }
-    
-    /// Title for footer.
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return section == (headers.count - 1) ? "Thanks for trying out PopMenu!\n\nAuthor/Developer: Cali Castle" : nil
+        return section == (headers.count - 1) ? 170 : 30
     }
     
 }

@@ -48,14 +48,10 @@ final public class PopMenuViewController: UIViewController {
     public let actionsView = UIStackView()
     
     /// The source View to be displayed from.
-    fileprivate var sourceView: UIView? {
-        didSet {
-            setAbsoluteSourceFrame(sourceView)
-        }
-    }
+    private(set) weak var sourceView: UIView?
     
     /// The absolute source frame relative to screen.
-    public private(set) var absoluteSourceFrame: CGRect?
+    private(set) var absoluteSourceFrame: CGRect?
     
     /// The calculated content frame.
     public lazy var contentFrame: CGRect = {
@@ -72,10 +68,10 @@ final public class PopMenuViewController: UIViewController {
     
     // MARK: - Constraints
     
-    public private(set) var contentLeftConstraint: NSLayoutConstraint!
-    public private(set) var contentTopConstraint: NSLayoutConstraint!
-    public private(set) var contentWidthConstraint: NSLayoutConstraint!
-    public private(set) var contentHeightConstraint: NSLayoutConstraint!
+    private(set) var contentLeftConstraint: NSLayoutConstraint!
+    private(set) var contentTopConstraint: NSLayoutConstraint!
+    private(set) var contentWidthConstraint: NSLayoutConstraint!
+    private(set) var contentHeightConstraint: NSLayoutConstraint!
     
     /// Tap gesture to dismiss for background view.
     fileprivate lazy var tapGestureForDismissal: UITapGestureRecognizer = {
@@ -113,7 +109,7 @@ final public class PopMenuViewController: UIViewController {
             self.appearance = appearance
         }
 
-        setAbsoluteSourceFrame(sourceView)
+        setAbsoluteSourceFrame()
         
         transitioningDelegate = self
         modalPresentationStyle = .overFullScreen
@@ -123,13 +119,8 @@ final public class PopMenuViewController: UIViewController {
     /// Load view entry point.
     public override func loadView() {
         super.loadView()
-        
-        // Check if is full screen size
-        let screenBounds = UIScreen.main.bounds
-        if !view.frame.equalTo(screenBounds) { view.frame = screenBounds }
-        
-        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        view.backgroundColor = .clear // TO BE DELETED
+
+        view.backgroundColor = .clear
         
         configureBackgroundView()
         configureContentView()
@@ -137,9 +128,9 @@ final public class PopMenuViewController: UIViewController {
     }
     
     /// Set absolute source frame relative to screen frame.
-    fileprivate func setAbsoluteSourceFrame(_ sourceView: UIView?) {
+    fileprivate func setAbsoluteSourceFrame() {
         if let sourceView = sourceView {
-            absoluteSourceFrame = sourceView.convert(sourceView.frame, to: nil)
+            absoluteSourceFrame = sourceView.convert(sourceView.bounds, to: nil)
         }
     }
     
@@ -156,6 +147,7 @@ final public class PopMenuViewController: UIViewController {
     public func setBarButtonItemForSourceView(_ barButtonItem: UIBarButtonItem) {
         if let buttonView = barButtonItem.value(forKey: "view") as? UIView {
             sourceView = buttonView
+            setAbsoluteSourceFrame()
         }
     }
     
