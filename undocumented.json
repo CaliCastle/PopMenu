@@ -51,42 +51,14 @@
     },
     {
       "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 75,
-      "symbol": "PopMenuViewController.contentLeftConstraint",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 76,
-      "symbol": "PopMenuViewController.contentTopConstraint",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 77,
-      "symbol": "PopMenuViewController.contentWidthConstraint",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 78,
-      "symbol": "PopMenuViewController.contentHeightConstraint",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 105,
+      "line": 101,
       "symbol": "PopMenuViewController.init(sourceView:actions:appearance:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 164,
+      "line": 156,
       "symbol": "PopMenuViewController.preferredStatusBarUpdateAnimation",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"

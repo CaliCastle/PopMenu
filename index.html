@@ -13,8 +13,9 @@
     <a title="PopMenu  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PopMenu Docs</a> (99% documented)</p>
+        <p><a href="index.html">PopMenu Docs</a> (91% documented)</p>
         <p class="header-right"><a href="https://github.com/CaliCastle/PopMenu"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fcalicastle%2Egithub%2Eio%2Fdocsets%2FPopMenu%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -124,6 +125,29 @@
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/p/NewPopMenu.svg"></a>
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
+<h2 id='description' class='heading'>✍🏻 Description</h2>
+
+<p><strong>PopMenu</strong> is designed for a quick <em>popup</em> action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you&rsquo;re in the right place!</p>
+
+<p><strong>PopMenu</strong> has the abilities of:</p>
+
+<ul>
+<li><p>Automatically position menu on screen if you specify the <strong>source view</strong>, like a popup. (edge detection)</p></li>
+<li><p>Full customization (icons, fonts, colors, background, styles, corners, height, status bar&hellip; you name it).</p></li>
+<li><p>Swipe gesture control.</p></li>
+<li><p>Haptics enabled for selection or swipe gesture.</p></li>
+</ul>
+<h2 id='demo-example' class='heading'>📱 Demo / Example</h2>
+<h4 id='download-or-fork-the-repo-and-open-the-given-code-example-code-xcode-project-to-try-it-out-yourself' class='heading'>Download or fork the repo and open the given <code>Example</code> Xcode project to try it out yourself!</h4>
+
+<p>What&rsquo;s a better way to know what <code>PopMenu</code> offers than some screenshots? Here&rsquo;s some to show you what you can do with <code>PopMenu</code>:</p>
+
+<p align="center"><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/Demo_Showcase.gif"></p>
+
+<p><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_1.png" alt="Demo1">
+<img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_2.png" alt="Demo2">
+<img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_3.png" alt="Demo3">
+<img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_4.png" alt="Demo4"></p>
 <h2 id='installation' class='heading'>⚙️ Installation</h2>
 <h3 id='for-cocoapods' class='heading'>For CocoaPods</h3>
 
@@ -164,9 +188,10 @@
 <p>You can, however, choose either way to have the same result, whichever works best for you.</p>
 <h4 id='which-should-i-use' class='heading'>Which Should I Use?</h4>
 
-<p>Use the default manager if you want quick setup and present menu seamlessly.</p>
-
-<p>Use the <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> class directly if you want to have more control.</p>
+<ol>
+<li><p>Use the default manager if you want quick setup and present menu seamlessly.</p></li>
+<li><p>Use the <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> class directly if you want to have more control.</p></li>
+</ol>
 
 <p><strong>If you don&rsquo;t want to scroll, click the link to jump forward:</strong></p>
 
@@ -183,8 +208,8 @@
 
 <p>Add <strong>actions</strong> if you&rsquo;re using the manager:</p>
 <pre class="highlight swift"><code><span class="n">manager</span><span class="o">.</span><span class="n">actions</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">),</span>
-    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">),</span> <span class="c1">// Text only action</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span> <span class="c1">// Text and image action</span>
 <span class="p">]</span>
 </code></pre>
 
@@ -211,8 +236,34 @@
 <hr>
 <h3 id='a-name-using-controller-a-basic-usage-using-controller' class='heading'><a name="using-controller"></a> Basic Usage - Using Controller</h3>
 
+<p>If you are using <code><a href="Classes/PopMenuManager.html">PopMenuManager</a></code> to handle PopMenu, you can skip this section.</p>
+
 <p>Manually initialize the controller:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">menuViewController</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">()</span>
+</code></pre>
+
+<p>Add actions inside the initializer:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">menuViewController</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">(</span><span class="nv">actions</span><span class="p">:</span> <span class="p">[</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">),</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
+<span class="p">])</span>
+</code></pre>
+
+<p>Finally, to present the menu all you have to do is call <code>present</code> method in your <strong>ViewController</strong> like a normal view controller:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+<span class="o">...</span>
+    <span class="kd">func</span> <span class="nf">presentMenu</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">menuViewController</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">(</span><span class="nv">actions</span><span class="p">:</span> <span class="p">[</span>
+            <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">),</span>
+            <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
+        <span class="p">])</span>
+
+        <span class="nf">present</span><span class="p">(</span><span class="n">menuViewController</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="o">...</span>
+
+<span class="p">}</span>
 </code></pre>
 
 <hr>
@@ -221,27 +272,159 @@
 <p>In order to know which action button is tapped, you&rsquo;ll need to comform to <code><a href="Protocols/PopMenuViewControllerDelegate.html">PopMenuViewControllerDelegate</a></code> protocol and then implement the method <code>popMenuDidSelectItem(at index: Int)</code> in your view controller:</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
 
-    <span class="kd">func</span> <span class="nf">presentMenu</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Use manager to present menu.</span>
+    <span class="kd">func</span> <span class="nf">presentMenuUsingManager</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">PopMenuManager</span><span class="o">.</span><span class="k">default</span>
 
+        <span class="c1">// Set delegate for callback</span>
         <span class="n">manager</span><span class="o">.</span><span class="n">popMenuDelegate</span> <span class="o">=</span> <span class="k">self</span>
 
         <span class="n">manager</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Or manually init:</span>
+    <span class="kd">func</span> <span class="nf">presentMenuManually</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">menu</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">(</span><span class="nv">actions</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">])</span>
+
+        <span class="c1">// Set delegate for callback</span>
+        <span class="n">menu</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+
+        <span class="nf">present</span><span class="p">(</span><span class="n">menu</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 
 <span class="kd">extension</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">PopMenuViewControllerDelegate</span> <span class="p">{</span>
 
-    <span class="kd">func</span> <span class="nf">popMenuDidSelectItem</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">popMenuDidSelectItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">popMenuViewController</span><span class="p">:</span> <span class="kt">PopMenuViewController</span><span class="p">,</span> <span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Do stuff here...</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre>
+
+<p>That&rsquo;s basically it! Congrats!</p>
+<h2 id='if-you-39-re-a-customization-lover-like-me-then-read-along' class='heading'>If you&rsquo;re a customization lover like me, then read along:</h2>
+<h2 id='appearance-customization' class='heading'>🙌🏻 Appearance Customization</h2>
+<h3 id='before-moving-on-customization-should-be-applied-before-presenting-the-menu-and-assume-that-you-already-have-a' class='heading'>Before moving on, customization should be applied before presenting the menu, and assume that you already have a:</h3>
+
+<p>variable of <code><a href="Classes/PopMenuManager.html#/s:7PopMenu0aB7ManagerC7defaultACvpZ">PopMenuManager.default</a></code> called -&gt; <strong><code>manager</code></strong>.</p>
+
+<p><strong>==== Or ====</strong></p>
+
+<p>variable of <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> called -&gt; <strong><code>menu</code></strong>.</p>
+
+<p><br></p>
+<h2 id='action-dismissal-default-true' class='heading'>Action Dismissal // Default: true</h2>
+
+<p>If you don&rsquo;t want the menu to auto-dismiss once a selection has been performed, you can change the property:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuShouldDismissOnSelection</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">shouldDismissOnSelection</span> <span class="o">=</span> <span class="kc">false</span>
+</code></pre>
+<h2 id='background-styles-default-dimmed-color-black-opacity-0-4' class='heading'>Background styles // Default: .dimmed(color: .black, opacity: 0.4)</h2>
+
+<p>There are mainly 3 types of background styles:</p>
+
+<ul>
+<li>Blurred (dark, light &amp; extra Light)</li>
+<li>Dimmed (color &amp; opacity)</li>
+<li>None</li>
+</ul>
+
+<p>Simply set the <code>popMenuBackgroundStyle</code> on the appearance property using <code>.</code> notation:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">blurred</span><span class="p">(</span><span class="o">.</span><span class="n">dark</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">blurred</span><span class="p">(</span><span class="o">.</span><span class="n">light</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">blurred</span><span class="p">(</span><span class="o">.</span><span class="n">extralight</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">dimmed</span><span class="p">(</span><span class="nv">color</span><span class="p">:</span> <span class="o">.</span><span class="n">white</span><span class="p">,</span> <span class="nv">opacity</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">none</span><span class="p">()</span>
+
+<span class="c1">// The manual way, same to the code above</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuBackgroundStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">blurred</span><span class="p">(</span><span class="o">.</span><span class="n">dark</span><span class="p">)</span>
+</code></pre>
+<h2 id='action-color-default-white' class='heading'>Action Color // Default: white</h2>
+
+<p>To bulk set action colors is simple and straightforward:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuColor</span><span class="o">.</span><span class="n">actionColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">green</span> <span class="c1">// or use Color Literals if you're using Xcode 9</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuColor</span><span class="o">.</span><span class="n">actionColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">green</span>
+</code></pre>
+
+<p>To set each action with different color, you&rsquo;ll have to specify in the <code>color</code> parameter initializer of action <code><a href="Classes/PopMenuDefaultAction.html">PopMenuDefaultAction</a></code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">actions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Some Title"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"blah"</span><span class="p">),</span> <span class="nv">color</span><span class="p">:</span> <span class="o">.</span><span class="n">gray</span><span class="p">),</span>
+    <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Another Title"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">),</span> <span class="nv">color</span><span class="p">:</span> <span class="o">.</span><span class="n">yellow</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
+<h2 id='background-color-s-default-flat-black-gradient' class='heading'>Background Color(s) // Default: flat black gradient</h2>
+
+<p>There are 2 types of background colors:</p>
+
+<ul>
+<li>Solid fill (one color)</li>
+<li>Gradient fill (two colors)</li>
+</ul>
+
+<p>To set the background color(s) of the menu:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuColor</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="nf">solid</span><span class="p">(</span><span class="nv">fill</span><span class="p">:</span> <span class="o">.</span><span class="n">gray</span><span class="p">)</span> <span class="c1">// A solid gray background color</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuColor</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="nf">gradient</span><span class="p">(</span><span class="nv">fill</span><span class="p">:</span> <span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="o">.</span><span class="n">pink</span><span class="p">)</span> <span class="c1">// A gradient from yellow to pink</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuColor</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">...</span>
+</code></pre>
+<h2 id='action-font-default-systemfont-ofsize-16-weight-semibold' class='heading'>Action Font // Default: .systemFont(ofSize: 16, weight: .semiBold)</h2>
+
+<p>To set the font of all actions:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuFont</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"AvenirNext-DemiBold"</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span><span class="o">!</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuFont</span> <span class="o">=</span> <span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">weight</span><span class="p">:</span> <span class="o">.</span><span class="n">bold</span><span class="p">)</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuFont</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"AvenirNext-DemiBold"</span><span class="p">,</span> <span class="nv">size</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span><span class="o">!</span>
+</code></pre>
+<h2 id='corner-radius-default-24' class='heading'>Corner Radius // Default: 24</h2>
+
+<p>To set corner radius of the menu container:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuCornerRadius</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuCornerRadius</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre>
+<h2 id='action-height-default-50' class='heading'>Action Height // Default: 50</h2>
+
+<p>To set height of each action:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuActionHeight</span> <span class="o">=</span> <span class="mi">65</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuActionHeight</span> <span class="o">=</span> <span class="mi">65</span>
+</code></pre>
+<h2 id='status-bar-style-default-automatic-detection-based-on-background-color' class='heading'>Status Bar Style // Default: automatic detection based on background color</h2>
+
+<p>If you don&rsquo;t want <code>PopMenu</code> to use automatic detection to set status bar style, you can override it:</p>
+<pre class="highlight swift"><code><span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuStatusBarStyle</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuStatusBarStyle</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span>
+</code></pre>
+
+<p>More customization coming, stay tuned&hellip;</p>
+<h2 id='contribute' class='heading'>💪🏻 Contribute</h2>
+
+<p>Thank you if you are interested in contributing to the project, I appreaciate it!</p>
+
+<p>Before committing any changes, please make sure to read the <a href="https://github.com/CaliCastle/PopMenu/CONTRIBUTING.md">Contribution Guidelines</a> first, thank you!</p>
 <h2 id='check-documentation' class='heading'>📗 Check Documentation</h2>
 
-<p>Documentation is available at <a href="https://calicastle.github.io/PopMenu/"><strong>https://calicastle.github.io/PopMenu/</strong></a></p>
+<p>Documentation and references is available at <a href="https://calicastle.github.io/PopMenu/"><strong>https://calicastle.github.io/PopMenu/</strong></a></p>
+<h2 id='a-href-https-join-slack-com-t-newpopmenu-shared_invite-enqtmzq4otexmze0otm1lwfhm2ixymyxogzmmtgznjqxmwrinzuyzmywn2m4zmq2ywyxy2vhnwi3mdlmm2jhotm5njawodlmnjqzmmvlodm-join-our-slack-channel-a' class='heading'><a href="https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM">Join Our Slack Channel</a></h2>
 
           </section>
         </section>
