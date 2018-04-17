@@ -13,9 +13,8 @@
     <a title="PopMenu  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PopMenu Docs</a> (47% documented)</p>
+        <p><a href="index.html">PopMenu Docs</a> (99% documented)</p>
         <p class="header-right"><a href="https://github.com/CaliCastle/PopMenu"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fcalicastle%2Egithub%2Eio%2Fdocsets%2FPopMenu%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -118,12 +117,12 @@
             <h1 id='img-src-https-raw-githubusercontent-com-calicastle-popmenu-master-assets-popmenu_banner-jpg-alt' class='heading'><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/popmenu_banner.jpg" alt=""></h1>
 
 <p align="center">
+    <a href="https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM"><img src="https://img.shields.io/badge/join-slack-lightgray.svg"></a>
     <a href="https://swift.org"><img src="https://img.shields.io/badge/swift-4%2B-orange.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/v/NewPopMenu.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/badge/pod%20name-NewPopMenu-5ba36b.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/p/NewPopMenu.svg"></a>
-    <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/l/NewPopMenu.svg"></a>
-    <a href="https://cali.gitbook.io/popmenu/"><img src="https://img.shields.io/badge/docs-PopMenu-B4666C.svg"></a>
+    <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 <h2 id='installation' class='heading'>⚙️ Installation</h2>
 <h3 id='for-cocoapods' class='heading'>For CocoaPods</h3>
@@ -149,24 +148,47 @@
 </ul>
 <h2 id='how-to-use' class='heading'>👨🏻‍💻 How to Use</h2>
 
-<p>Integrating <strong>PopMenu</strong> is extremely easy with a familiar workflow just like <code>UIAlertController</code> and <code>UIAlertAction</code></p>
+<p>Integrating <strong>PopMenu</strong> is extremely easy with a familiar workflow like presenting <code>UIAlertController</code> with <code>UIAlertAction</code></p>
 <h3 id='import-library-newpopmenu' class='heading'>Import Library (NewPopMenu)</h3>
 <pre class="highlight plaintext"><code>import NewPopMenu
 </code></pre>
 <h3 id='basic-usage' class='heading'>Basic Usage</h3>
 
+<p>There are 2 ways to present the menu in your view controller:</p>
+
+<ol>
+<li><p><strong>Use the default manager</strong></p></li>
+<li><p><strong>Use the <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> class directly</strong></p></li>
+</ol>
+
+<p>You can, however, choose either way to have the same result, whichever works best for you.</p>
+<h4 id='which-should-i-use' class='heading'>Which Should I Use?</h4>
+
+<p>Use the default manager if you want quick setup and present menu seamlessly.</p>
+
+<p>Use the <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> class directly if you want to have more control.</p>
+
+<p><strong>If you don&rsquo;t want to scroll, click the link to jump forward:</strong></p>
+
+<p><a href="#using-manager">Basic Usage - Using Manager</a></p>
+
+<p><a href="#using-controller">Basic Usage - Using Controller</a></p>
+
+<hr>
+<h3 id='a-name-using-manager-a-basic-usage-using-manager' class='heading'><a name="using-manager"></a> Basic Usage - Using Manager</h3>
+
 <p>The quickest way would be to use <code><a href="Classes/PopMenuManager.html">PopMenuManager</a></code>&rsquo;s <em><strong>default</strong></em> singleton with no additional setup required:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">PopMenuManager</span><span class="o">.</span><span class="k">default</span>
 </code></pre>
 
-<p>Now that you&rsquo;ve got the manager ready, you can go ahead and add <strong>actions</strong> to the manager:</p>
+<p>Add <strong>actions</strong> if you&rsquo;re using the manager:</p>
 <pre class="highlight swift"><code><span class="n">manager</span><span class="o">.</span><span class="n">actions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">),</span>
     <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
 <span class="p">]</span>
 </code></pre>
 
-<p>Or if you prefer the good ol&rsquo; ways to present a <code>UIAlertController</code> with <code>actionSheet</code> type, you can add each action like this:</p>
+<p>Or if you prefer the good ol&rsquo; way to present a <code>UIAlertController</code> with <code>actionSheet</code> type, you can add each action like this:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">action2</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
 
@@ -176,15 +198,22 @@
 
 <p>That&rsquo;s how you set the actions for the menu.</p>
 
-<p>Now all you have to do is to simply call <code>present()</code> on the manager, either pass the view controller in the <code>above</code> argument or PopMenuManager will automatically fetch the current top view controller to present the menu on top:</p>
-<pre class="highlight swift"><code><span class="c1">// Show menu without specifying which controller to present from</span>
+<p>Now all you have to do is to simply call <code>present()</code> on the manager, either pass the view controller in the <code>on</code> argument or PopMenuManager will automatically fetch the current top view controller to present the menu on top:</p>
+<pre class="highlight swift"><code><span class="c1">// Show menu without specifying which controller</span>
 <span class="n">manager</span><span class="o">.</span><span class="nf">present</span><span class="p">()</span>
 
-<span class="c1">// Or you can specify the controller</span>
+<span class="c1">// Or you can specify the controller to present on</span>
 <span class="n">manager</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
 </code></pre>
 
 <p>Both should <strong>work just fine</strong>, but still, using <code>manager.present(on: ...)</code> manually would be a <em><strong>safer</strong></em> way to go for presenting.</p>
+
+<hr>
+<h3 id='a-name-using-controller-a-basic-usage-using-controller' class='heading'><a name="using-controller"></a> Basic Usage - Using Controller</h3>
+
+<p>Manually initialize the controller:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">menuViewController</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">()</span>
+</code></pre>
 
 <hr>
 <h3 id='action-callback' class='heading'>Action Callback</h3>
@@ -210,9 +239,9 @@
 
 <span class="p">}</span>
 </code></pre>
-<h2 id='complete-documentation' class='heading'>📗 Complete Documentation</h2>
+<h2 id='check-documentation' class='heading'>📗 Check Documentation</h2>
 
-<p>Documentation is available at <a href="https://cali.gitbook.io/popmenu"><strong>https://cali.gitbook.io/popmenu</strong></a></p>
+<p>Documentation is available at <a href="https://calicastle.github.io/PopMenu/"><strong>https://calicastle.github.io/PopMenu/</strong></a></p>
 
           </section>
         </section>
