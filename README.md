@@ -10,7 +10,32 @@
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 
-## ! - README tutorial is still under writing, this line of text will be removed when everything is ready for first release
+## ✍🏻 Description
+
+**PopMenu** is designed for a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
+
+**PopMenu** has the abilities of:
+
+- Automatically position menu on screen if you specify the **source view**, like a popup. (edge detection)
+
+- Full customization (icons, fonts, colors, background, styles, corners, height, status bar... you name it).
+
+- Swipe gesture control.
+
+- Haptics enabled for selection or swipe gesture.
+
+## 📱 Demo / Example
+
+#### Download or fork the repo and open the given `Example` Xcode project to try it out yourself!
+
+What's a better way to know what `PopMenu` offers than some screenshots? Here's some to show you what you can do with `PopMenu`:
+
+<p align="center"><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/Demo_Showcase.gif"></p>
+
+![Demo1](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_1.png)
+![Demo2](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_2.png)
+![Demo3](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_3.png)
+![Demo4](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_4.png)
 
 ## ⚙️ Installation
 
@@ -84,8 +109,8 @@ Add **actions** if you're using the manager:
 
 ```swift
 manager.actions = [
-    PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon"),
-    PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon")
+    PopMenuDefaultAction(title: "Action Title 1"), // Text only action
+    PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon") // Text and image action
 ]
 ```
 
@@ -117,10 +142,40 @@ Both should **work just fine**, but still, using `manager.present(on: ...)` manu
 
 ### <a name="using-controller"></a> Basic Usage - Using Controller
 
+If you are using `PopMenuManager` to handle PopMenu, you can skip this section.
+
 Manually initialize the controller:
 
 ```swift
 let menuViewController = PopMenuViewController()
+```
+
+Add actions inside the initializer:
+
+```swift
+let menuViewController = PopMenuViewController(actions: [
+    PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon"),
+    PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon")
+])
+```
+
+Finally, to present the menu all you have to do is call `present` method in your **ViewController** like a normal view controller:
+
+```swift
+class ViewController: UIViewController {
+
+...
+    func presentMenu() {
+        let menuViewController = PopMenuViewController(actions: [
+            PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon"),
+            PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon")
+        ])
+
+        present(menuViewController, animated: true, completion: nil)
+    }
+...
+
+}
 ```
 
 -------
@@ -132,26 +187,191 @@ In order to know which action button is tapped, you'll need to comform to `PopMe
 ```swift
 class ViewController: UIViewController {
     
-    func presentMenu() {
+    // Use manager to present menu.
+    func presentMenuUsingManager() {
         let manager = PopMenuManager.default
-        
+
+        // Set delegate for callback
         manager.popMenuDelegate = self
-        
+
         manager.present(on: self)
+    }
+
+    // Or manually init:
+    func presentMenuManually() {
+        let menu = PopMenuViewController(actions: [...])
+
+        // Set delegate for callback
+        menu.delegate = self
+
+        present(menu, animated: true, completion: nil)
     }
 
 }
 
 extension ViewController: PopMenuViewControllerDelegate {
 
-    func popMenuDidSelectItem(at index: Int) {
+    func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int) {
         // Do stuff here...
     }
     
 }
 ```
 
+That's basically it! Congrats!
+
+If you're a customization lover like me, then read along:
+----------
+
+## 🙌🏻 Appearance Customization
+
+### Before moving on, customization should be applied before presenting the menu, and assume that you already have a:
+
+variable of `PopMenuManager.default` called -> **`manager`**.
+
+**==== Or ====**
+
+variable of `PopMenuViewController` called -> **`menu`**.
+
+<br>
+
+Action Dismissal // Default: true
+---------
+
+If you don't want the menu to auto-dismiss once a selection has been performed, you can change the property:
+
+```swift
+// The manager way
+manager.popMenuShouldDismissOnSelection = false
+
+// The manual way
+menu.shouldDismissOnSelection = false
+```
+
+Background styles // Default: .dimmed(color: .black, opacity: 0.4)
+---------
+
+There are mainly 3 types of background styles:
+
+- Blurred (dark, light & extra Light)
+- Dimmed (color & opacity)
+- None
+
+Simply set the `popMenuBackgroundStyle` on the appearance property using `.` notation:
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.dark)
+manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.light)
+manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.extralight)
+manager.popMenuAppearance.popMenuBackgroundStyle = .dimmed(color: .white, opacity: 0.6)
+manager.popMenuAppearance.popMenuBackgroundStyle = .none()
+
+// The manual way, same to the code above
+menu.appearance.popMenuBackgroundStyle = .blurred(.dark)
+```
+
+Action Color // Default: white
+---------
+
+To bulk set action colors is simple and straightforward:
+
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuColor.actionColor = UIColor.green // or use Color Literals if you're using Xcode 9
+
+// The manual way
+menu.appearance.popMenuColor.actionColor = UIColor.green
+```
+
+To set each action with different color, you'll have to specify in the `color` parameter initializer of action `PopMenuDefaultAction`:
+
+```swift
+let actions = [
+    PopMenuDefaultAction(title: "Some Title", image: UIImage(named: "blah"), color: .gray),
+    PopMenuDefaultAction(title: "Another Title", image: UIImage(named: "icon"), color: .yellow)
+]
+```
+
+Background Color(s) // Default: flat black gradient
+---------
+
+There are 2 types of background colors:
+
+- Solid fill (one color)
+- Gradient fill (two colors)
+
+To set the background color(s) of the menu:
+
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuColor.backgroundColor = .solid(fill: .gray) // A solid gray background color
+manager.popMenuAppearance.popMenuColor.backgroundColor = .gradient(fill: .yellow, .pink) // A gradient from yellow to pink
+
+// The manual way
+menu.appearance.popMenuColor.backgroundColor = ...
+```
+
+Action Font // Default: .systemFont(ofSize: 16, weight: .semiBold)
+---------
+
+To set the font of all actions:
+
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 14)!
+manager.popMenuAppearance.popMenuFont = .systemFont(ofSize: 15, weight: .bold)
+
+// The manual way
+menu.appearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 14)!
+```
+
+Corner Radius // Default: 24
+---------
+
+To set corner radius of the menu container:
+
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuCornerRadius = 10
+
+// The manual way
+menu.appearance.popMenuCornerRadius = 10
+```
+
+Action Height // Default: 50
+---------
+
+To set height of each action:
+
+```swift
+// The manager way
+manager.popMenuAppearance.popMenuActionHeight = 65
+
+// The manual way
+menu.appearance.popMenuActionHeight = 65
+```
+
+Status Bar Style // Default: automatic detection based on background color
+---------
+
+If you don't want `PopMenu` to use automatic detection to set status bar style, you can override it:
+
+```swift
+manager.popMenuAppearance.popMenuStatusBarStyle = .default
+
+// The manual way
+menu.appearance.popMenuStatusBarStyle = .default
+```
+More customization coming, stay tuned...
+
+## 💪🏻 Contribute
+
+Thank you if you are interested in contributing to the project, I appreaciate it!
+
+Before committing any changes, please make sure to read the [Contribution Guidelines](https://github.com/CaliCastle/PopMenu/CONTRIBUTING.md) first, thank you!
+
 ## 📗 Check Documentation
 
-Documentation is available at [**https://calicastle.github.io/PopMenu/**](https://calicastle.github.io/PopMenu/)
+Documentation and references is available at [**https://calicastle.github.io/PopMenu/**](https://calicastle.github.io/PopMenu/)
 
+## [Join Our Slack Channel](https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM)
