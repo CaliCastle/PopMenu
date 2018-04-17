@@ -50,11 +50,11 @@ class RootViewController: UITableViewController {
         controller.appearance.popMenuBackgroundStyle = .blurred(.dark)
         // Configure options
         controller.shouldDismissOnSelection = false
-        // Set delegate for selection callback
-        controller.delegate = self
         // Since `UIBarButtonItem` is not a subclass of `UIView`, we need to
         // know the view's frame to make the relative position work
         controller.setBarButtonItemForSourceView(barButtonItem)
+        
+        controller.delegate = self
         
         // Present menu controller
         present(controller, animated: true, completion: nil)
@@ -63,6 +63,7 @@ class RootViewController: UITableViewController {
     // MARK: - Table View Row Configuration
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath != IndexPath(row: 0, section: 3) else { return 170 }
         return 68
     }
     
@@ -100,6 +101,16 @@ class RootViewController: UITableViewController {
         return 30
     }
     
+    /// Height for footer views.
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == (headers.count - 1) ? 100 : 30
+    }
+    
+    /// Title for footer.
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return section == (headers.count - 1) ? "Thanks for trying out PopMenu!\n\nAuthor/Developer: Cali Castle" : nil
+    }
+    
 }
 
 extension RootViewController: PopMenuViewControllerDelegate {
@@ -115,7 +126,7 @@ extension RootViewController: PopMenuViewControllerDelegate {
             PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
         ]
         // Present another PopMenu on an active PopMenu
-        manager.present(sourceView: popMenuViewController.containerView, on: popMenuViewController)
+        manager.present(sourceView: popMenuViewController.actions[index].view,on: popMenuViewController)
     }
     
 }
@@ -132,6 +143,13 @@ extension RootViewController {
             popMenu = examples.popMenuTextOnly()
         case (0, 1):
             popMenu = examples.popMenuTextAndImage()
+        case (0, 2):
+            popMenu = examples.popMenuTextAndImage()
+            popMenu?.shouldDismissOnSelection = false
+        case (0, 3):
+            popMenu = examples.popMenuTextAndImage()
+            popMenu?.shouldDismissOnSelection = false
+            popMenu?.delegate = self
         case (1, 0):
             popMenu = examples.popMenuCustomBackground(.blurred(.dark))
         case (1, 1):
@@ -158,6 +176,15 @@ extension RootViewController {
             popMenu = examples.popMenuCustomActionBackgroundColor(.solid(fill: #colorLiteral(red: 0.431372549, green: 0.6470588235, blue: 0.4509803922, alpha: 1)))
         case (2, 7):
             popMenu = examples.popMenuCustomActionBackgroundColor(.gradient(fill: #colorLiteral(red: 0.4431372549, green: 0.09019607843, blue: 0.9176470588, alpha: 1), #colorLiteral(red: 0.9176470588, green: 0.3764705882, blue: 0.3764705882, alpha: 1)))
+        case (2, 8):
+            popMenu = examples.popMenuCustomActionHeight(80)
+        case (2, 9):
+            popMenu = examples.popMenuCustomActionHeight(35)
+        case (2, 10):
+            popMenu = examples.popMenuCustomStatusBarStyle(.default)
+        case (3, 0):
+            let cell = tableView.cellForRow(at: indexPath)!
+            popMenu = examples.popMenuStandard(cell)
         default:
             popMenu = nil
         }

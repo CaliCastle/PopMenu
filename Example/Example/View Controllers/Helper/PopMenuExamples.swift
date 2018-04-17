@@ -116,4 +116,17 @@ final class PopMenuExamples {
         return popMenu
     }
     
+    /// PopMenu with source view.
+    func popMenuStandard(_ sourceView: UIView) -> PopMenuViewController {
+        let actions = [
+            PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus"), color: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)),
+            PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)),
+            PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add"), color: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))
+        ]
+        
+        let popMenu = PopMenuViewController(sourceView: sourceView, actions: actions)
+        
+        return popMenu
+    }
+    
 }

@@ -139,7 +139,7 @@ final public class PopMenuViewController: UIViewController {
     /// Set absolute source frame relative to screen frame.
     fileprivate func setAbsoluteSourceFrame(_ sourceView: UIView?) {
         if let sourceView = sourceView {
-            absoluteSourceFrame = sourceView.convert(sourceView.frame, to: UIApplication.shared.keyWindow)
+            absoluteSourceFrame = sourceView.convert(sourceView.frame, to: nil)
         }
     }
     
@@ -216,7 +216,6 @@ extension PopMenuViewController {
             blurView.frame = backgroundView.frame
             
             backgroundView.addSubview(blurView)
-            
         }
         
         // Dimmed background
@@ -226,7 +225,6 @@ extension PopMenuViewController {
             let opacity = backgroundStyle.dimOpacity {
             
             backgroundView.backgroundColor = color.withAlphaComponent(opacity)
-            
         }
         
         view.insertSubview(backgroundView, at: 0)
