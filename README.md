@@ -70,7 +70,11 @@ Integrating **PopMenu** is extremely easy with a familiar workflow like presenti
 ### Import Library \(NewPopMenu\)
 
 ```text
+// CocoaPods
 import NewPopMenu
+
+// Carthage
+import PopMenu
 ```
 
 ### Basic Usage
@@ -178,6 +182,55 @@ class ViewController: UIViewController {
 }
 ```
 
+### Source View
+
+By default, `PopMenu` will present in the center of your screen. If you want it to display on the relative position of a view that the user tapped, you can pass the source view in like this:
+
+```swift
+class ViewController: UIViewController {
+
+    @IBOutlet var aButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        aButton.addTarget()
+    }
+
+    @objc private func presentMenu() {
+        // The manager way
+        let manager = PopMenuManager.default
+        manager.actions = [...]
+        
+        // Pass the UIView in present method
+        manager.present(sourceView: aButton)
+
+
+        // ===== or =====
+
+
+        // The manua way
+        let actions = [...]
+
+        // Pass the UIView in init
+        let menu = PopMenuViewController(sourceView: aButton, actions: actions)
+        present(menu, animated: true, completion: nil)
+    }
+
+}
+```
+
+If you want a `UIBarButtonItem` to be the source view instead (Since `UIBarButtonItem` is not a subclass of `UIView`, we need to
+know the view's frame to make the relative position work), then you'll have to do an extra step before presenting the menu:
+
+```swift
+// The manager way
+manager.barButtonItem = yourBarButtonItem
+
+// The manual way
+menu.setBarButtonItemForSourceView(yourBarButtonItem)
+```
+
 -------
 
 ### Action Callback
@@ -220,7 +273,17 @@ extension ViewController: PopMenuViewControllerDelegate {
 
 That's basically it! Congrats!
 
-If you're a customization lover like me, then read along:
+By default, PopMenu has pan gesture enabled, you can toggle it here:
+
+```swift
+// The manager way
+manager.popMenuShouldEnablePanGesture = false
+// The manual way
+menu.shouldEnablePanGesture = false
+```
+
+#### If you're a customization lover like me, then read along:
+
 ----------
 
 ## 🙌🏻 Appearance Customization
@@ -229,7 +292,7 @@ If you're a customization lover like me, then read along:
 
 variable of `PopMenuManager.default` called -> **`manager`**.
 
-**==== Or ====**
+**----- or -----**
 
 variable of `PopMenuViewController` called -> **`menu`**.
 
