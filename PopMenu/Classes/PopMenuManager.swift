@@ -32,6 +32,9 @@ final public class PopMenuManager: NSObject {
     /// Determines whether to dismiss menu after an action is selected.
     public var popMenuShouldDismissOnSelection: Bool = true
     
+    /// The dismissal handler for pop menu.
+    public var popMenuDismissalHandler: ((Bool) -> Void)?
+    
     /// Appearance for passing on to pop menu.
     public let popMenuAppearance: PopMenuAppearance
     
@@ -47,6 +50,7 @@ final public class PopMenuManager: NSObject {
         popMenu.delegate = popMenuDelegate
         popMenu.appearance = popMenuAppearance
         popMenu.shouldDismissOnSelection = popMenuShouldDismissOnSelection
+        popMenu.dismissalHandler = popMenuDismissalHandler
         
         if let barButtonItem = barButtonItem {
             popMenu.setBarButtonItemForSourceView(barButtonItem)
@@ -60,7 +64,11 @@ final public class PopMenuManager: NSObject {
     
     /// Pass a new action to pop menu.
     public func addAction(_ action: PopMenuAction) {
-        popMenu.addAction(action)
+        if let popMenu = popMenu {
+            popMenu.addAction(action)
+        } else {
+            actions.append(action)
+        }
     }
     
 }

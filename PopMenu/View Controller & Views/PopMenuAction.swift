@@ -23,6 +23,9 @@ import UIKit
     /// The initial color of the action.
     var color: Color? { get }
     
+    /// The handler of action.
+    var handler: PopMenuActionHandler? { get }
+    
     /// Left padding when texts-only.
     static var textLeftPadding: CGFloat { get }
     
@@ -49,6 +52,9 @@ import UIKit
 
     /// Called when the action gets selected.
     @objc optional func actionSelected(animated: Bool)
+ 
+    /// Type alias for selection handler.
+    typealias PopMenuActionHandler = (PopMenuAction) -> Void
     
 }
 
@@ -66,6 +72,9 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     /// Color of action.
     public let color: Color?
+    
+    /// Handler of action when selected.
+    public let handler: PopMenuActionHandler?
     
     // MARK: - Computed Properties
     
@@ -142,10 +151,12 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     // MARK: - Initializer
     
-    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil) {
+    /// Initializer.
+    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil, handler: PopMenuActionHandler? = nil) {
         self.title = title
         self.image = image
         self.color = color
+        self.handler = handler
         
         view = UIView()
     }
@@ -196,12 +207,16 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     /// When the action is selected.
     public func actionSelected(animated: Bool) {
+        // Trigger handler.
+        handler?(self)
+        
+        // Animate selection
         guard animated else { return }
         
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.175, animations: {
-                self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.92, y: 0.92)
-                self.view.backgroundColor = self.backgroundColor.withAlphaComponent(0.2)
+                self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.915, y: 0.915)
+                self.view.backgroundColor = self.backgroundColor.withAlphaComponent(0.18)
             }, completion: {
                 if $0 {
                     UIView.animate(withDuration: 0.175, animations: {

@@ -66,6 +66,9 @@ final public class PopMenuViewController: UIViewController {
     /// Determines whether the pan gesture is enabled on the actions.
     public var shouldEnablePanGesture: Bool = true
     
+    /// Handler for when the menu is dismissed.
+    public var dismissalHandler: ((Bool) -> Void)?
+    
     // MARK: - Constraints
     
     private(set) var contentLeftConstraint: NSLayoutConstraint!
@@ -95,7 +98,7 @@ final public class PopMenuViewController: UIViewController {
     
     /// Max content width allowed for the content to stretch to.
     fileprivate let maxContentWidth: CGFloat = UIScreen.main.bounds.size.width * 0.9
-        
+    
     // MARK: - View Life Cycle
     
     public convenience init(sourceView: UIView? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
@@ -426,7 +429,10 @@ extension PopMenuViewController {
     @objc fileprivate func backgroundViewDidTap(_ gesture: UITapGestureRecognizer) {
         guard gesture.isEqual(tapGestureForDismissal), !touchedInsideContent(location: gesture.location(in: view)) else { return }
         
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            // No selection made.
+            self.dismissalHandler?(false)
+        }
     }
     
     /// When the menu action gets tapped.
@@ -493,13 +499,17 @@ extension PopMenuViewController {
     fileprivate func actionDidSelect(at index: Int, animated: Bool = true) {
         let action = actions[index]
         action.actionSelected?(animated: animated)
-        
+        // Generate haptics
         Haptic.impact(.medium).generate()
-        
+        // Notify delegate
         delegate?.popMenuDidSelectItem?(self, at: index)
         
+        // Should dismiss or not
         if shouldDismissOnSelection {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true) {
+                // Selection made.
+                self.dismissalHandler?(true)
+            }
         }
     }
     

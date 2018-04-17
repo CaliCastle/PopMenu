@@ -53,8 +53,11 @@ class RootViewController: UITableViewController {
         // Since `UIBarButtonItem` is not a subclass of `UIView`, we need to
         // know the view's frame to make the relative position work
         controller.setBarButtonItemForSourceView(barButtonItem)
-        
         controller.delegate = self
+        
+        controller.dismissalHandler = { selected in
+            print("Selected: \(selected ? "Yep" : "Nope")")
+        }
         
         // Present menu controller
         present(controller, animated: true, completion: nil)

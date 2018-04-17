@@ -20,7 +20,7 @@ final public class PopMenuPresentAnimationController: NSObject, UIViewController
     
     /// Duration of the transition.
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.142
+        return 0.138
     }
     
     /// Animate PopMenuViewController custom transition.
