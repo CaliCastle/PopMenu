@@ -11,7 +11,6 @@ GITHUB_URL="https://github.com/CaliCastle/PopMenu"
 GH_PAGES_URL="https://calicastle.github.io/PopMenu"
 
 jazzy \
-    --swift-version $SWIFT_VERSION \
     -a "$AUTHOR" \
     -u "$AUTHOR_URL" \
     -m "$MODULE_NAME" \
