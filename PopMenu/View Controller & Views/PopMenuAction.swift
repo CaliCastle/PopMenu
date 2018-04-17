@@ -8,43 +8,63 @@
 
 import UIKit
 
+/// Customize your own action and conform to `PopMenuAction` protocol.
 @objc public protocol PopMenuAction: NSObjectProtocol {
     
     /// Title of the action.
     var title: String? { get }
+    
     /// Image of the action.
     var image: UIImage? { get }
+    
     /// Container view of the action.
     var view: UIView { get }
+    
     /// The initial color of the action.
     var color: Color? { get }
     
-    /// Constants for layout sizing.
+    /// Left padding when texts-only.
     static var textLeftPadding: CGFloat { get }
+    
+    /// Icon left padding when icons are present.
     static var iconLeftPadding: CGFloat { get }
+    
+    /// Icon sizing.
     static var iconWidthHeight: CGFloat { get }
     
     /// The color to set for both label and icon.
     var tintColor: UIColor { get set }
+    
     /// The font for label.
     var font: UIFont { get set }
+    
     /// The corner radius of action view.
     var cornerRadius: CGFloat { get set }
+    
     /// Is the view highlighted by gesture.
     var highlighted: Bool { get set }
     
     /// Render the view for action.
     func renderActionView()
 
+    /// Called when the action gets selected.
     @objc optional func actionSelected(animated: Bool)
     
 }
 
+/// The default PopMenu action class.
 public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
+    /// Title of action.
     public let title: String?
+    
+    /// Icon of action.
     public let image: UIImage?
+    
+    /// Renderred view of action.
     public let view: UIView
+    
+    /// Color of action.
     public let color: Color?
     
     // MARK: - Computed Properties
@@ -95,6 +115,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
 
     // MARK: - Subviews
     
+    /// Title label view instance.
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -104,6 +125,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
         return label
     }()
     
+    /// Icon image view instance.
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

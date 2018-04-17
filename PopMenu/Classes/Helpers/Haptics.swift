@@ -8,13 +8,19 @@
 
 import UIKit
 
+/// Haptic Generator Helper.
 public enum Haptic {
     
+    /// Impact style.
     case impact(UIImpactFeedbackStyle)
+    
+    /// Notification style.
     case notification(UINotificationFeedbackType)
+    
+    /// Selection style.
     case selection
     
-    // Trigger haptic generator.
+    /// Trigger haptic generator.
     public func generate() {
         guard #available(iOS 10, *) else { return }
         

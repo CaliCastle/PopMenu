@@ -10,15 +10,17 @@ import UIKit
 
 final public class PopMenuPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     
+    /// Source view's frame.
     private let sourceFrame: CGRect?
     
+    /// Initializer with source view's frame.
     init(sourceFrame: CGRect?) {
         self.sourceFrame = sourceFrame
     }
     
     /// Duration of the transition.
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.188
+        return 0.142
     }
     
     /// Animate PopMenuViewController custom transition.

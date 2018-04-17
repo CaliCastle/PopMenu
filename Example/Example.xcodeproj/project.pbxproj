@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D6F4B3E2085607000B1033E /* PopMenuExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6F4B3D2085607000B1033E /* PopMenuExamples.swift */; };
 		8DA31A6820812A3A001498B9 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA31A6720812A3A001498B9 /* PopMenu.framework */; };
 		8DA31A6920812A3A001498B9 /* PopMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA31A6720812A3A001498B9 /* PopMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D05881820840429009AD267 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D05881720840429009AD267 /* NavigationController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8D6F4B3D2085607000B1033E /* PopMenuExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuExamples.swift; sourceTree = "<group>"; };
 		8DA31A6520812A29001498B9 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA31A6720812A3A001498B9 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D05881720840429009AD267 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D6F4B3F208562E400B1033E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F4B3D2085607000B1033E /* PopMenuExamples.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		9D0588122083F84A009AD267 /* Application Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 		9D0588132083F85D009AD267 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8D6F4B3F208562E400B1033E /* Helper */,
 				9D397ABB20805CE400C58037 /* RootViewController.swift */,
 				9D05881720840429009AD267 /* NavigationController.swift */,
 			);
@@ -120,7 +131,6 @@
 		9D397AB820805CE400C58037 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				9D3AB1CC20845B610024720F /* Models */,
 				9D0588142083F863009AD267 /* Storyboards */,
 				9D0588132083F85D009AD267 /* View Controllers */,
 				9D0588162083F882009AD267 /* Resources */,
@@ -137,13 +147,6 @@
 				9D397ADE208065DB00C58037 /* PopMenu.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9D3AB1CC20845B610024720F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +225,7 @@
 				9D397ABC20805CE400C58037 /* RootViewController.swift in Sources */,
 				9D05881820840429009AD267 /* NavigationController.swift in Sources */,
 				9D397ABA20805CE400C58037 /* AppDelegate.swift in Sources */,
+				8D6F4B3E2085607000B1033E /* PopMenuExamples.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

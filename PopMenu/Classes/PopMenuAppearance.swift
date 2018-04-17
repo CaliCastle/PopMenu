@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Appearance for pop menu.
+/// Appearance for PopMenu.
 /// Use for configuring custom styles and looks.
 final public class PopMenuAppearance: NSObject {
     
@@ -32,29 +32,41 @@ final public class PopMenuAppearance: NSObject {
     
 }
 
+/// Background styles for PopMenu.
 public struct PopMenuBackgroundStyle {
     
     // MARK: - Dimmed Style
     
+    /// Determines is the style in dimmed mode.
     public let isDimmed: Bool?
+    
+    /// If dimmed, store the dim color.
     public let dimColor: Color?
+    
+    /// If dimmed, store the dim opacity.
     public let dimOpacity: CGFloat?
     
     // MARK: - Blur Style
     
+    /// Determines is the style in blur mode.
     public let isBlurred: Bool?
+    
+    /// If blurred, store the blur style.
     public let blurStyle: UIBlurEffectStyle?
     
     // MARK: - Initializers
     
+    /// Quick setter for dimmed mode.
     public static func dimmed(color: Color, opacity: CGFloat) -> PopMenuBackgroundStyle {
         return PopMenuBackgroundStyle(isDimmed: true, dimColor: color, dimOpacity: opacity, isBlurred: nil, blurStyle: nil)
     }
     
+    /// Quick setter for blurred mode.
     public static func blurred(_ style: UIBlurEffectStyle) -> PopMenuBackgroundStyle{
         return PopMenuBackgroundStyle(isDimmed: nil, dimColor: nil, dimOpacity: nil, isBlurred: true, blurStyle: style)
     }
     
+    /// No background style.
     public static func none() -> PopMenuBackgroundStyle{
         return PopMenuBackgroundStyle(isDimmed: nil, dimColor: nil, dimOpacity: nil, isBlurred: nil, blurStyle: nil)
     }

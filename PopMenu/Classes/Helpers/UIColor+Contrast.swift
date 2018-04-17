@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     
+    /// Get color rgba components in order.
     func rgba() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         let components = self.cgColor.components
         let numberOfComponents = self.cgColor.numberOfComponents
@@ -25,6 +26,7 @@ extension UIColor {
         }
     }
     
+    /// Check the black or white contrast on given color.
     func blackOrWhiteContrastingColor() -> Color {
         let rgbaT = rgba()
         let value = 1 - ((0.299 * rgbaT.r) + (0.587 * rgbaT.g) + (0.114 * rgbaT.b));

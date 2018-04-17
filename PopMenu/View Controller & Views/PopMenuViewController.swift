@@ -8,7 +8,9 @@
 
 import UIKit
 
+/// Delegate for handling PopMenu selection.
 @objc public protocol PopMenuViewControllerDelegate: class {
+    /// Called when an action is selected.
     @objc optional func popMenuDidSelectItem(_ popMenuViewController: PopMenuViewController, at index: Int)
 }
 
@@ -52,6 +54,7 @@ final public class PopMenuViewController: UIViewController {
         }
     }
     
+    /// The absolute source frame relative to screen.
     public private(set) var absoluteSourceFrame: CGRect?
     
     /// The calculated content frame.
@@ -162,6 +165,7 @@ final public class PopMenuViewController: UIViewController {
         return .fade
     }
     
+    /// Set status bar style.
     public override var preferredStatusBarStyle: UIStatusBarStyle {
         // If style defined, return
         if let statusBarStyle = appearance.popMenuStatusBarStyle {
@@ -245,8 +249,12 @@ extension PopMenuViewController {
         let colors = appearance.popMenuColor.backgroundColor.colors
         if colors.count > 0 {
             if colors.count == 1 {
-                contentView.backgroundColor = colors.first?.withAlphaComponent(0.8)
+                // Configure solid fill background.
+                contentView.backgroundColor = colors.first?.withAlphaComponent(0.9)
+                contentView.startColor = .clear
+                contentView.endColor = .clear
             } else {
+                // Configure gradient color.
                 contentView.diagonalMode = true
                 contentView.startColor = colors.first!
                 contentView.endColor = colors.last!
@@ -511,10 +519,12 @@ extension PopMenuViewController {
 
 extension PopMenuViewController: UIViewControllerTransitioningDelegate {
     
+    /// Custom presentation animation.
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PopMenuPresentAnimationController(sourceFrame: absoluteSourceFrame)
     }
     
+    /// Custom dismissal animation.
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return PopMenuDismissAnimationController(sourceFrame: absoluteSourceFrame)
     }
