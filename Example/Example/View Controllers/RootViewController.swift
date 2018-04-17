@@ -42,7 +42,8 @@ class RootViewController: UITableViewController {
         // Create menu controller with actions
         let controller = PopMenuViewController(actions: [
             PopMenuDefaultAction(title: "Click me to", image: #imageLiteral(resourceName: "Plus"), color: .yellow),
-            PopMenuDefaultAction(title: "Pop another menu", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.9816910625, green: 0.5655395389, blue: 0.4352460504, alpha: 1))
+            PopMenuDefaultAction(title: "Pop another menu", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.9816910625, green: 0.5655395389, blue: 0.4352460504, alpha: 1)),
+            PopMenuDefaultAction(title: "Try it out!", image: nil, color: .white)
         ])
         
         // Customize appearance

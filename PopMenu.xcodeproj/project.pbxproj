@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8DA31A6B208134EF001498B9 /* PopMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA31A6A208134EF001498B9 /* PopMenuAction.swift */; };
+		9D0A90382086B2FA008A4700 /* NewPopMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9D0A90372086B2FA008A4700 /* NewPopMenu.podspec */; };
 		9D397A9B20802C1700C58037 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D397A9120802C1600C58037 /* PopMenu.framework */; };
 		9D397AA020802C1700C58037 /* PopMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D397A9F20802C1700C58037 /* PopMenuTests.swift */; };
 		9D397AA220802C1700C58037 /* PopMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D397A9420802C1600C58037 /* PopMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		8DA31A6A208134EF001498B9 /* PopMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAction.swift; sourceTree = "<group>"; };
+		9D0A90372086B2FA008A4700 /* NewPopMenu.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = NewPopMenu.podspec; sourceTree = SOURCE_ROOT; };
 		9D397A9120802C1600C58037 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D397A9420802C1600C58037 /* PopMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopMenu.h; sourceTree = "<group>"; };
 		9D397A9520802C1700C58037 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		9D397A9320802C1600C58037 /* PopMenu */ = {
 			isa = PBXGroup;
 			children = (
+				9D0A90372086B2FA008A4700 /* NewPopMenu.podspec */,
 				9D397AD320805F3700C58037 /* View Controller & Views */,
 				9D397AD220805F1800C58037 /* Classes */,
 				9D397AD120805E8900C58037 /* Transitions */,
@@ -246,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0A90382086B2FA008A4700 /* NewPopMenu.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

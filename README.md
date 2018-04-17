@@ -234,9 +234,27 @@ menu.setBarButtonItemForSourceView(yourBarButtonItem)
 
 -------
 
-### Action Callback
+### Selection Callback
 
-In order to know which action button is tapped, you'll need to comform to `PopMenuViewControllerDelegate` protocol and then implement the method `popMenuDidSelectItem(at index: Int)` in your view controller:
+In order to know which action button is tapped, there are two ways of doing that:
+- Action Handler
+- Delegate
+
+### Action Handler
+
+Simply pass the handler when instanstiating the action:
+
+```swift
+let action1 = PopMenuDefaultAction(title: "Action 1", handler: { action in
+    // action is a `PopMenuAction`, in this case it's a `PopMenuDefaultAction`
+
+    // Print out: 'Action 1 is tapped'
+    print("\(action.title) is tapped")
+})
+```
+
+### Delegate Method
+ You'll need to comform to `PopMenuViewControllerDelegate` protocol and then implement the method `popMenuDidSelectItem(at index: Int)` in your view controller:
 
 ```swift
 class ViewController: UIViewController {
@@ -269,6 +287,20 @@ extension ViewController: PopMenuViewControllerDelegate {
         // Do stuff here...
     }
     
+}
+```
+### Dismissal Callback
+
+If you'd want more control to do additional steps when the menu is dismssed, you can do it like this:
+
+```swift
+// The manager way
+manager.popMenuDismissalHandler = { selected in
+    // `selected` is a bool indicating if a selection has been made
+
+    if !selected {
+        // When the user tapped outside of the menu
+    }
 }
 ```
 
