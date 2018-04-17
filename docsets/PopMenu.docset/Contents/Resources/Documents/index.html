@@ -13,7 +13,7 @@
     <a title="PopMenu  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PopMenu Docs</a> (91% documented)</p>
+        <p><a href="index.html">PopMenu Docs</a> (92% documented)</p>
         <p class="header-right"><a href="https://github.com/CaliCastle/PopMenu"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fcalicastle%2Egithub%2Eio%2Fdocsets%2FPopMenu%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -123,6 +123,7 @@
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/v/NewPopMenu.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/badge/pod%20name-NewPopMenu-5ba36b.svg"></a>
     <a href="https://cocoapods.org/pods/NewPopMenu"><img src="https://img.shields.io/cocoapods/p/NewPopMenu.svg"></a>
+    <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-support-B160B6.svg"></a>
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 <h2 id='description' class='heading'>✍🏻 Description</h2>
@@ -174,7 +175,11 @@
 
 <p>Integrating <strong>PopMenu</strong> is extremely easy with a familiar workflow like presenting <code>UIAlertController</code> with <code>UIAlertAction</code></p>
 <h3 id='import-library-newpopmenu' class='heading'>Import Library (NewPopMenu)</h3>
-<pre class="highlight plaintext"><code>import NewPopMenu
+<pre class="highlight plaintext"><code>// CocoaPods
+import NewPopMenu
+
+// Carthage
+import PopMenu
 </code></pre>
 <h3 id='basic-usage' class='heading'>Basic Usage</h3>
 
@@ -265,11 +270,73 @@
 
 <span class="p">}</span>
 </code></pre>
+<h3 id='source-view' class='heading'>Source View</h3>
+
+<p>By default, <code>PopMenu</code> will present in the center of your screen. If you want it to display on the relative position of a view that the user tapped, you can pass the source view in like this:</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
+
+    <span class="kd">@IBOutlet</span> <span class="k">var</span> <span class="nv">aButton</span><span class="p">:</span> <span class="kt">UIButton</span><span class="o">!</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">aButton</span><span class="o">.</span><span class="nf">addTarget</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">@objc</span> <span class="kd">private</span> <span class="kd">func</span> <span class="nf">presentMenu</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// The manager way</span>
+        <span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">PopMenuManager</span><span class="o">.</span><span class="k">default</span>
+        <span class="n">manager</span><span class="o">.</span><span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+        <span class="c1">// Pass the UIView in present method</span>
+        <span class="n">manager</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="nv">sourceView</span><span class="p">:</span> <span class="n">aButton</span><span class="p">)</span>
+
+
+        <span class="c1">// ===== or =====</span>
+
+
+        <span class="c1">// The manua way</span>
+        <span class="k">let</span> <span class="nv">actions</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+        <span class="c1">// Pass the UIView in init</span>
+        <span class="k">let</span> <span class="nv">menu</span> <span class="o">=</span> <span class="kt">PopMenuViewController</span><span class="p">(</span><span class="nv">sourceView</span><span class="p">:</span> <span class="n">aButton</span><span class="p">,</span> <span class="nv">actions</span><span class="p">:</span> <span class="n">actions</span><span class="p">)</span>
+        <span class="nf">present</span><span class="p">(</span><span class="n">menu</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>If you want a <code>UIBarButtonItem</code> to be the source view instead (Since <code>UIBarButtonItem</code> is not a subclass of <code>UIView</code>, we need to
+know the view&rsquo;s frame to make the relative position work), then you&rsquo;ll have to do an extra step before presenting the menu:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">barButtonItem</span> <span class="o">=</span> <span class="n">yourBarButtonItem</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="nf">setBarButtonItemForSourceView</span><span class="p">(</span><span class="n">yourBarButtonItem</span><span class="p">)</span>
+</code></pre>
 
 <hr>
-<h3 id='action-callback' class='heading'>Action Callback</h3>
+<h3 id='selection-callback' class='heading'>Selection Callback</h3>
 
-<p>In order to know which action button is tapped, you&rsquo;ll need to comform to <code><a href="Protocols/PopMenuViewControllerDelegate.html">PopMenuViewControllerDelegate</a></code> protocol and then implement the method <code>popMenuDidSelectItem(at index: Int)</code> in your view controller:</p>
+<p>In order to know which action button is tapped, there are two ways of doing that:</p>
+
+<ul>
+<li>Action Handler</li>
+<li>Delegate</li>
+</ul>
+<h3 id='action-handler' class='heading'>Action Handler</h3>
+
+<p>Simply pass the handler when instanstiating the action:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action 1"</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="p">{</span> <span class="n">action</span> <span class="k">in</span>
+    <span class="c1">// action is a `PopMenuAction`, in this case it's a `PopMenuDefaultAction`</span>
+
+    <span class="c1">// Print out: 'Action 1 is tapped'</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">action</span><span class="o">.</span><span class="n">title</span><span class="se">)</span><span class="s"> is tapped"</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre>
+<h3 id='delegate-method' class='heading'>Delegate Method</h3>
+
+<p>You&rsquo;ll need to comform to <code><a href="Protocols/PopMenuViewControllerDelegate.html">PopMenuViewControllerDelegate</a></code> protocol and then implement the method <code>popMenuDidSelectItem(at index: Int)</code> in your view controller:</p>
 <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
 
     <span class="c1">// Use manager to present menu.</span>
@@ -302,15 +369,36 @@
 
 <span class="p">}</span>
 </code></pre>
+<h3 id='dismissal-callback' class='heading'>Dismissal Callback</h3>
+
+<p>If you&rsquo;d want more control to do additional steps when the menu is dismssed, you can do it like this:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuDismissalHandler</span> <span class="o">=</span> <span class="p">{</span> <span class="n">selected</span> <span class="k">in</span>
+    <span class="c1">// `selected` is a bool indicating if a selection has been made</span>
+
+    <span class="k">if</span> <span class="o">!</span><span class="n">selected</span> <span class="p">{</span>
+        <span class="c1">// When the user tapped outside of the menu</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
 <p>That&rsquo;s basically it! Congrats!</p>
-<h2 id='if-you-39-re-a-customization-lover-like-me-then-read-along' class='heading'>If you&rsquo;re a customization lover like me, then read along:</h2>
+
+<p>By default, PopMenu has pan gesture enabled, you can toggle it here:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuShouldEnablePanGesture</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">shouldEnablePanGesture</span> <span class="o">=</span> <span class="kc">false</span>
+</code></pre>
+<h4 id='if-you-39-re-a-customization-lover-like-me-then-read-along' class='heading'>If you&rsquo;re a customization lover like me, then read along:</h4>
+
+<hr>
 <h2 id='appearance-customization' class='heading'>🙌🏻 Appearance Customization</h2>
 <h3 id='before-moving-on-customization-should-be-applied-before-presenting-the-menu-and-assume-that-you-already-have-a' class='heading'>Before moving on, customization should be applied before presenting the menu, and assume that you already have a:</h3>
 
 <p>variable of <code><a href="Classes/PopMenuManager.html#/s:7PopMenu0aB7ManagerC7defaultACvpZ">PopMenuManager.default</a></code> called -&gt; <strong><code>manager</code></strong>.</p>
 
-<p><strong>==== Or ====</strong></p>
+<p><strong>&mdash;&ndash; or &mdash;&ndash;</strong></p>
 
 <p>variable of <code><a href="Classes/PopMenuViewController.html">PopMenuViewController</a></code> called -&gt; <strong><code>menu</code></strong>.</p>
 

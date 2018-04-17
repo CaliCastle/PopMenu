@@ -29,13 +29,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuAction.swift",
-      "line": 145,
-      "symbol": "PopMenuDefaultAction.init(title:image:color:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
       "line": null,
       "symbol": "PopMenuViewController",
@@ -51,14 +44,14 @@
     },
     {
       "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 101,
+      "line": 104,
       "symbol": "PopMenuViewController.init(sourceView:actions:appearance:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 156,
+      "line": 159,
       "symbol": "PopMenuViewController.preferredStatusBarUpdateAnimation",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
