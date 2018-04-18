@@ -13,7 +13,7 @@
 
 ## ✍🏻 Description
 
-**PopMenu** is designed for a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
+**PopMenu** is designed as a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
 
 **PopMenu** has the abilities of:
 
@@ -21,9 +21,9 @@
 
 - Full customization (icons, fonts, colors, background, styles, corners, height, status bar... you name it).
 
-- Swipe gesture control.
+- Pan gesture control. (like 3D touch shortcuts on apps in home screen)
 
-- Haptics enabled for selection or swipe gesture.
+- Haptics enabled for selection or pan gesture.
 
 ## 📱 Demo / Example
 
