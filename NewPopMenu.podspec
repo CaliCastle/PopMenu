@@ -8,6 +8,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => 'https://github.com/CaliCastle/PopMenu.git', :tag => 'v1.0.2' }
   spec.source_files = 'PopMenu/**/*.{h,swift}'
 
+  spec.module_name = "PopMenu"
   spec.platform = :ios, "9.0"
   spec.ios.deployment_target = "9.0"
   spec.swift_version = '4.0'
