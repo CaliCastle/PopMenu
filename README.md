@@ -13,7 +13,7 @@
 
 ## ✍🏻 Description
 
-**PopMenu** is designed for a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
+**PopMenu** is designed as a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
 
 **PopMenu** has the abilities of:
 
@@ -21,9 +21,9 @@
 
 - Full customization (icons, fonts, colors, background, styles, corners, height, status bar... you name it).
 
-- Swipe gesture control.
+- Pan gesture control. (like 3D touch shortcuts on apps in home screen)
 
-- Haptics enabled for selection or swipe gesture.
+- Haptics enabled for selection or pan gesture.
 
 ## 📱 Demo / Example
 
@@ -44,7 +44,7 @@ What's a better way to know what `PopMenu` offers than some screenshots? Here's 
 
 Install **PopMenu** using [**CocoaPods**](https://cocoapods.org), add it to your **Podfile**:
 
-> `PopMenu` was actually taken so let's call it `NewPopMenu` 'cause why not?
+> ‼️ `PopMenu` was actually taken so let's call it `NewPopMenu` 'cause why not?
 
 ```ruby
 pod 'NewPopMenu'
@@ -54,7 +54,7 @@ pod 'NewPopMenu'
 
 Install **PopMenu** using [**Carthage**](https://github.com/Carthage/Carthage), add it to your **Cartfile**:
 
-```text
+```ruby
 github "CaliCastle/PopMenu"
 ```
 
@@ -68,9 +68,9 @@ github "CaliCastle/PopMenu"
 
 Integrating **PopMenu** is extremely easy with a familiar workflow like presenting `UIAlertController` with `UIAlertAction`
 
-### Import Library \(NewPopMenu\)
+### Import Library
 
-```text
+```swift
 // CocoaPods
 import NewPopMenu
 
@@ -119,11 +119,11 @@ manager.actions = [
 ]
 ```
 
-Or if you prefer the good ol' way to present a `UIAlertController` with `actionSheet` type, you can add each action like this:
+Or if you prefer the good ol' way similar to presenting a `UIAlertController` with `UIAlertAction`, you can add each action like that:
 
 ```swift
-let action1 = PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon")
-let action2 = PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon")
+let action1 = PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon"))
+let action2 = PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon"))
 
 manager.addAction(action1)
 manager.addAction(action2)
