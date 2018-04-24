@@ -9,10 +9,10 @@ The following is a set of guidelines for contributing to _PopMenu_ on GitHub.
 Before submitting a new GitHub issue, please make sure to
 
 - Check out the [documentation](https://calicastle.github.io/PopMenu).
-- Read the usage guide on [the README](https://github.com/CaliCastle/PopMenu/#usage).
+- Read the usage guide on [the README](https://github.com/CaliCastle/PopMenu/#basic-usage).
 - Search for [existing GitHub issues](https://github.com/CaliCastle/PopMenu/issues).
 
-If the above doesn't help, please [submit an issue](https://github.com/CaliCastle/PopMenu/issues) on GitHub.
+If the above doesn't help, please [submit an issue](https://github.com/CaliCastle/PopMenu/issues/new) on GitHub.
 
 ## I want to contribute to _PopMenu_
 
@@ -37,7 +37,7 @@ When the coding is done and you’ve finished testing your changes, you are read
 
 ## Code of Conduct
 
-Help us keep _BulletinBoard_ open and inclusive. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+Help us keep _PopMenu_ open and inclusive. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 
