@@ -1,61 +1,61 @@
 {
   "warnings": [
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/Classes/Helpers/PopMenuGradientView.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/Classes/Helpers/PopMenuGradientView.swift",
       "line": 11,
       "symbol": "PopMenuGradientView",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/Classes/PopMenuColor.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/Classes/PopMenuColor.swift",
       "line": 14,
       "symbol": "Color",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/Transitions/PopMenuDismissAnimationController.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/Transitions/PopMenuDismissAnimationController.swift",
       "line": 11,
       "symbol": "PopMenuDismissAnimationController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/Transitions/PopMenuPresentAnimationController.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/Transitions/PopMenuPresentAnimationController.swift",
       "line": 11,
       "symbol": "PopMenuPresentAnimationController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
       "line": null,
       "symbol": "PopMenuViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
       "line": 17,
       "symbol": "PopMenuViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 104,
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
+      "line": 125,
       "symbol": "PopMenuViewController.init(sourceView:actions:appearance:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
-      "line": 159,
+      "file": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu/PopMenu/View Controller & Views/PopMenuViewController.swift",
+      "line": 170,
       "symbol": "PopMenuViewController.preferredStatusBarUpdateAnimation",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/calicastle/Desktop/Projects/Open Source/PopMenu"
+  "source_directory": "/Users/calicastle1/Desktop/Projects/Open Source/PopMenu"
 }

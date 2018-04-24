@@ -128,15 +128,15 @@
 </p>
 <h2 id='description' class='heading'>✍🏻 Description</h2>
 
-<p><strong>PopMenu</strong> is designed for a quick <em>popup</em> action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you&rsquo;re in the right place!</p>
+<p><strong>PopMenu</strong> is designed as a quick <em>popup</em> action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you&rsquo;re in the right place!</p>
 
 <p><strong>PopMenu</strong> has the abilities of:</p>
 
 <ul>
 <li><p>Automatically position menu on screen if you specify the <strong>source view</strong>, like a popup. (edge detection)</p></li>
 <li><p>Full customization (icons, fonts, colors, background, styles, corners, height, status bar&hellip; you name it).</p></li>
-<li><p>Swipe gesture control.</p></li>
-<li><p>Haptics enabled for selection or swipe gesture.</p></li>
+<li><p>Pan gesture control. (like 3D touch shortcuts on apps in home screen)</p></li>
+<li><p>Haptics enabled for selection or pan gesture.</p></li>
 </ul>
 <h2 id='demo-example' class='heading'>📱 Demo / Example</h2>
 <h4 id='download-or-fork-the-repo-and-open-the-given-code-example-code-xcode-project-to-try-it-out-yourself' class='heading'>Download or fork the repo and open the given <code>Example</code> Xcode project to try it out yourself!</h4>
@@ -155,14 +155,14 @@
 <p>Install <strong>PopMenu</strong> using <a href="https://cocoapods.org"><strong>CocoaPods</strong></a>, add it to your <strong>Podfile</strong>:</p>
 
 <blockquote>
-<p><code>PopMenu</code> was actually taken so let&rsquo;s call it <code>NewPopMenu</code> &lsquo;cause why not?</p>
+<p>‼️ <code>PopMenu</code> was actually taken so let&rsquo;s call it <code>NewPopMenu</code> &lsquo;cause why not?</p>
 </blockquote>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'NewPopMenu'</span>
 </code></pre>
 <h3 id='for-carthage' class='heading'>For Carthage</h3>
 
 <p>Install <strong>PopMenu</strong> using <a href="https://github.com/Carthage/Carthage"><strong>Carthage</strong></a>, add it to your <strong>Cartfile</strong>:</p>
-<pre class="highlight plaintext"><code>github "CaliCastle/PopMenu"
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"CaliCastle/PopMenu"</span>
 </code></pre>
 <h2 id='requirements' class='heading'>⚠️ Requirements</h2>
 
@@ -174,12 +174,8 @@
 <h2 id='how-to-use' class='heading'>👨🏻‍💻 How to Use</h2>
 
 <p>Integrating <strong>PopMenu</strong> is extremely easy with a familiar workflow like presenting <code>UIAlertController</code> with <code>UIAlertAction</code></p>
-<h3 id='import-library-newpopmenu' class='heading'>Import Library (NewPopMenu)</h3>
-<pre class="highlight plaintext"><code>// CocoaPods
-import NewPopMenu
-
-// Carthage
-import PopMenu
+<h3 id='import-library' class='heading'>Import Library</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PopMenu</span>
 </code></pre>
 <h3 id='basic-usage' class='heading'>Basic Usage</h3>
 
@@ -218,9 +214,9 @@ import PopMenu
 <span class="p">]</span>
 </code></pre>
 
-<p>Or if you prefer the good ol&rsquo; way to present a <code>UIAlertController</code> with <code>actionSheet</code> type, you can add each action like this:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">action2</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">)</span>
+<p>Or if you prefer the good ol&rsquo; way similar to presenting a <code>UIAlertController</code> with <code>UIAlertAction</code>, you can add each action like that:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">))</span>
+<span class="k">let</span> <span class="nv">action2</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action Title 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"icon"</span><span class="p">))</span>
 
 <span class="n">manager</span><span class="o">.</span><span class="nf">addAction</span><span class="p">(</span><span class="n">action1</span><span class="p">)</span>
 <span class="n">manager</span><span class="o">.</span><span class="nf">addAction</span><span class="p">(</span><span class="n">action2</span><span class="p">)</span>
@@ -295,7 +291,7 @@ import PopMenu
         <span class="c1">// ===== or =====</span>
 
 
-        <span class="c1">// The manua way</span>
+        <span class="c1">// The manual way</span>
         <span class="k">let</span> <span class="nv">actions</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 
         <span class="c1">// Pass the UIView in init</span>
@@ -304,15 +300,6 @@ import PopMenu
     <span class="p">}</span>
 
 <span class="p">}</span>
-</code></pre>
-
-<p>If you want a <code>UIBarButtonItem</code> to be the source view instead (Since <code>UIBarButtonItem</code> is not a subclass of <code>UIView</code>, we need to
-know the view&rsquo;s frame to make the relative position work), then you&rsquo;ll have to do an extra step before presenting the menu:</p>
-<pre class="highlight swift"><code><span class="c1">// The manager way</span>
-<span class="n">manager</span><span class="o">.</span><span class="n">barButtonItem</span> <span class="o">=</span> <span class="n">yourBarButtonItem</span>
-
-<span class="c1">// The manual way</span>
-<span class="n">menu</span><span class="o">.</span><span class="nf">setBarButtonItemForSourceView</span><span class="p">(</span><span class="n">yourBarButtonItem</span><span class="p">)</span>
 </code></pre>
 
 <hr>
@@ -327,7 +314,7 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
 <h3 id='action-handler' class='heading'>Action Handler</h3>
 
 <p>Simply pass the handler when instanstiating the action:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action 1"</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="p">{</span> <span class="n">action</span> <span class="k">in</span>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">action1</span> <span class="o">=</span> <span class="kt">PopMenuDefaultAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Action 1"</span><span class="p">,</span> <span class="nv">didSelect</span><span class="p">:</span> <span class="p">{</span> <span class="n">action</span> <span class="k">in</span>
     <span class="c1">// action is a `PopMenuAction`, in this case it's a `PopMenuDefaultAction`</span>
 
     <span class="c1">// Print out: 'Action 1 is tapped'</span>
@@ -373,7 +360,7 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
 
 <p>If you&rsquo;d want more control to do additional steps when the menu is dismssed, you can do it like this:</p>
 <pre class="highlight swift"><code><span class="c1">// The manager way</span>
-<span class="n">manager</span><span class="o">.</span><span class="n">popMenuDismissalHandler</span> <span class="o">=</span> <span class="p">{</span> <span class="n">selected</span> <span class="k">in</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuDidDismiss</span> <span class="o">=</span> <span class="p">{</span> <span class="n">selected</span> <span class="k">in</span>
     <span class="c1">// `selected` is a bool indicating if a selection has been made</span>
 
     <span class="k">if</span> <span class="o">!</span><span class="n">selected</span> <span class="p">{</span>
@@ -381,8 +368,7 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-
-<p>That&rsquo;s basically it! Congrats!</p>
+<h3 id='configurations' class='heading'>Configurations</h3>
 
 <p>By default, PopMenu has pan gesture enabled, you can toggle it here:</p>
 <pre class="highlight swift"><code><span class="c1">// The manager way</span>
@@ -390,10 +376,19 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
 <span class="c1">// The manual way</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">shouldEnablePanGesture</span> <span class="o">=</span> <span class="kc">false</span>
 </code></pre>
+
+<p>By default, PopMenu has haptics enabled, you can toggle it here:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuShouldEnableHaptics</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">shouldEnableHaptics</span> <span class="o">=</span> <span class="kc">false</span>
+</code></pre>
+
+<p>That&rsquo;s basically it! Congrats!</p>
 <h4 id='if-you-39-re-a-customization-lover-like-me-then-read-along' class='heading'>If you&rsquo;re a customization lover like me, then read along:</h4>
 
 <hr>
-<h2 id='appearance-customization' class='heading'>🙌🏻 Appearance Customization</h2>
+<h2 id='customization' class='heading'>🙌🏻 Customization</h2>
 <h3 id='before-moving-on-customization-should-be-applied-before-presenting-the-menu-and-assume-that-you-already-have-a' class='heading'>Before moving on, customization should be applied before presenting the menu, and assume that you already have a:</h3>
 
 <p>variable of <code><a href="Classes/PopMenuManager.html#/s:7PopMenu0aB7ManagerC7defaultACvpZ">PopMenuManager.default</a></code> called -&gt; <strong><code>manager</code></strong>.</p>
@@ -508,7 +503,7 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
 
 <p>Thank you if you are interested in contributing to the project, I appreaciate it!</p>
 
-<p>Before committing any changes, please make sure to read the <a href="https://github.com/CaliCastle/PopMenu/CONTRIBUTING.md">Contribution Guidelines</a> first, thank you!</p>
+<p>Before committing any changes, please make sure to read the <a href="https://github.com/CaliCastle/PopMenu/blob/master/CONTRIBUTING.md">Contribution Guidelines</a> first, thank you!</p>
 <h2 id='check-documentation' class='heading'>📗 Check Documentation</h2>
 
 <p>Documentation and references is available at <a href="https://calicastle.github.io/PopMenu/"><strong>https://calicastle.github.io/PopMenu/</strong></a></p>
@@ -518,7 +513,7 @@ know the view&rsquo;s frame to make the relative position work), then you&rsquo;
         </section>
         <section id="footer">
           <p>Copyright © 2018 Cali Castle. Available under the MIT License.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

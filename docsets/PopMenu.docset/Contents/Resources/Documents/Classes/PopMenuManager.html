@@ -118,7 +118,7 @@
             <h1>PopMenuManager</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">PopMenuManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">final</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">PopMenuManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
@@ -155,7 +155,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">let</span> <span class="p">`</span><span class="nv">default</span><span class="p">`</span> <span class="o">=</span> <span class="kt">PopMenuManager</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">let</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="kt">PopMenuManager</span></code></pre>
 
                         </div>
                       </div>
@@ -185,42 +185,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">popMenuDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PopMenuViewControllerDelegate.html">PopMenuViewControllerDelegate</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">popMenuDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/PopMenuViewControllerDelegate.html">PopMenuViewControllerDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L23-L27">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7PopMenu0aB7ManagerC13barButtonItemSo05UIBareF0CSgXwvp"></a>
-                    <a name="//apple_ref/swift/Property/barButtonItem" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7PopMenu0aB7ManagerC13barButtonItemSo05UIBareF0CSgXwvp">barButtonItem</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The bar button item instance, if the source view is a <code>UIBarButtonItem</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">barButtonItem</span><span class="p">:</span> <span class="kt">UIBarButtonItem</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L30">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -245,12 +215,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">popMenuShouldDismissOnSelection</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">popMenuShouldDismissOnSelection</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L33">Show on GitHub</a>
+                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L30">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -258,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7PopMenu0aB7ManagerC03popB16DismissalHandlerySbcSgvp"></a>
-                    <a name="//apple_ref/swift/Property/popMenuDismissalHandler" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7PopMenu0aB7ManagerC03popB16DismissalHandlerySbcSgvp">popMenuDismissalHandler</a>
+                    <a name="/s:7PopMenu0aB7ManagerC03popB10DidDismissySbcSgvp"></a>
+                    <a name="//apple_ref/swift/Property/popMenuDidDismiss" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PopMenu0aB7ManagerC03popB10DidDismissySbcSgvp">popMenuDidDismiss</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -275,7 +245,37 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">popMenuDismissalHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">popMenuDidDismiss</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L33">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7PopMenu0aB7ManagerC03popB19ShouldEnableHapticsSbvp"></a>
+                    <a name="//apple_ref/swift/Property/popMenuShouldEnableHaptics" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7PopMenu0aB7ManagerC03popB19ShouldEnableHapticsSbvp">popMenuShouldEnableHaptics</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determines whether to use haptics for menu selection.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">popMenuShouldEnableHaptics</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -335,7 +335,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">actions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/PopMenuAction.html">PopMenuAction</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">actions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/PopMenuAction.html">PopMenuAction</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -381,7 +381,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L61-L63">Show on GitHub</a>
+                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L58-L60">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -411,7 +411,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L66-L72">Show on GitHub</a>
+                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L63-L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -419,13 +419,20 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Presentations"></a>
+                <a name="//apple_ref/swift/Section/Presentations" class="dashAnchor"></a>
+                <a href="#/Presentations">
+                  <h3 class="section-name">Presentations</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7PopMenu0aB7ManagerC7presentySo6UIViewCSg10sourceView_So0E10ControllerCSg2onSb8animatedyycSg10completiontF"></a>
+                    <a name="/s:7PopMenu0aB7ManagerC7presentyyXlSg10sourceView_So16UIViewControllerCSg2onSb8animatedyycSg10completiontF"></a>
                     <a name="//apple_ref/swift/Method/present(sourceView:on:animated:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7PopMenu0aB7ManagerC7presentySo6UIViewCSg10sourceView_So0E10ControllerCSg2onSb8animatedyycSg10completiontF">present(sourceView:on:animated:completion:)</a>
+                    <a class="token" href="#/s:7PopMenu0aB7ManagerC7presentyyXlSg10sourceView_So16UIViewControllerCSg2onSb8animatedyycSg10completiontF">present(sourceView:on:animated:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -440,7 +447,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="nv">sourceView</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">on</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="nv">sourceView</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">on</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -502,7 +509,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L91-L103">Show on GitHub</a>
+                        <a href="https://github.com/CaliCastle/PopMenu/tree/master/PopMenu/Classes/PopMenuManager.swift#L88-L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -513,7 +520,7 @@
         </section>
         <section id="footer">
           <p>Copyright © 2018 Cali Castle. Available under the MIT License.</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
