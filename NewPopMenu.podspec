@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'NewPopMenu'
-  spec.version      = '1.0.2'
+  spec.version      = '1.1.0'
   spec.license      = { :type => 'MIT', :file => "LICENSE" }
   spec.homepage     = 'https://github.com/CaliCastle/PopMenu'
   spec.authors      = { 'Cali Castle' => 'cali@calicastle.com' }
