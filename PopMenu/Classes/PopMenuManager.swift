@@ -26,14 +26,14 @@ final public class PopMenuManager: NSObject {
         }
     }
     
-    /// The bar button item instance, if the source view is a `UIBarButtonItem`.
-    public weak var barButtonItem: UIBarButtonItem?
-    
     /// Determines whether to dismiss menu after an action is selected.
     public var popMenuShouldDismissOnSelection: Bool = true
     
     /// The dismissal handler for pop menu.
-    public var popMenuDismissalHandler: ((Bool) -> Void)?
+    public var popMenuDidDismiss: ((Bool) -> Void)?
+    
+    /// Determines whether to use haptics for menu selection.
+    public var popMenuShouldEnableHaptics: Bool = true
     
     /// Appearance for passing on to pop menu.
     public let popMenuAppearance: PopMenuAppearance
@@ -44,17 +44,14 @@ final public class PopMenuManager: NSObject {
     // MARK: - Important Methods
     
     /// Configure and load pop menu view controller.
-    private func prepareViewController(sourceView: UIView?) {
+    private func prepareViewController(sourceView: AnyObject?) {
         popMenu = PopMenuViewController(sourceView: sourceView, actions: actions)
 
         popMenu.delegate = popMenuDelegate
         popMenu.appearance = popMenuAppearance
         popMenu.shouldDismissOnSelection = popMenuShouldDismissOnSelection
-        popMenu.dismissalHandler = popMenuDismissalHandler
-        
-        if let barButtonItem = barButtonItem {
-            popMenu.setBarButtonItemForSourceView(barButtonItem)
-        }
+        popMenu.didDismiss = popMenuDidDismiss
+        popMenu.shouldEnableHaptics = popMenuShouldEnableHaptics
     }
     
     /// Initializer with appearance.
@@ -88,7 +85,7 @@ extension PopMenuManager {
     ///
     ///   - animated: Animate the presentation
     ///   - completion: Completion handler
-    public func present(sourceView: UIView? = nil, on viewController: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
+    public func present(sourceView: AnyObject? = nil, on viewController: UIViewController? = nil, animated: Bool = true, completion: (() -> Void)? = nil) {
         prepareViewController(sourceView: sourceView)
         
         guard let popMenu = popMenu else { print("Pop Menu has not been initialized yet."); return }

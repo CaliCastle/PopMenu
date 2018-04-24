@@ -24,7 +24,7 @@ import UIKit
     var color: Color? { get }
     
     /// The handler of action.
-    var handler: PopMenuActionHandler? { get }
+    var didSelect: PopMenuActionHandler? { get }
     
     /// Left padding when texts-only.
     static var textLeftPadding: CGFloat { get }
@@ -74,7 +74,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public let color: Color?
     
     /// Handler of action when selected.
-    public let handler: PopMenuActionHandler?
+    public let didSelect: PopMenuActionHandler?
     
     // MARK: - Computed Properties
     
@@ -152,11 +152,11 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     // MARK: - Initializer
     
     /// Initializer.
-    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil, handler: PopMenuActionHandler? = nil) {
+    public init(title: String? = nil, image: UIImage? = nil, color: Color? = nil, didSelect: PopMenuActionHandler? = nil) {
         self.title = title
         self.image = image
         self.color = color
-        self.handler = handler
+        self.didSelect = didSelect
         
         view = UIView()
     }
@@ -208,7 +208,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     /// When the action is selected.
     public func actionSelected(animated: Bool) {
         // Trigger handler.
-        handler?(self)
+        didSelect?(self)
         
         // Animate selection
         guard animated else { return }

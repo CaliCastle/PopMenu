@@ -71,10 +71,6 @@ Integrating **PopMenu** is extremely easy with a familiar workflow like presenti
 ### Import Library
 
 ```swift
-// CocoaPods
-import NewPopMenu
-
-// Carthage
 import PopMenu
 ```
 
@@ -221,17 +217,6 @@ class ViewController: UIViewController {
 }
 ```
 
-If you want a `UIBarButtonItem` to be the source view instead (Since `UIBarButtonItem` is not a subclass of `UIView`, we need to
-know the view's frame to make the relative position work), then you'll have to do an extra step before presenting the menu:
-
-```swift
-// The manager way
-manager.barButtonItem = yourBarButtonItem
-
-// The manual way
-menu.setBarButtonItemForSourceView(yourBarButtonItem)
-```
-
 -------
 
 ### Selection Callback
@@ -245,7 +230,7 @@ In order to know which action button is tapped, there are two ways of doing that
 Simply pass the handler when instanstiating the action:
 
 ```swift
-let action1 = PopMenuDefaultAction(title: "Action 1", handler: { action in
+let action1 = PopMenuDefaultAction(title: "Action 1", didSelect: { action in
     // action is a `PopMenuAction`, in this case it's a `PopMenuDefaultAction`
 
     // Print out: 'Action 1 is tapped'
@@ -295,7 +280,7 @@ If you'd want more control to do additional steps when the menu is dismssed, you
 
 ```swift
 // The manager way
-manager.popMenuDismissalHandler = { selected in
+manager.popMenuDidDismiss = { selected in
     // `selected` is a bool indicating if a selection has been made
 
     if !selected {
@@ -304,7 +289,7 @@ manager.popMenuDismissalHandler = { selected in
 }
 ```
 
-That's basically it! Congrats!
+### Configurations
 
 By default, PopMenu has pan gesture enabled, you can toggle it here:
 
@@ -314,12 +299,23 @@ manager.popMenuShouldEnablePanGesture = false
 // The manual way
 menu.shouldEnablePanGesture = false
 ```
+By default, PopMenu has haptics enabled, you can toggle it here:
+
+```swift
+// The manager way
+manager.popMenuShouldEnableHaptics = false
+// The manual way
+menu.shouldEnableHaptics = false
+```
+
+
+That's basically it! Congrats!
 
 #### If you're a customization lover like me, then read along:
 
 ----------
 
-## 🙌🏻 Appearance Customization
+## 🙌🏻 Customization
 
 ### Before moving on, customization should be applied before presenting the menu, and assume that you already have a:
 

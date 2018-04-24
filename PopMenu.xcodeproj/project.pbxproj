@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D8804DD208FE25E0099E44A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8D8804DC208FE25E0099E44A /* README.md */; };
 		8DA31A6B208134EF001498B9 /* PopMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA31A6A208134EF001498B9 /* PopMenuAction.swift */; };
 		9D0A90382086B2FA008A4700 /* NewPopMenu.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 9D0A90372086B2FA008A4700 /* NewPopMenu.podspec */; };
 		9D397A9B20802C1700C58037 /* PopMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D397A9120802C1600C58037 /* PopMenu.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D8804DC208FE25E0099E44A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8DA31A6A208134EF001498B9 /* PopMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopMenuAction.swift; sourceTree = "<group>"; };
 		9D0A90372086B2FA008A4700 /* NewPopMenu.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; path = NewPopMenu.podspec; sourceTree = SOURCE_ROOT; };
 		9D397A9120802C1600C58037 /* PopMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 		9D397A8720802C1600C58037 = {
 			isa = PBXGroup;
 			children = (
+				8D8804DC208FE25E0099E44A /* README.md */,
 				9D397A9320802C1600C58037 /* PopMenu */,
 				9D397A9E20802C1700C58037 /* PopMenuTests */,
 				9D397A9220802C1600C58037 /* Products */,
@@ -249,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8804DD208FE25E0099E44A /* README.md in Resources */,
 				9D0A90382086B2FA008A4700 /* NewPopMenu.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,7 +48,7 @@ final public class PopMenuViewController: UIViewController {
     public let actionsView = UIStackView()
     
     /// The source View to be displayed from.
-    private(set) weak var sourceView: UIView?
+    private(set) weak var sourceView: AnyObject?
     
     /// The absolute source frame relative to screen.
     private(set) var absoluteSourceFrame: CGRect?
@@ -66,8 +66,11 @@ final public class PopMenuViewController: UIViewController {
     /// Determines whether the pan gesture is enabled on the actions.
     public var shouldEnablePanGesture: Bool = true
     
+    /// Determines whether enable haptics for iPhone 7 and up.
+    public var shouldEnableHaptics: Bool = true
+    
     /// Handler for when the menu is dismissed.
-    public var dismissalHandler: ((Bool) -> Void)?
+    public var didDismiss: ((Bool) -> Void)?
     
     // MARK: - Constraints
     
@@ -75,6 +78,24 @@ final public class PopMenuViewController: UIViewController {
     private(set) var contentTopConstraint: NSLayoutConstraint!
     private(set) var contentWidthConstraint: NSLayoutConstraint!
     private(set) var contentHeightConstraint: NSLayoutConstraint!
+    
+    /// The UIView instance of source view.
+    fileprivate lazy var sourceViewAsUIView: UIView? = {
+        guard let sourceView = sourceView else { return nil }
+        
+        // Check if UIBarButtonItem
+        if let sourceBarButtonItem = sourceView as? UIBarButtonItem {
+            if let buttonView = sourceBarButtonItem.value(forKey: "view") as? UIView {
+                return buttonView
+            }
+        }
+        
+        if let sourceView = sourceView as? UIView {
+            return sourceView
+        }
+        
+        return nil
+    }()
     
     /// Tap gesture to dismiss for background view.
     fileprivate lazy var tapGestureForDismissal: UITapGestureRecognizer = {
@@ -101,7 +122,7 @@ final public class PopMenuViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
-    public convenience init(sourceView: UIView? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
+    public convenience init(sourceView: AnyObject? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
         self.init(nibName: nil, bundle: nil)
         
         self.sourceView = sourceView
@@ -132,7 +153,7 @@ final public class PopMenuViewController: UIViewController {
     
     /// Set absolute source frame relative to screen frame.
     fileprivate func setAbsoluteSourceFrame() {
-        if let sourceView = sourceView {
+        if let sourceView = sourceViewAsUIView {
             absoluteSourceFrame = sourceView.convert(sourceView.bounds, to: nil)
         }
     }
@@ -142,16 +163,6 @@ final public class PopMenuViewController: UIViewController {
     /// - Parameter action: Action to be added
     public func addAction(_ action: PopMenuAction) {
         actions.append(action)
-    }
-    
-    /// Set source frame for bar button item. (Since `UIBarButtonItem` is not a subclass of `UIView`)
-    ///
-    /// - Parameter barButtonItem: The bar button item
-    public func setBarButtonItemForSourceView(_ barButtonItem: UIBarButtonItem) {
-        if let buttonView = barButtonItem.value(forKey: "view") as? UIView {
-            sourceView = buttonView
-            setAbsoluteSourceFrame()
-        }
     }
     
     // MARK: - Status Bar Appearance
@@ -431,7 +442,7 @@ extension PopMenuViewController {
         
         dismiss(animated: true) {
             // No selection made.
-            self.dismissalHandler?(false)
+            self.didDismiss?(false)
         }
     }
     
@@ -452,7 +463,11 @@ extension PopMenuViewController {
                 let action = actions[index]
                 // Must not be already highlighted
                 guard !action.highlighted else { return }
-                Haptic.selection.generate()
+                
+                if shouldEnableHaptics {
+                    Haptic.selection.generate()
+                }
+                
                 // Highlight current action view.
                 action.highlighted = true
                 // Unhighlight other actions.
@@ -499,8 +514,12 @@ extension PopMenuViewController {
     fileprivate func actionDidSelect(at index: Int, animated: Bool = true) {
         let action = actions[index]
         action.actionSelected?(animated: animated)
-        // Generate haptics
-        Haptic.impact(.medium).generate()
+        
+        if shouldEnableHaptics {
+            // Generate haptics
+            Haptic.impact(.medium).generate()
+        }
+        
         // Notify delegate
         delegate?.popMenuDidSelectItem?(self, at: index)
         
@@ -508,7 +527,7 @@ extension PopMenuViewController {
         if shouldDismissOnSelection {
             dismiss(animated: true) {
                 // Selection made.
-                self.dismissalHandler?(true)
+                self.didDismiss?(true)
             }
         }
     }
