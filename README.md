@@ -210,7 +210,7 @@ class ViewController: UIViewController {
         // ===== or =====
 
 
-        // The manua way
+        // The manual way
         let actions = [...]
 
         // Pass the UIView in init
@@ -464,7 +464,7 @@ More customization coming, stay tuned...
 
 Thank you if you are interested in contributing to the project, I appreaciate it!
 
-Before committing any changes, please make sure to read the [Contribution Guidelines](https://github.com/CaliCastle/PopMenu/CONTRIBUTING.md) first, thank you!
+Before committing any changes, please make sure to read the [Contribution Guidelines](https://github.com/CaliCastle/PopMenu/blob/master/CONTRIBUTING.md) first, thank you!
 
 ## 📗 Check Documentation
 
