@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = 'https://github.com/CaliCastle/PopMenu'
   spec.authors      = { 'Cali Castle' => 'cali@calicastle.com' }
   spec.summary      = 'A cool and customizable popup action sheet for iOS'
-  spec.source       = { :git => 'https://github.com/CaliCastle/PopMenu.git', :tag => 'v1.0.2' }
+  spec.source       = { :git => 'https://github.com/CaliCastle/PopMenu.git', :tag => 'v1.1.0' }
   spec.source_files = 'PopMenu/**/*.{h,swift}'
 
   spec.module_name = "PopMenu"
