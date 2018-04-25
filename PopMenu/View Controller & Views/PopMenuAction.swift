@@ -199,7 +199,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     public func highlightActionView(_ highlight: Bool) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.26, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 9, options: self.highlighted ? .curveEaseIn : .curveEaseOut, animations: {
-                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.11, y: 1.11) : .identity
+                self.view.transform = self.highlighted ? CGAffineTransform.identity.scaledBy(x: 1.09, y: 1.09) : .identity
                 self.view.backgroundColor = self.highlighted ? self.backgroundColor.withAlphaComponent(0.25) : .clear
             }, completion: nil)
         }
