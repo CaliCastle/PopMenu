@@ -457,17 +457,19 @@ manager.popMenuAppearance.popMenuActionHeight = 65
 menu.appearance.popMenuActionHeight = 65
 ```
 
-Action Item Separator Hidden // Default: true
+Action Item Separator // Default: none
 ---------
 
-To set the action item separator visible:
+To set the action item separator:
 
 ```swift
 // The manager way
-manager.popMenuAppearance.popMenuItemSeparatorHidden = false
+manager.popMenuAppearance.popMenuItemSeparator = .none()
+manager.popMenuAppearance.popMenuItemSeparator = .fill() // Default height of 0.5, white color with 0.5 opacity
+manager.popMenuAppearance.popMenuItemSeparator = .fill(.yellow, height: 1) // Or set it yourself
 
 // The manual way
-menu.appearance.popMenuItemSeparatorHidden = false
+menu.appearance.popMenuItemSeparator = ...
 ```
 
 Status Bar Style // Default: automatic detection based on background color
