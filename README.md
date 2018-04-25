@@ -11,7 +11,21 @@
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 
-## ✍🏻 Description
+## Table of Contents
+
+- [✍🏻 Description](#desc)
+
+- [📱 Demo / Example](#demo)
+
+- [⚙️ Installation](#installation)
+
+- [⚠️ Requirements](#requirements)
+
+- [👨🏻‍💻 How to Use](#how-to)
+
+- [🙌🏻 Customization](#customization)
+
+## <a name="desc"></a> ✍🏻 Description
 
 **PopMenu** is designed as a quick _popup_ action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you're in the right place!
 
@@ -25,7 +39,7 @@
 
 - Haptics enabled for selection or pan gesture.
 
-## 📱 Demo / Example
+## <a name="demo"></a> 📱 Demo / Example
 
 #### Download or fork the repo and open the given `Example` Xcode project to try it out yourself!
 
@@ -38,7 +52,7 @@ What's a better way to know what `PopMenu` offers than some screenshots? Here's 
 ![Demo3](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_3.png)
 ![Demo4](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_4.png)
 
-## ⚙️ Installation
+## <a name="installation"></a> ⚙️ Installation
 
 ### For CocoaPods
 
@@ -58,13 +72,13 @@ Install **PopMenu** using [**Carthage**](https://github.com/Carthage/Carthage), 
 github "CaliCastle/PopMenu"
 ```
 
-## ⚠️ Requirements
+## <a name="requirements"></a> ⚠️ Requirements
 
 * Xcode 8.0 +
 * iOS 9.0 +
 * Swift 4.0 +
 
-## 👨🏻‍💻 How to Use
+## <a name="how-to"></a> 👨🏻‍💻 How to Use
 
 Integrating **PopMenu** is extremely easy with a familiar workflow like presenting `UIAlertController` with `UIAlertAction`
 
@@ -315,7 +329,7 @@ That's basically it! Congrats!
 
 ----------
 
-## 🙌🏻 Customization
+## <a name="customization"></a> 🙌🏻 Customization
 
 ### Before moving on, customization should be applied before presenting the menu, and assume that you already have a:
 
