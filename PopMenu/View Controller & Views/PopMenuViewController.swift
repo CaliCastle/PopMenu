@@ -406,17 +406,18 @@ extension PopMenuViewController {
         actionsView.alignment = .fill
         actionsView.distribution = .fillEqually
 
-        for i in 0..<actions.count {
-            let action = actions[i]
-            action.font = self.appearance.popMenuFont
-            action.tintColor = action.color ?? self.appearance.popMenuColor.actionColor.color
-            action.cornerRadius = self.appearance.popMenuCornerRadius / 2
+        // Configure each action
+        actions.forEach { action in
+            action.font = appearance.popMenuFont
+            action.tintColor = action.color ?? appearance.popMenuColor.actionColor.color
+            action.cornerRadius = appearance.popMenuCornerRadius / 2
             action.renderActionView()
-
-            if self.appearance.popMenuItemSeparatorHidden == false && i < actions.count - 1 {
-                addSeparatorViewTo(actionView: action.view)
+            
+            // Give separator to each action but the last
+            if !action.isEqual(actions.last) {
+                addSeparator(to: action.view)
             }
-
+            
             let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap(_:)))
             tapper.delaysTouchesEnded = false
             
@@ -435,18 +436,31 @@ extension PopMenuViewController {
         ])
     }
     
-    fileprivate func addSeparatorViewTo(actionView: UIView) {
+    /// Add separator view for the given action view.
+    ///
+    /// - Parameters:
+    ///   - separator: Separator style
+    ///   - actionView: Action's view
+    fileprivate func addSeparator(to actionView: UIView) {
+        // Only setup separator if the style is neither 0 height or clear color
+        guard appearance.popMenuItemSeparator != .none() else { return }
+        
+        let separator = appearance.popMenuItemSeparator
+        
         let separatorView = UIView()
         separatorView.translatesAutoresizingMaskIntoConstraints = false
-        separatorView.backgroundColor = view.backgroundColor?.blackOrWhiteContrastingColor()
+        separatorView.backgroundColor = separator.color
+        
         actionView.addSubview(separatorView)
+        
         NSLayoutConstraint.activate([
-            separatorView.leadingAnchor.constraint(equalTo: actionView.leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: actionView.trailingAnchor),
+            separatorView.leftAnchor.constraint(equalTo: actionView.leftAnchor),
+            separatorView.rightAnchor.constraint(equalTo: actionView.rightAnchor),
             separatorView.bottomAnchor.constraint(equalTo: actionView.bottomAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
-            ])
+            separatorView.heightAnchor.constraint(equalToConstant: separator.height)
+        ])
     }
+    
 }
 
 // MARK: - Gestures Control
