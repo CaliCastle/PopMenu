@@ -13,7 +13,7 @@
     <a title="PopMenu  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PopMenu Docs</a> (92% documented)</p>
+        <p><a href="index.html">PopMenu Docs</a> (93% documented)</p>
         <p class="header-right"><a href="https://github.com/CaliCastle/PopMenu"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fcalicastle%2Egithub%2Eio%2Fdocsets%2FPopMenu%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -91,6 +91,9 @@
                 <a href="Structs/PopMenuActionColor.html">PopMenuActionColor</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/PopMenuActionSeparator.html">PopMenuActionSeparator</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/PopMenuBackgroundStyle.html">PopMenuBackgroundStyle</a>
               </li>
               <li class="nav-group-task">
@@ -126,7 +129,17 @@
     <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-support-B160B6.svg"></a>
     <a href="https://calicastle.github.io/PopMenu/"><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
-<h2 id='description' class='heading'>✍🏻 Description</h2>
+<h2 id='table-of-contents' class='heading'>Table of Contents</h2>
+
+<ul>
+<li><p><a href="#desc">✍🏻 Description</a></p></li>
+<li><p><a href="#demo">📱 Demo / Example</a></p></li>
+<li><p><a href="#installation">⚙️ Installation</a></p></li>
+<li><p><a href="#requirements">⚠️ Requirements</a></p></li>
+<li><p><a href="#how-to">👨🏻‍💻 How to Use</a></p></li>
+<li><p><a href="#customization">🙌🏻 Customization</a></p></li>
+</ul>
+<h2 id='a-name-desc-a-description' class='heading'><a name="desc"></a> ✍🏻 Description</h2>
 
 <p><strong>PopMenu</strong> is designed as a quick <em>popup</em> action menu, much like an action sheet in iOS. If you want an action sheet that looks great, you&rsquo;re in the right place!</p>
 
@@ -138,7 +151,7 @@
 <li><p>Pan gesture control. (like 3D touch shortcuts on apps in home screen)</p></li>
 <li><p>Haptics enabled for selection or pan gesture.</p></li>
 </ul>
-<h2 id='demo-example' class='heading'>📱 Demo / Example</h2>
+<h2 id='a-name-demo-a-demo-example' class='heading'><a name="demo"></a> 📱 Demo / Example</h2>
 <h4 id='download-or-fork-the-repo-and-open-the-given-code-example-code-xcode-project-to-try-it-out-yourself' class='heading'>Download or fork the repo and open the given <code>Example</code> Xcode project to try it out yourself!</h4>
 
 <p>What&rsquo;s a better way to know what <code>PopMenu</code> offers than some screenshots? Here&rsquo;s some to show you what you can do with <code>PopMenu</code>:</p>
@@ -149,7 +162,7 @@
 <img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_2.png" alt="Demo2">
 <img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_3.png" alt="Demo3">
 <img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_4.png" alt="Demo4"></p>
-<h2 id='installation' class='heading'>⚙️ Installation</h2>
+<h2 id='a-name-installation-a-installation' class='heading'><a name="installation"></a> ⚙️ Installation</h2>
 <h3 id='for-cocoapods' class='heading'>For CocoaPods</h3>
 
 <p>Install <strong>PopMenu</strong> using <a href="https://cocoapods.org"><strong>CocoaPods</strong></a>, add it to your <strong>Podfile</strong>:</p>
@@ -164,14 +177,14 @@
 <p>Install <strong>PopMenu</strong> using <a href="https://github.com/Carthage/Carthage"><strong>Carthage</strong></a>, add it to your <strong>Cartfile</strong>:</p>
 <pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"CaliCastle/PopMenu"</span>
 </code></pre>
-<h2 id='requirements' class='heading'>⚠️ Requirements</h2>
+<h2 id='a-name-requirements-a-requirements' class='heading'><a name="requirements"></a> ⚠️ Requirements</h2>
 
 <ul>
 <li>Xcode 8.0 +</li>
 <li>iOS 9.0 +</li>
 <li>Swift 4.0 +</li>
 </ul>
-<h2 id='how-to-use' class='heading'>👨🏻‍💻 How to Use</h2>
+<h2 id='a-name-how-to-a-how-to-use' class='heading'><a name="how-to"></a> 👨🏻‍💻 How to Use</h2>
 
 <p>Integrating <strong>PopMenu</strong> is extremely easy with a familiar workflow like presenting <code>UIAlertController</code> with <code>UIAlertAction</code></p>
 <h3 id='import-library' class='heading'>Import Library</h3>
@@ -388,7 +401,7 @@
 <h4 id='if-you-39-re-a-customization-lover-like-me-then-read-along' class='heading'>If you&rsquo;re a customization lover like me, then read along:</h4>
 
 <hr>
-<h2 id='customization' class='heading'>🙌🏻 Customization</h2>
+<h2 id='a-name-customization-a-customization' class='heading'><a name="customization"></a> 🙌🏻 Customization</h2>
 <h3 id='before-moving-on-customization-should-be-applied-before-presenting-the-menu-and-assume-that-you-already-have-a' class='heading'>Before moving on, customization should be applied before presenting the menu, and assume that you already have a:</h3>
 
 <p>variable of <code><a href="Classes/PopMenuManager.html#/s:7PopMenu0aB7ManagerC7defaultACvpZ">PopMenuManager.default</a></code> called -&gt; <strong><code>manager</code></strong>.</p>
@@ -488,6 +501,17 @@
 
 <span class="c1">// The manual way</span>
 <span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuActionHeight</span> <span class="o">=</span> <span class="mi">65</span>
+</code></pre>
+<h2 id='action-item-separator-default-none' class='heading'>Action Item Separator // Default: none</h2>
+
+<p>To set the action item separator:</p>
+<pre class="highlight swift"><code><span class="c1">// The manager way</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuItemSeparator</span> <span class="o">=</span> <span class="o">.</span><span class="nf">none</span><span class="p">()</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuItemSeparator</span> <span class="o">=</span> <span class="o">.</span><span class="nf">fill</span><span class="p">()</span> <span class="c1">// Default height of 0.5, white color with 0.5 opacity</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">popMenuAppearance</span><span class="o">.</span><span class="n">popMenuItemSeparator</span> <span class="o">=</span> <span class="o">.</span><span class="nf">fill</span><span class="p">(</span><span class="o">.</span><span class="n">yellow</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// Or set it yourself</span>
+
+<span class="c1">// The manual way</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">appearance</span><span class="o">.</span><span class="n">popMenuItemSeparator</span> <span class="o">=</span> <span class="o">...</span>
 </code></pre>
 <h2 id='status-bar-style-default-automatic-detection-based-on-background-color' class='heading'>Status Bar Style // Default: automatic detection based on background color</h2>
 
