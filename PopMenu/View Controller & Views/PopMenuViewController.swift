@@ -405,19 +405,24 @@ extension PopMenuViewController {
         actionsView.axis = .vertical
         actionsView.alignment = .fill
         actionsView.distribution = .fillEqually
-        
-        actions.forEach {
-            $0.font = self.appearance.popMenuFont
-            $0.tintColor = $0.color ?? self.appearance.popMenuColor.actionColor.color
-            $0.cornerRadius = self.appearance.popMenuCornerRadius / 2
-            $0.renderActionView()
-            
+
+        for i in 0..<actions.count {
+            let action = actions[i]
+            action.font = self.appearance.popMenuFont
+            action.tintColor = action.color ?? self.appearance.popMenuColor.actionColor.color
+            action.cornerRadius = self.appearance.popMenuCornerRadius / 2
+            action.renderActionView()
+
+            if self.appearance.popMenuItemSeparatorHidden == false && i < actions.count - 1 {
+                addSeparatorViewTo(actionView: action.view)
+            }
+
             let tapper = UITapGestureRecognizer(target: self, action: #selector(menuDidTap(_:)))
             tapper.delaysTouchesEnded = false
             
-            $0.view.addGestureRecognizer(tapper)
+            action.view.addGestureRecognizer(tapper)
             
-            actionsView.addArrangedSubview($0.view)
+            actionsView.addArrangedSubview(action.view)
         }
         
         contentView.addSubview(actionsView)
@@ -430,6 +435,18 @@ extension PopMenuViewController {
         ])
     }
     
+    fileprivate func addSeparatorViewTo(actionView: UIView) {
+        let separatorView = UIView()
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.backgroundColor = view.backgroundColor?.blackOrWhiteContrastingColor()
+        actionView.addSubview(separatorView)
+        NSLayoutConstraint.activate([
+            separatorView.leadingAnchor.constraint(equalTo: actionView.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: actionView.trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: actionView.bottomAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
+            ])
+    }
 }
 
 // MARK: - Gestures Control

@@ -26,10 +26,13 @@ final public class PopMenuAppearance: NSObject {
     
     /// How tall each action is.
     public var popMenuActionHeight: CGFloat = 50
-    
+
+    /// Visibility of the separator line between actions.
+    public var popMenuItemSeparatorHidden: Bool = true
+
     /// The status bar style of the pop menu.
     public var popMenuStatusBarStyle: UIStatusBarStyle?
-    
+
 }
 
 /// Background styles for PopMenu.

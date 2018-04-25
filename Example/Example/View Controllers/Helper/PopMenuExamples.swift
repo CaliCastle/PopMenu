@@ -116,6 +116,15 @@ final class PopMenuExamples {
         return popMenu
     }
     
+    /// PopMenu with separator line.
+    func popMenuSeparatorLine(_ separatorLineHidden: Bool) -> PopMenuViewController {
+        let popMenu = popMenuTextAndImage()
+
+        popMenu.appearance.popMenuItemSeparatorHidden = separatorLineHidden
+
+        return popMenu
+    }
+
     /// PopMenu with source view.
     func popMenuStandard(_ sourceView: UIView) -> PopMenuViewController {
         let actions = [
