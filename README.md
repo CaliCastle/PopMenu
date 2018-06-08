@@ -61,7 +61,11 @@ Install **PopMenu** using [**CocoaPods**](https://cocoapods.org), add it to your
 > ‼️ `PopMenu` was actually taken so let's call it `NewPopMenu` 'cause why not?
 
 ```ruby
-pod 'NewPopMenu'
+# For Swift 4.2, Xcode 10+
+pod 'NewPopMenu', '~> 2.0'
+
+# For Swift 4.1 and under
+pod 'NewPopMenu', '~> 1.1'
 ```
 
 ### For Carthage
