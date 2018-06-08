@@ -12,10 +12,12 @@ import UIKit
 public enum Haptic {
     
     /// Impact style.
-    case impact(UIImpactFeedbackStyle)
+    @available(iOS 10.0, *)
+    case impact(UIImpactFeedbackGenerator.FeedbackStyle)
     
     /// Notification style.
-    case notification(UINotificationFeedbackType)
+    @available(iOS 10.0, *)
+    case notification(UINotificationFeedbackGenerator.FeedbackType)
     
     /// Selection style.
     case selection

@@ -37,7 +37,7 @@ final public class PopMenuDismissAnimationController: NSObject, UIViewController
             self.animate(menuViewController)
         }
         
-        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: animations) { _ in
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: animations) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }

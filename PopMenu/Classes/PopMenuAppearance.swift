@@ -61,7 +61,7 @@ public struct PopMenuBackgroundStyle {
     public let isBlurred: Bool?
     
     /// If blurred, store the blur style.
-    public let blurStyle: UIBlurEffectStyle?
+    public let blurStyle: UIBlurEffect.Style?
     
     // MARK: - Initializers
     
@@ -71,7 +71,7 @@ public struct PopMenuBackgroundStyle {
     }
     
     /// Quick setter for blurred mode.
-    public static func blurred(_ style: UIBlurEffectStyle) -> PopMenuBackgroundStyle{
+    public static func blurred(_ style: UIBlurEffect.Style) -> PopMenuBackgroundStyle{
         return PopMenuBackgroundStyle(isDimmed: nil, dimColor: nil, dimOpacity: nil, isBlurred: true, blurStyle: style)
     }
     
