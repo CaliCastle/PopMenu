@@ -187,7 +187,7 @@ class ViewController: UIViewController {
     func presentMenu() {
         let menuViewController = PopMenuViewController(actions: [
             PopMenuDefaultAction(title: "Action Title 1", image: UIImage(named: "icon"),
-            PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon")
+            PopMenuDefaultAction(title: "Action Title 2", image: UIImage(named: "icon"))
         ])
 
         present(menuViewController, animated: true, completion: nil)
