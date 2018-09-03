@@ -112,7 +112,7 @@ You can, however, choose either way to have the same result, whichever works bes
 
 [Basic Usage - Using Manager](#using-manager)
 
-[Basic Usage - Using Controller](#using-controller)
+[Basic Usage - Using Controller (Recommended)](#using-controller)
 
 -------
 
@@ -493,7 +493,17 @@ To set the action item image sizing:
 let action = PopMenuDefaultAction(title: "Some Title", image: UIImage(named: "blah"), color: .gray)
 action.iconWidthHeight = 45
 ```
+Scrollable when actions are more than 6 or custom
+---------
 
+To set the scrolling properties:
+
+```swift
+// The manual way
+menu.appearance.popMenuActionCountForScrollable = 10 // default 6
+menu.appearance.popMenuScrollIndicatorHidden = true // default false
+menu.appearance.popMenuScrollIndicatorStyle = .black // default .white
+```
 Status Bar Style // Default: automatic detection based on background color
 ---------
 

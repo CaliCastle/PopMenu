@@ -35,6 +35,12 @@ final public class PopMenuAppearance: NSObject {
     
     /// How many actions are the breakpoint to trigger scrollable.
     public var popMenuActionCountForScrollable: UInt = 6
+
+    /// The scroll indicator style when the actions are scrollable.
+    public var popMenuScrollIndicatorStyle: UIScrollView.IndicatorStyle = .white
+    
+    /// Hide the scroll indicator or not when the actions are scrollable.
+    public var popMenuScrollIndicatorHidden = false
     
     /// The separator style for each action.
     public var popMenuItemSeparator: PopMenuActionSeparator = .none()

@@ -323,9 +323,10 @@ extension PopMenuViewController {
     fileprivate func calculateContentFittingFrame() -> CGRect {
         var height: CGFloat
         
-        if actions.count >= 6 {
+        if actions.count >= appearance.popMenuActionCountForScrollable {
             // Make scroll view
             height = CGFloat(appearance.popMenuActionCountForScrollable) * appearance.popMenuActionHeight
+            height -= 20
         } else {
             height = CGFloat(actions.count) * appearance.popMenuActionHeight
         }
@@ -424,8 +425,6 @@ extension PopMenuViewController {
     
     /// Setup actions view.
     fileprivate func configureActionsView() {
-        actionsView.addGestureRecognizer(panGestureForMenu)
-        
         actionsView.translatesAutoresizingMaskIntoConstraints = false
         actionsView.axis = .vertical
         actionsView.alignment = .fill
@@ -451,14 +450,45 @@ extension PopMenuViewController {
             actionsView.addArrangedSubview(action.view)
         }
         
-        contentView.addSubview(actionsView)
-        
-        NSLayoutConstraint.activate([
-            actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
-        ])
+        // Check add scroll view or not
+        if actions.count >= (appearance.popMenuActionCountForScrollable) {
+            // Scrollable actions
+            let scrollView = UIScrollView()
+            scrollView.translatesAutoresizingMaskIntoConstraints = false
+            scrollView.showsHorizontalScrollIndicator = false
+            scrollView.showsVerticalScrollIndicator = !appearance.popMenuScrollIndicatorHidden
+            scrollView.indicatorStyle = appearance.popMenuScrollIndicatorStyle
+            scrollView.contentSize.height = appearance.popMenuActionHeight * CGFloat(actions.count)
+            
+            scrollView.addSubview(actionsView)
+            contentView.addSubview(scrollView)
+            
+            NSLayoutConstraint.activate([
+                scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+                scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ])
+            
+            NSLayoutConstraint.activate([
+                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                actionsView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                actionsView.heightAnchor.constraint(equalToConstant: scrollView.contentSize.height)
+            ])
+        } else {
+            // Not scrollable
+            actionsView.addGestureRecognizer(panGestureForMenu)
+            
+            contentView.addSubview(actionsView)
+            
+            NSLayoutConstraint.activate([
+                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+                actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
+            ])
+        }
     }
     
     /// Add separator view for the given action view.
