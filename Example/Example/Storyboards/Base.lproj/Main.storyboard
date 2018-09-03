@@ -19,7 +19,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="separatorColor" red="0.91400301399999995" green="0.91400301399999995" blue="0.91400301399999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PopMenu_Logo" id="ezY-er-s3g">
-                            <rect key="frame" x="0.0" y="1742.3333333333333" width="414" height="73"/>
+                            <rect key="frame" x="0.0" y="1808.3333333333333" width="414" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <sections>
@@ -526,12 +526,36 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Dl6-Dl-WFW" detailTextLabel="w0y-pN-uoA" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="sck-T4-mQN">
+                                        <rect key="frame" x="0.0" y="1557.6666666666665" width="414" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sck-T4-mQN" id="e8r-8G-MXC">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="65.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Icon Image Custom Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dl6-Dl-WFW">
+                                                    <rect key="frame" x="20" y="10.333333333333336" width="177.66666666666666" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                    <color key="textColor" red="0.43137254899999999" green="0.64705882349999999" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Default size 27 pt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w0y-pN-uoA">
+                                                    <rect key="frame" x="20" y="35" width="104" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="oew-WO-ueB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="f0a-hv-Y34" detailTextLabel="g8m-Yd-DK5" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="Tl1-km-tRb">
-                                        <rect key="frame" x="0.0" y="1593" width="414" height="66"/>
+                                        <rect key="frame" x="0.0" y="1659" width="414" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tl1-km-tRb" id="mA0-6F-Msb">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="65.666666666666671"/>
@@ -555,21 +579,21 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="2zw-a4-JPw" detailTextLabel="pLN-eg-zgf" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="0LF-vd-qKf">
-                                        <rect key="frame" x="0.0" y="1659" width="414" height="66"/>
+                                        <rect key="frame" x="0.0" y="1725" width="414" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0LF-vd-qKf" id="tVL-px-I4u">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="65.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="388" height="65.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Automatic Positioning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2zw-a4-JPw">
-                                                    <rect key="frame" x="20" y="10.333333333333336" width="162.66666666666666" height="22"/>
+                                                    <rect key="frame" x="15" y="10.333333333333336" width="162.66666666666666" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" red="0.43137254899999999" green="0.64705882349999999" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Tap the gear icon on navigation bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pLN-eg-zgf">
-                                                    <rect key="frame" x="20" y="35" width="211.33333333333334" height="18"/>
+                                                    <rect key="frame" x="15" y="35" width="211.33333333333334" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

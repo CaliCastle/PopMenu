@@ -379,7 +379,6 @@ extension PopMenuViewController {
     /// - Returns: The fitting width for content
     fileprivate func calculateContentWidth() -> CGFloat {
         var contentFitWidth: CGFloat = 0
-        contentFitWidth += PopMenuDefaultAction.iconWidthHeight
         contentFitWidth += PopMenuDefaultAction.textLeftPadding * 2
         
         // Calculate the widest width from action titles to determine the width
@@ -392,6 +391,8 @@ extension PopMenuViewController {
             
             let desiredWidth = sizingLabel.sizeThatFits(view.bounds.size).width
             contentFitWidth += min(desiredWidth, maxContentWidth)
+            
+            contentFitWidth += action.iconWidthHeight
         }
         
         return contentFitWidth

@@ -33,7 +33,7 @@ import UIKit
     static var iconLeftPadding: CGFloat { get }
     
     /// Icon sizing.
-    static var iconWidthHeight: CGFloat { get }
+    var iconWidthHeight: CGFloat { get set }
     
     /// The color to set for both label and icon.
     var tintColor: UIColor { get set }
@@ -78,6 +78,9 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     /// Handler of action when selected.
     public let didSelect: PopMenuActionHandler?
+    
+    /// Icon sizing.
+    public var iconWidthHeight: CGFloat = 27
     
     // MARK: - Computed Properties
     
@@ -150,7 +153,6 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     
     public static let textLeftPadding: CGFloat = 25
     public static let iconLeftPadding: CGFloat = 18
-    public static let iconWidthHeight: CGFloat = 27
     
     // MARK: - Initializer
     
@@ -173,7 +175,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
             view.addSubview(iconImageView)
             
             NSLayoutConstraint.activate([
-                iconImageView.widthAnchor.constraint(equalToConstant: PopMenuDefaultAction.iconWidthHeight),
+                iconImageView.widthAnchor.constraint(equalToConstant: iconWidthHeight),
                 iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor),
                 iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: PopMenuDefaultAction.iconLeftPadding),
                 iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)

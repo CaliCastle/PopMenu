@@ -152,6 +152,29 @@ final class PopMenuExamples {
         
         actions.forEach({
             $0.imageRenderingMode = .alwaysOriginal
+            
+        })
+        
+        let popMenu = PopMenuViewController(actions: actions)
+        
+        return popMenu
+    }
+    
+    /// PopMenu with custom image sizing.
+    func popMenuCustomSize() -> PopMenuViewController {
+        let action1 = PopMenuDefaultAction(title: "Open in Chrome", image: #imageLiteral(resourceName: "chrome"), color: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1))
+        let action2 = PopMenuDefaultAction(title: "Open in Safari", image: #imageLiteral(resourceName: "safari"), color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
+        let action3 = PopMenuDefaultAction(title: "Open in Firefox", image: #imageLiteral(resourceName: "firefox"), color: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1))
+        
+        let actions = [
+            action1,
+            action2,
+            action3
+        ]
+        
+        actions.forEach({
+            $0.imageRenderingMode = .alwaysOriginal
+            $0.iconWidthHeight = 42
         })
         
         let popMenu = PopMenuViewController(actions: actions)

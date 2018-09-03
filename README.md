@@ -484,6 +484,15 @@ To set the action item image rendering mode:
 let action = PopMenuDefaultAction(title: "Some Title", image: UIImage(named: "blah"), color: .gray)
 action.imageRenderingMode = .alwaysOriginal
 ```
+Action Image Sizing // Default: 27 pt
+---------
+
+To set the action item image sizing:
+
+```swift
+let action = PopMenuDefaultAction(title: "Some Title", image: UIImage(named: "blah"), color: .gray)
+action.iconWidthHeight = 45
+```
 
 Status Bar Style // Default: automatic detection based on background color
 ---------
