@@ -184,6 +184,8 @@ extension RootViewController {
             popMenu = examples.popMenuCustomRenderingMode()
         case (2, 13):
             popMenu = examples.popMenuCustomSize()
+        case (2, 14):
+            popMenu = examples.popMenuScrollable()
         case (3, 0):
             let cell = tableView.cellForRow(at: indexPath)!
             popMenu = examples.popMenuStandard(cell)

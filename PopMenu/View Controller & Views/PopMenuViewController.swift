@@ -197,6 +197,21 @@ final public class PopMenuViewController: UIViewController {
         return .lightContent
     }
     
+    /// Handle when device orientation changed or container size changed.
+    ///
+    /// - Parameters:
+    ///   - size: Changed size
+    ///   - coordinator: Coordinator that manages the container
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { context in
+            self.configureBackgroundView()
+            self.contentFrame = self.calculateContentFittingFrame()
+            self.setupContentConstraints()
+        })
+        
+        super.viewWillTransition(to: size, with: coordinator)
+    }
+    
 }
 
 // MARK: - View Configurations
@@ -306,7 +321,16 @@ extension PopMenuViewController {
     ///
     /// - Returns: The fitting frame
     fileprivate func calculateContentFittingFrame() -> CGRect {
-        let size = CGSize(width: calculateContentWidth(), height: CGFloat(actions.count) * appearance.popMenuActionHeight)
+        var height: CGFloat
+        
+        if actions.count >= 6 {
+            // Make scroll view
+            height = CGFloat(appearance.popMenuActionCountForScrollable) * appearance.popMenuActionHeight
+        } else {
+            height = CGFloat(actions.count) * appearance.popMenuActionHeight
+        }
+        
+        let size = CGSize(width: calculateContentWidth(), height: height)
         let origin = calculateContentOrigin(with: size)
         
         return CGRect(origin: origin, size: size)

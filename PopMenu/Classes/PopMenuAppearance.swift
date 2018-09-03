@@ -33,6 +33,9 @@ final public class PopMenuAppearance: NSObject {
     /// How tall each action is.
     public var popMenuActionHeight: CGFloat = 50
     
+    /// How many actions are the breakpoint to trigger scrollable.
+    public var popMenuActionCountForScrollable: UInt = 6
+    
     /// The separator style for each action.
     public var popMenuItemSeparator: PopMenuActionSeparator = .none()
 
