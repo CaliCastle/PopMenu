@@ -475,6 +475,15 @@ manager.popMenuAppearance.popMenuItemSeparator = .fill(.yellow, height: 1) // Or
 // The manual way
 menu.appearance.popMenuItemSeparator = ...
 ```
+Action Image Rendering Mode // Default: .alwaysTemplate
+---------
+
+To set the action item image rendering mode:
+
+```swift
+let action = PopMenuDefaultAction(title: "Some Title", image: UIImage(named: "blah"), color: .gray)
+action.imageRenderingMode = .alwaysOriginal
+```
 
 Status Bar Style // Default: automatic detection based on background color
 ---------

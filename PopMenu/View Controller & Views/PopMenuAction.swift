@@ -67,6 +67,9 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     /// Icon of action.
     public let image: UIImage?
     
+    /// Image rendering option.
+    public var imageRenderingMode: UIImage.RenderingMode = .alwaysTemplate
+    
     /// Renderred view of action.
     public let view: UIView
     
@@ -138,7 +141,7 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = image?.withRenderingMode(.alwaysTemplate)
+        imageView.image = image?.withRenderingMode(imageRenderingMode)
         
         return imageView
     }()

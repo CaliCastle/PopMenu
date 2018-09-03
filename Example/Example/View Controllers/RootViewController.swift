@@ -180,6 +180,8 @@ extension RootViewController {
             popMenu = examples.popMenuCustomStatusBarStyle(.default)
         case (2, 11):
             popMenu = examples.popMenuSeparatorLine(.fill())
+        case (2, 12):
+            popMenu = examples.popMenuCustomRenderingMode()
         case (3, 0):
             let cell = tableView.cellForRow(at: indexPath)!
             popMenu = examples.popMenuStandard(cell)
