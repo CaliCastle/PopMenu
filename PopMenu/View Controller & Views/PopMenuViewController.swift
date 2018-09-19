@@ -342,10 +342,18 @@ extension PopMenuViewController {
     /// - Returns: The source origin point
     fileprivate func calculateContentOrigin(with size: CGSize) -> CGPoint {
         guard let sourceFrame = absoluteSourceFrame else { return CGPoint(x: view.center.x - size.width / 2, y: view.center.y - size.height / 2) }
+        let minContentPos: CGFloat = UIScreen.main.bounds.size.width * 0.05
+        let maxContentPos: CGFloat = UIScreen.main.bounds.size.width * 0.95
         
         // Get desired content origin point
         let offsetX = (size.width - sourceFrame.size.width ) / 2
         var desiredOrigin = CGPoint(x: sourceFrame.origin.x - offsetX, y: sourceFrame.origin.y)
+        if (desiredOrigin.x + size.width) > maxContentPos {
+            desiredOrigin.x = maxContentPos - size.width
+        }
+        if desiredOrigin.x < minContentPos {
+            desiredOrigin.x = minContentPos
+        }
         
         // Move content in place
         translateOverflowX(desiredOrigin: &desiredOrigin, contentSize: size)
@@ -415,12 +423,12 @@ extension PopMenuViewController {
             sizingLabel.text = action.title
             
             let desiredWidth = sizingLabel.sizeThatFits(view.bounds.size).width
-            contentFitWidth += min(desiredWidth, maxContentWidth)
+            contentFitWidth += desiredWidth
             
             contentFitWidth += action.iconWidthHeight
         }
         
-        return contentFitWidth
+        return min(contentFitWidth,maxContentWidth)
     }
     
     /// Setup actions view.
