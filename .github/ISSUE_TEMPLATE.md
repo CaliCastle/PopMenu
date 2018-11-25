@@ -17,4 +17,4 @@
 - **iOS Version**: [iOS VERSION]
 - **Xcode Version**: [XCODE VERSION]
 - **Device(s)**: [INSERT DEVICE(S) HERE]
-- **Simulator?**: [YES] or [NO]
+- **Simulator?**: ☑️ or ❌
