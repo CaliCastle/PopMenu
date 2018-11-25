@@ -48,9 +48,7 @@ What's a better way to know what `PopMenu` offers than some screenshots? Here's 
 <p align="center"><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/Demo_Showcase.gif"></p>
 
 ![Demo1](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_1.png)
-![Demo2](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_2.png)
 ![Demo3](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_3.png)
-![Demo4](https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/FeatureScreenShot_4.png)
 
 ## <a name="installation"></a> ⚙️ Installation
 
