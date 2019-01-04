@@ -122,6 +122,12 @@ final public class PopMenuViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
+    /// PopMenuViewController constructor
+    ///
+    /// - Parameters:
+    ///   - sourceView: the source view for triggering the menu
+    ///   - actions: all the menu actions
+    ///   - appearance: appearance configuration
     public convenience init(sourceView: AnyObject? = nil, actions: [PopMenuAction], appearance: PopMenuAppearance? = nil) {
         self.init(nibName: nil, bundle: nil)
         

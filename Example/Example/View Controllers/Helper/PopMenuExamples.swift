@@ -19,9 +19,11 @@ final class PopMenuExamples {
             PopMenuDefaultAction(title: "Short"),
             PopMenuDefaultAction(title: "A Longer Text")
         ]
-        
+
         let popMenu = PopMenuViewController(actions: actions)
         
+//        popMenu.appearance.popMenuPresentationStyle = .near(.bottom)
+
         return popMenu
     }
     
