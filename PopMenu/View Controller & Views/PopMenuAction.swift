@@ -222,13 +222,11 @@ public class PopMenuDefaultAction: NSObject, PopMenuAction {
             UIView.animate(withDuration: 0.175, animations: {
                 self.view.transform = CGAffineTransform.identity.scaledBy(x: 0.915, y: 0.915)
                 self.view.backgroundColor = self.backgroundColor.withAlphaComponent(0.18)
-            }, completion: {
-                if $0 {
-                    UIView.animate(withDuration: 0.175, animations: {
-                        self.view.transform = .identity
-                        self.view.backgroundColor = .clear
-                    })
-                }
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.175, animations: {
+                    self.view.transform = .identity
+                    self.view.backgroundColor = .clear
+                })
             })
         }
     }
