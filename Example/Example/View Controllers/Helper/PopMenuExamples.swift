@@ -19,9 +19,12 @@ final class PopMenuExamples {
             PopMenuDefaultAction(title: "Short"),
             PopMenuDefaultAction(title: "A Longer Text")
         ]
-        
+
         let popMenu = PopMenuViewController(actions: actions)
         
+        // TODO: Not ready yet
+        // popMenu.appearance.popMenuPresentationStyle = .near(.bottom)
+
         return popMenu
     }
     

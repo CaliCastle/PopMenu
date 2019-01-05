@@ -22,6 +22,9 @@ class RootViewController: UITableViewController {
     // PopMenu examples helper instance.
     fileprivate let examples = PopMenuExamples()
     
+    // Whether or not should use manager to present menu
+    fileprivate let shouldUseManager = true
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -29,10 +32,22 @@ class RootViewController: UITableViewController {
 
     }
     
-    /// Top right bar button tapped.
+    /// Top left bar button tapped
+    @IBAction func topLeftButtonDidTap(_ sender: UIBarButtonItem) {
+        if shouldUseManager {
+            showMenuWithManager(for: sender)
+        } else {
+            showMenuManually(for: sender)
+        }
+    }
     
-    @IBAction func presentMenu(_ sender: UIBarButtonItem) {
-        showMenuManually(for: sender)
+    /// Top right bar button tapped
+    @IBAction func topRightButtonDidTap(_ sender: UIBarButtonItem) {
+        if shouldUseManager {
+            showMenuWithManager(for: sender)
+        } else {
+            showMenuManually(for: sender)
+        }
     }
     
     /// This shows how to use PopMenu the old fashion way
@@ -59,6 +74,25 @@ class RootViewController: UITableViewController {
         
         // Present menu controller
         present(controller, animated: true, completion: nil)
+    }
+    
+    /// This shows how to use PopMenu with PopMenuManager
+    fileprivate func showMenuWithManager(for barButtonItem: UIBarButtonItem) {
+        // Get manager instance
+        let manager = PopMenuManager.default
+        // Set actions
+        manager.actions = [
+            PopMenuDefaultAction(title: "Click me to", image: #imageLiteral(resourceName: "Plus"), color: .yellow),
+            PopMenuDefaultAction(title: "Pop another menu", image: #imageLiteral(resourceName: "Heart"), color: #colorLiteral(red: 0.9816910625, green: 0.5655395389, blue: 0.4352460504, alpha: 1)),
+            PopMenuDefaultAction(title: "Try it out!", image: nil, color: .white)
+        ]
+        // Customize appearance
+        manager.popMenuAppearance.popMenuFont = UIFont(name: "AvenirNext-DemiBold", size: 16)!
+        manager.popMenuAppearance.popMenuBackgroundStyle = .blurred(.dark)
+        manager.popMenuShouldDismissOnSelection = false
+        manager.popMenuDelegate = self
+        // Present menu
+        manager.present(sourceView: barButtonItem)
     }
     
     // MARK: - Table View Row Configuration

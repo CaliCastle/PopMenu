@@ -47,6 +47,9 @@ final public class PopMenuAppearance: NSObject {
 
     /// The status bar style of the pop menu.
     public var popMenuStatusBarStyle: UIStatusBarStyle?
+    
+    /// The presentation style
+    public var popMenuPresentationStyle: PopMenuPresentationStyle = .cover()
 
 }
 
@@ -167,4 +170,32 @@ public struct PopMenuActionSeparator: Equatable {
         return lhs.color == rhs.color && lhs.height == rhs.height
     }
     
+}
+
+///
+public struct PopMenuPresentationStyle {
+    
+    /// The direction enum for the menu.
+    public let direction: PopMenuDirection
+    
+    /// Custom offset coordinates.
+    public let offset: CGPoint?
+    
+    /// The default presentation that covers the source view.
+    public static func cover() -> PopMenuPresentationStyle {
+        return PopMenuPresentationStyle(direction: .none, offset: nil)
+    }
+    
+    /// The custom presentation that shows near the source view in a direction and offset.
+    public static func near(_ direction: PopMenuDirection, offset: CGPoint? = nil) -> PopMenuPresentationStyle {
+        return PopMenuPresentationStyle(direction: direction, offset: offset)
+    }
+}
+
+public enum PopMenuDirection {
+    case top
+    case left
+    case right
+    case bottom
+    case none
 }
