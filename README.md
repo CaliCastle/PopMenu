@@ -27,6 +27,6 @@ Before committing any changes, please make sure to read the [Contribution Guidel
 
 ## 📗 Check Documentation
 
-Classes documentation is available at [**https://calicastle.github.io/PopMenu/**](https://calicastle.github.io/PopMenu/)
+Documentation is available at [**https://popmenu.calicastle.com/**](https://popmenu.calicastle.com/)
 
 **[Join Our Slack Channel]**(https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM)
