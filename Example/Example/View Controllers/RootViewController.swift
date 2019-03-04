@@ -29,11 +29,16 @@ class RootViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let rightButton = UIButton(type: .custom)
+        rightButton.setImage(#imageLiteral(resourceName: "Settings_Icon"), for: .normal)
+        rightButton.addTarget(self, action: #selector(topRightButtonDidTap), for: .touchUpInside)
 
+        navigationItem.setRightBarButton(UIBarButtonItem(customView: rightButton), animated: true)
     }
     
     /// Top left bar button tapped
-    @IBAction func topLeftButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func topLeftButtonDidTap(_ sender: UIBarButtonItem) {
         if shouldUseManager {
             showMenuWithManager(for: sender)
         } else {
@@ -42,7 +47,7 @@ class RootViewController: UITableViewController {
     }
     
     /// Top right bar button tapped
-    @IBAction func topRightButtonDidTap(_ sender: UIBarButtonItem) {
+    @objc func topRightButtonDidTap(_ sender: UIButton) {
         if shouldUseManager {
             showMenuWithManager(for: sender)
         } else {
@@ -53,7 +58,7 @@ class RootViewController: UITableViewController {
     /// This shows how to use PopMenu the old fashion way
     /// Manually init the controller with actions array
     /// Customize whatever you want and present here
-    fileprivate func showMenuManually(for barButtonItem: UIBarButtonItem) {
+    fileprivate func showMenuManually(for barButtonItem: AnyObject) {
         // Create menu controller with actions
         let controller = PopMenuViewController(sourceView: barButtonItem, actions: [
             PopMenuDefaultAction(title: "Click me to", image: #imageLiteral(resourceName: "Plus"), color: .yellow),
@@ -77,7 +82,7 @@ class RootViewController: UITableViewController {
     }
     
     /// This shows how to use PopMenu with PopMenuManager
-    fileprivate func showMenuWithManager(for barButtonItem: UIBarButtonItem) {
+    fileprivate func showMenuWithManager(for barButtonItem: AnyObject) {
         // Get manager instance
         let manager = PopMenuManager.default
         // Set actions

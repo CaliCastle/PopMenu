@@ -85,7 +85,7 @@ final public class PopMenuViewController: UIViewController {
         
         // Check if UIBarButtonItem
         if let sourceBarButtonItem = sourceView as? UIBarButtonItem {
-            if let buttonView = sourceBarButtonItem.value(forKey: "view") as? UIView {
+            if let buttonView = sourceBarButtonItem.customView {
                 return buttonView
             }
         }
