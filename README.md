@@ -13,7 +13,9 @@
 
 ## [Guide](https://popmenu.calicastle.com/)
 
-Check out the [documentation and guides](https://popmenu.calicastle.com/) for details on how to use.
+Check out the [documentation and guides](https://popmenu.calicastle.com/) for details on how to use. (Available languages:)
+- [English](https://popmenu.calicastle.com/)
+- 简体中文 (Coming Soon)
 
 What's a better way to know what `PopMenu` offers than some live action images? Here's to show you what you can do with `PopMenu`:
 
