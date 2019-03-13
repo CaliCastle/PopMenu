@@ -80,7 +80,7 @@ extension PopMenuManager {
     ///   - sourceView: From which view and where exactly on the screen to be shown
     ///     (default: show in the center)
     ///
-    ///   - above: Present above which controller
+    ///   - on: Present above which controller
     ///     (default: use the top view controller)
     ///
     ///   - animated: Animate the presentation
@@ -98,7 +98,25 @@ extension PopMenuManager {
             }
         }
     }
-    
+
+    /// Present the pop menu while responding to a gesture.
+    ///
+    /// - Parameters:
+    ///   - gesture: `UIGestureRecognizer` whose location will be used to present PopMenu.
+    ///   - on: Present above which controller
+    ///     (default: use the top view controller)
+    ///   - animated: Animate the presentation
+    ///   - completion: Completion handler
+    public func present(with gesture: UIGestureRecognizer, on viewController: UIViewController, animated: Bool = true, completion: (() -> UIView?)? = nil) {
+        let sourceView = UIView(frame: CGRect(origin: gesture.location(in: nil), size: .zero))
+        UIApplication.shared.keyWindow?.addSubview(sourceView)
+
+        present(sourceView: sourceView, on: viewController, animated: animated) {
+            autoreleasepool {
+                sourceView.removeFromSuperview()
+            }
+        }
+    }
 }
 
 // MARK: - Helper Methods
