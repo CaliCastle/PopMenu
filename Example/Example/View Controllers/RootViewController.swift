@@ -98,7 +98,7 @@ class RootViewController: UITableViewController {
     // MARK: - Table View Row Configuration
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath != IndexPath(row: 0, section: 3) else { return 170 }
+        if (indexPath.section, indexPath.row) == (3, 2) { return 170 }
         return 68
     }
     
@@ -233,4 +233,18 @@ extension RootViewController {
         }
     }
     
+}
+
+extension RootViewController: UIGestureRecognizerDelegate {
+    @IBAction func didLongPress(sender: UIGestureRecognizer) {
+        guard sender.state == .began else { return }
+        let manager = PopMenuManager.default
+        manager.actions = [
+            PopMenuDefaultAction(title: "Save to List", image: #imageLiteral(resourceName: "Plus")),
+            PopMenuDefaultAction(title: "Favorite", image: #imageLiteral(resourceName: "Heart")),
+            PopMenuDefaultAction(title: "Add to Cart", image: #imageLiteral(resourceName: "Cart_Add")),
+            PopMenuDefaultAction(title: "Download", image: #imageLiteral(resourceName: "Download"))
+        ]
+        manager.present(with: sender, on: self)
+    }
 }
