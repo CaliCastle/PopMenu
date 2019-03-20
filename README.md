@@ -15,7 +15,7 @@
 
 Check out the [documentation and guides](https://popmenu.calicastle.com/) for details on how to use. (Available languages:)
 - [English](https://popmenu.calicastle.com/)
-- 简体中文 (Coming Soon)
+- [简体中文](https://popmenu.calicastle.com/zh/)
 
 What's a better way to know what `PopMenu` offers than some live action images? Here's to show you what you can do with `PopMenu`:
 
