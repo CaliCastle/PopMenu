@@ -216,12 +216,13 @@
 				TargetAttributes = {
 					9D397A9020802C1600C58037 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Manual;
 					};
 					9D397A9920802C1700C58037 = {
 						CreatedOnToolsVersion = 9.4;
 						DevelopmentTeam = LAAKXKAVC9;
+						LastSwiftMigration = 1030;
 						ProvisioningStyle = Automatic;
 					};
 				};

@@ -19,7 +19,7 @@ Check out the [documentation and guides](https://popmenu.calicastle.com/) for de
 
 What's a better way to know what `PopMenu` offers than some live action images? Here's to show you what you can do with `PopMenu`:
 
-<p align="center"><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/Demo_Showcase.gif"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/CaliCastle/PopMenu/master/.assets/Demo_Showcase.gif" width="280"></p>
 
 ## 💪🏻 Contribute
 
