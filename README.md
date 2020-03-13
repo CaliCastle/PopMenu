@@ -13,9 +13,9 @@
 
 ## [Guide](https://popmenu.calicastle.com/)
 
-Check out the [documentation and guides](https://popmenu.calicastle.com/) for details on how to use. (Available languages:)
-- [English](https://popmenu.calicastle.com/)
-- [简体中文](https://popmenu.calicastle.com/zh/)
+Check out the [documentation and guides](https://popmenu.calic.dev/) for details on how to use. (Available languages:)
+- [English](https://popmenu.calic.dev/)
+- [简体中文](https://popmenu.calic.dev/zh/)
 
 What's a better way to know what `PopMenu` offers than some live action images? Here's to show you what you can do with `PopMenu`:
 
@@ -29,6 +29,6 @@ Before committing any changes, please make sure to read the [Contribution Guidel
 
 ## 📗 Check Documentation
 
-Documentation is available at [**https://popmenu.calicastle.com/**](https://popmenu.calicastle.com/)
+Documentation is available at [**https://popmenu.calic.dev/**](https://popmenu.calic.dev/)
 
 **[Join Our Slack Channel]**(https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM)
