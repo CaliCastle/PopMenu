@@ -19,4 +19,7 @@ extension UIView {
         layer.masksToBounds = false
     }
     
+    public func addShadow(_ setting: PopMenuShadowColor) {
+        addShadow(offset: setting.offset, opacity: setting.opacity, radius: setting.radius, color: setting.color)
+    }
 }
