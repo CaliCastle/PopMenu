@@ -50,6 +50,9 @@ final public class PopMenuAppearance: NSObject {
     
     /// The presentation style
     public var popMenuPresentationStyle: PopMenuPresentationStyle = .cover()
+    
+    /// The menu will overlay on source view or not
+    public var popMenuAboveSourceView = false
 
 }
 

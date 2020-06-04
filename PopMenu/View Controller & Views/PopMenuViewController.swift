@@ -361,6 +361,23 @@ extension PopMenuViewController {
             desiredOrigin.x = minContentPos
         }
         
+        if appearance.popMenuAboveSourceView {
+            let minContentPos: CGFloat = UIScreen.main.bounds.size.height * 0.05
+            let maxContentPos: CGFloat = UIScreen.main.bounds.size.height * 0.95
+            
+            let offsetY = sourceFrame.size.height
+            desiredOrigin.y += offsetY
+            if (desiredOrigin.y + size.height) > maxContentPos {
+                desiredOrigin.y -= 2 * offsetY
+            }
+            if (desiredOrigin.y + size.height) > maxContentPos {
+                desiredOrigin.y = maxContentPos - size.height
+            }
+            if desiredOrigin.y < minContentPos {
+                desiredOrigin.y = minContentPos
+            }
+        }
+        
         // Move content in place
         translateOverflowX(desiredOrigin: &desiredOrigin, contentSize: size)
         translateOverflowY(desiredOrigin: &desiredOrigin, contentSize: size)
