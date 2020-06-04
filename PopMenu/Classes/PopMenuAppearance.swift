@@ -54,6 +54,8 @@ final public class PopMenuAppearance: NSObject {
     /// The menu will overlay on source view or not
     public var popMenuAboveSourceView = false
 
+    /// The menu shadow setting
+    public var popMenuShadowColor: PopMenuShadowColor = .default()
 }
 
 /// Background styles for PopMenu.
@@ -201,4 +203,30 @@ public enum PopMenuDirection {
     case right
     case bottom
     case none
+}
+
+/// Menu Shadow setting structure to control PopMenu shadow.
+public struct PopMenuShadowColor {
+    
+    /// Shadow offset.
+    public let offset: CGSize
+    
+    /// Shadow opacity.
+    public let opacity: Float
+    
+    /// Shadow radius.
+    public let radius: CGFloat
+    
+    /// Shadow color.
+    public let color: Color
+    
+    /// Get shadow's color instance with default setting
+    public static func `default`() -> PopMenuShadowColor {
+        return PopMenuShadowColor(offset: .init(width: 0, height: 1), opacity: 0.5, radius: 20, color: .black)
+    }
+    
+    /// Get shadow's color instance with custom setting
+    public static func custom(offset: CGSize = .zero, opacity: Float = 0.65, radius: CGFloat = 20, color: Color = .black) -> PopMenuShadowColor {
+        return PopMenuShadowColor(offset: offset, opacity: opacity, radius: radius, color: color)
+    }
 }
