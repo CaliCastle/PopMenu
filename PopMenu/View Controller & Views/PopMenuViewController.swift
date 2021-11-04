@@ -582,7 +582,11 @@ extension PopMenuViewController {
                 guard !action.highlighted else { return }
                 
                 if shouldEnableHaptics {
-                    Haptic.selection.generate()
+                    if #available(iOS 10.0, *) {
+                        Haptic.selection.generate()
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 
                 // Highlight current action view.

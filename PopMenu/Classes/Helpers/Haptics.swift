@@ -9,14 +9,13 @@
 import UIKit
 
 /// Haptic Generator Helper.
+@available(iOS 10.0, *)
 public enum Haptic {
     
     /// Impact style.
-    @available(iOS 10.0, *)
     case impact(UIImpactFeedbackGenerator.FeedbackStyle)
     
     /// Notification style.
-    @available(iOS 10.0, *)
     case notification(UINotificationFeedbackGenerator.FeedbackType)
     
     /// Selection style.
