@@ -11,11 +11,11 @@
     <a href="https://popmenu.calicastle.com/" target=_blank><img src="https://img.shields.io/badge/see-Documentation-green.svg"></a>
 </p>
 
-## [Guide](https://popmenu.calicastle.com/)
+## [Guide](https://popmenu.cali.so/)
 
-Check out the [documentation and guides](https://popmenu.calic.dev/) for details on how to use. (Available languages:)
-- [English](https://popmenu.calic.dev/)
-- [简体中文](https://popmenu.calic.dev/zh/)
+Check out the [documentation and guides](https://popmenu.cali.so/) for details on how to use. (Available languages:)
+- [English](https://popmenu.cali.so/)
+- [简体中文](https://popmenu.cali.so/zh/)
 
 What's a better way to know what `PopMenu` offers than some live action images? Here's to show you what you can do with `PopMenu`:
 
@@ -29,6 +29,6 @@ Before committing any changes, please make sure to read the [Contribution Guidel
 
 ## 📗 Check Documentation
 
-Documentation is available at [**https://popmenu.calic.dev/**](https://popmenu.calic.dev/)
+Documentation is available at [**https://popmenu.cali.so/**](https://popmenu.cali.so/)
 
 **[Join Our Slack Channel]**(https://join.slack.com/t/newpopmenu/shared_invite/enQtMzQ4OTExMzE0OTM1LWFhM2IxYmYxOGZmMTgzNjQxMWRiNzUyZmYwN2M4ZmQ2YWYxY2VhNWI3MDlmM2JhOTM5NjAwODlmNjQzMmVlODM)
