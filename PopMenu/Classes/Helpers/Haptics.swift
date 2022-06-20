@@ -9,6 +9,7 @@
 import UIKit
 
 /// Haptic Generator Helper.
+@available(iOS 10.0, *)
 public enum Haptic {
     
     /// Impact style.

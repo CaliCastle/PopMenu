@@ -260,7 +260,7 @@ extension PopMenuViewController {
     /// Setup the content view.
     fileprivate func configureContentView() {
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.addShadow(offset: .init(width: 0, height: 1), opacity: 0.5, radius: 20)
+        containerView.addShadow(appearance.popMenuShadowColor)
         containerView.layer.cornerRadius = appearance.popMenuCornerRadius
         containerView.backgroundColor = .clear
         
@@ -359,6 +359,23 @@ extension PopMenuViewController {
         }
         if desiredOrigin.x < minContentPos {
             desiredOrigin.x = minContentPos
+        }
+        
+        if appearance.popMenuAboveSourceView {
+            let minContentPos: CGFloat = UIScreen.main.bounds.size.height * 0.05
+            let maxContentPos: CGFloat = UIScreen.main.bounds.size.height * 0.95
+            
+            let offsetY = sourceFrame.size.height
+            desiredOrigin.y += offsetY
+            if (desiredOrigin.y + size.height) > maxContentPos {
+                desiredOrigin.y -= 2 * offsetY
+            }
+            if (desiredOrigin.y + size.height) > maxContentPos {
+                desiredOrigin.y = maxContentPos - size.height
+            }
+            if desiredOrigin.y < minContentPos {
+                desiredOrigin.y = minContentPos
+            }
         }
         
         // Move content in place
@@ -565,7 +582,11 @@ extension PopMenuViewController {
                 guard !action.highlighted else { return }
                 
                 if shouldEnableHaptics {
-                    Haptic.selection.generate()
+                    if #available(iOS 10.0, *) {
+                        Haptic.selection.generate()
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }
                 
                 // Highlight current action view.
