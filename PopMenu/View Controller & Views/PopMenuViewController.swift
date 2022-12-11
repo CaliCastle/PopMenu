@@ -434,7 +434,12 @@ extension PopMenuViewController {
             contentFitWidth += action.iconWidthHeight
         }
         
-        return min(contentFitWidth,maxContentWidth)
+      
+        if let minimumWidth = self.appearance.popMenuMinimumWidth {
+            return max(minimumWidth, min(contentFitWidth,maxContentWidth))
+        } else {
+            return min(contentFitWidth,maxContentWidth)
+        }
     }
     
     /// Setup actions view.
