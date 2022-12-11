@@ -17,6 +17,8 @@ public typealias Color = UIColor
 /// Appearance for PopMenu.
 /// Use for configuring custom styles and looks.
 final public class PopMenuAppearance: NSObject {
+    /// The minimum width for the menu; Default: auto-sizing
+    public var popMenuMinimumWidth: CGFloat? = .none
     
     /// Background and tint colors.
     public var popMenuColor: PopMenuColor = .default()
