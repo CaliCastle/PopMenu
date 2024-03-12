@@ -337,7 +337,7 @@ extension PopMenuViewController {
             height = CGFloat(actions.count) * appearance.popMenuActionHeight
         }
         
-        let size = CGSize(width: calculateContentWidth(), height: height)
+        let size = CGSize(width: calculateContentWidth() + appearance.popMenuContentInset.left + appearance.popMenuContentInset.right, height: height + appearance.popMenuContentInset.top + appearance.popMenuContentInset.bottom)
         let origin = calculateContentOrigin(with: size)
         
         return CGRect(origin: origin, size: size)
@@ -463,7 +463,7 @@ extension PopMenuViewController {
             
             actionsView.addArrangedSubview(action.view)
         }
-        
+
         // Check add scroll view or not
         if actions.count >= (appearance.popMenuActionCountForScrollable) {
             // Scrollable actions
@@ -478,29 +478,28 @@ extension PopMenuViewController {
             contentView.addSubview(scrollView)
             
             NSLayoutConstraint.activate([
-                scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: appearance.popMenuContentInset.left),
+                scrollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: appearance.popMenuContentInset.top),
+                scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -appearance.popMenuContentInset.right),
+                scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -appearance.popMenuContentInset.bottom)
             ])
             
             NSLayoutConstraint.activate([
-                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor,  constant: appearance.popMenuContentInset.left),
+                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -appearance.popMenuContentInset.right),
                 actionsView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                 actionsView.heightAnchor.constraint(equalToConstant: scrollView.contentSize.height)
             ])
         } else {
             // Not scrollable
             actionsView.addGestureRecognizer(panGestureForMenu)
-            
             contentView.addSubview(actionsView)
             
             NSLayoutConstraint.activate([
-                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-                actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-                actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
+                actionsView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: appearance.popMenuContentInset.left),
+                actionsView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -appearance.popMenuContentInset.right),
+                actionsView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: appearance.popMenuContentInset.top),
+                actionsView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -appearance.popMenuContentInset.bottom)
             ])
         }
     }

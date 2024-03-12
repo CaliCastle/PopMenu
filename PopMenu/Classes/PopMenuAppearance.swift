@@ -50,6 +50,9 @@ final public class PopMenuAppearance: NSObject {
     
     /// The presentation style
     public var popMenuPresentationStyle: PopMenuPresentationStyle = .cover()
+    
+    /// ContentInset of menu, includes left right top bottom
+    public var popMenuContentInset: UIEdgeInsets = .zero
 
 }
 
